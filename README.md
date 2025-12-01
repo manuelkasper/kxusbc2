@@ -26,7 +26,7 @@ Here is how it looks installed in a KX2, with a custom CNC-machined aluminum sid
 
 * Adds a bidirectional USB-C charging port to the KX2
 * Charges the internal 3S Li-Ion battery at up to 30 W
-* Dual Role Port (DRP/OTG): Can also charge an external device (phone etc.) through the same USB-C port at up to 30 W (5…15 V)
+* Dual Role Port (DRP/OTG): Can also charge an external device (phone, GPS, HT etc.) through the same USB-C port at up to 30 W (5…15 V)
 * Dual input: can charge from USB-C or DC jack
 * Supports PD 3.0, QC, BC1.2
 * Real-Time Clock (RTC)
@@ -38,12 +38,12 @@ Here is how it looks installed in a KX2, with a custom CNC-machined aluminum sid
 
 * BQ25792 buck-boost battery charger IC
   * 1.5 MHz switching frequency
-  * Quad external N power MOSFETs for input switching
+  * Quad external power MOSFETs for input switching
 * FUSB302B USB-C controller
 * ATtiny3226 microcontroller
   * Implements the PD protocol stack in firmware
   * Current/voltage limits etc. configurable in EEPROM
-  * Config button for basic settings (TBD), trigger a PD role swap, reset, etc...
+  * Config button for basic settings (TBD), trigger a PD role swap, reset, etc.
   * UPDI debug/programming header
   * Serial debug console header
 * RTC emulated in MCU (SPI client), backed by crystal, with temperature compensation
