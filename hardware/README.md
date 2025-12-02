@@ -11,7 +11,6 @@
 
 The design around the BQ25792 with its inductor and capacitors follows the guidelines given in the datasheet, and takes the EVM design as a basis. However, due to space constraints and the oblong shape, some compromises in the PCB layout had to be made: the BQ25792 has been rotated 180° relative to the reference design, making the switching nodes slightly longer and closer to other traces. Care was taken to keep them isolated from other traces by intermediate ground plane layers.
 
-The goal was to design the board such that it could be produced and assembled by low-cost services like JLCPCB (“Economic PCBA”). Only very few components are on the bottom side, and are big enough to be hand-soldered. Traces, via holes etc. are fairly large to avoid precision PCB costs.
 
 ## Side panel
 
@@ -20,17 +19,19 @@ The goal was to design the board such that it could be produced and assembled by
 * Aluminum 6061
 * Bead-blasted, hardcoat-anodized, and silkscreened
 
+
 ## Cost
 
-Most of the parts are relatively low cost, and the board was designed so that it can be produced and assembled by low-cost services like JLCPCB, with almost all passive components from the “Basic” component selection, which doesn't incur component-loading fees.
+Most of the parts are relatively low cost, and the board was designed so that it can be produced and assembled by low-cost services like JLCPCB (“Economic PCBA”), with almost all passive components from the “Basic” component selection, which doesn't incur component-loading fees. Only very few components are on the bottom side, and are big enough to be hand-soldered. Traces, via holes etc. are fairly large to avoid precision PCB costs.
 
-The total BOM at qty. 10 is around $25/pc. (including PCB production and assembly), plus $12/pc. for the CNC milled, anodized and silkscreen printed side panel.
+The total BOM at qty. 10 is around $30/pc. (including PCB production and assembly of both sides), plus $12/pc. for the CNC milled, anodized and silkscreen printed side panel.
+
 
 ## Efficiency
 
 <img src="illustrations/bq25792_efficiency.png" alt="Conversion efficiency" width="400">
 
-The graph above is taken from the BQ25792's datasheet. I've done some casual measurements, both using the BQ25792's internal ADC and shunts, and with external power meters, and they agree with the data in the graph: around 95% when charging from 15 V, and between 85% and 90% from 5 V (depending on the current). There seems to be no problem dissipating the maximum possible loss of around 3 W through the side panel (thermal pad between the IC and the panel), and in any case, the charger IC has thermal regulation and shutdown.
+The graph above is taken from the BQ25792's datasheet. I've done some casual measurements, both using the BQ25792's internal ADC and shunts, and with external power meters, and they agree with the data in the graph: around 95% when charging from 15 V input, and between 85% and 90% from 5 V (depending on the current). There seems to be no problem dissipating the maximum possible loss of around 3 W through the side panel (thermal pad placed between the IC and the panel), and in any case, the charger IC has thermal regulation and shutdown.
 
 
 ## Power connection to the KX2
@@ -55,7 +56,7 @@ The KX2 uses an SPI frequency of 1 MHz (mode 0), and the delay between asserting
 
 
 ## Battery monitoring
-The KXUSBC2 includes a similar circuit to the one on the KXIBC2 that allows the KX2 to display the actual battery voltage in the menu. It works by dividing down the battery voltage and buffering it with an op-amp before passing it to the microcontroller in the KX2.
+The KXUSBC2 includes a similar circuit to the one on the KXIBC2 that allows the KX2 to display the actual battery voltage in the menu. It works by dividing down the battery voltage and buffering it with an op-amp before passing it to the microcontroller in the KX2. The “KXIBC2” menu option must be set to “NOR” in the KX2's configuration menu for this to work.
 
 Of course, the KXUSBC2 itself knows all voltages and currents flowing through it precisely, but it has no way to display those values on the KX2's display, as we cannot modify the firmware.
 
