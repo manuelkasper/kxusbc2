@@ -1,4 +1,4 @@
-(footprint "VSON-8_csd17581q3a"
+(footprint "VSON-8_3.3x3.3mm_TI_CSD"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
@@ -16,7 +16,7 @@
 			)
 		)
 	)
-	(property "Value" "VSON-8_csd17581q3a"
+	(property "Value" "VSON-8_3.3x3.3mm_TI_CSD"
 		(at 0 2.8 0)
 		(layer "F.Fab")
 		(uuid "9b4779b5-7b7a-4ed1-be17-8d16b533f2f8")
@@ -58,7 +58,7 @@
 		(start -0.56 -1.175)
 		(end -0.56 1.175)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -68,7 +68,7 @@
 		(start -0.51 1.225)
 		(end 1.05 1.225)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -78,7 +78,7 @@
 		(start 1.09 -1.225)
 		(end -0.51 -1.225)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -88,7 +88,7 @@
 		(start 1.1 1.175)
 		(end 1.1 1.17)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -98,7 +98,7 @@
 		(start 1.14 -1.17)
 		(end 1.14 -1.175)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -108,7 +108,7 @@
 		(start 1.14 -0.53)
 		(end 1.14 -0.77)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -118,7 +118,7 @@
 		(start 1.14 0.13)
 		(end 1.14 -0.13)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -128,7 +128,7 @@
 		(start 1.14 0.77)
 		(end 1.14 0.53)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -138,7 +138,7 @@
 		(start 1.15 1.12)
 		(end 1.69 1.12)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -148,7 +148,7 @@
 		(start 1.19 -0.82)
 		(end 1.69 -0.82)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -158,7 +158,7 @@
 		(start 1.19 -0.18)
 		(end 1.69 -0.18)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -168,7 +168,7 @@
 		(start 1.19 0.48)
 		(end 1.69 0.48)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -178,7 +178,7 @@
 		(start 1.69 -1.12)
 		(end 1.19 -1.12)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -188,7 +188,7 @@
 		(start 1.69 -0.48)
 		(end 1.19 -0.48)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -198,7 +198,7 @@
 		(start 1.69 0.18)
 		(end 1.19 0.18)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -208,7 +208,7 @@
 		(start 1.69 0.82)
 		(end 1.19 0.82)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -218,7 +218,7 @@
 		(start 1.74 -0.87)
 		(end 1.74 -1.07)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -228,7 +228,7 @@
 		(start 1.74 -0.23)
 		(end 1.74 -0.43)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -238,7 +238,7 @@
 		(start 1.74 0.43)
 		(end 1.74 0.23)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -248,7 +248,7 @@
 		(start 1.74 1.07)
 		(end 1.74 0.87)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -259,7 +259,7 @@
 		(mid -0.545355 -1.210355)
 		(end -0.51 -1.225)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -270,7 +270,7 @@
 		(mid -0.545355 1.210355)
 		(end -0.56 1.175)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -281,7 +281,7 @@
 		(mid 1.125355 -1.210355)
 		(end 1.14 -1.175)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -292,7 +292,7 @@
 		(mid 1.114645 1.134645)
 		(end 1.15 1.12)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -303,7 +303,7 @@
 		(mid 1.085355 1.210355)
 		(end 1.05 1.225)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -314,7 +314,7 @@
 		(mid 1.154645 -0.805355)
 		(end 1.19 -0.82)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -325,7 +325,7 @@
 		(mid 1.154645 -0.165355)
 		(end 1.19 -0.18)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -336,7 +336,7 @@
 		(mid 1.154645 0.494645)
 		(end 1.19 0.48)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -347,7 +347,7 @@
 		(mid 1.154645 -1.134645)
 		(end 1.14 -1.17)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -358,7 +358,7 @@
 		(mid 1.154645 -0.494645)
 		(end 1.14 -0.53)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -369,7 +369,7 @@
 		(mid 1.154645 0.165355)
 		(end 1.14 0.13)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -380,7 +380,7 @@
 		(mid 1.154645 0.805355)
 		(end 1.14 0.77)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -391,7 +391,7 @@
 		(mid 1.725355 -1.105355)
 		(end 1.74 -1.07)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -402,7 +402,7 @@
 		(mid 1.725355 -0.465355)
 		(end 1.74 -0.43)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -413,7 +413,7 @@
 		(mid 1.725355 0.194645)
 		(end 1.74 0.23)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -424,7 +424,7 @@
 		(mid 1.725355 0.834645)
 		(end 1.74 0.87)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -435,7 +435,7 @@
 		(mid 1.725355 -0.834645)
 		(end 1.69 -0.82)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -446,7 +446,7 @@
 		(mid 1.725355 -0.194645)
 		(end 1.69 -0.18)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -457,7 +457,7 @@
 		(mid 1.725355 0.465355)
 		(end 1.69 0.48)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
@@ -468,7 +468,7 @@
 		(mid 1.725355 1.105355)
 		(end 1.69 1.12)
 		(stroke
-			(width 0)
+			(width 0.1)
 			(type default)
 		)
 		(layer "F.Mask")
