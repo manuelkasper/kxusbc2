@@ -44,6 +44,8 @@ Receptacle pins for soldering to the KX2 PCB, probably also used by Elecraft for
 
 The PCB trace resistance between the “B” pad on the RF PCB and the central pin on the internal battery connector was measured to be around 5 mΩ (4T/Kelvin measurement). So although the pad/trace was probably not intended for this much current, it should have no problems handling 3 A.
 
+The ground connection is via a single header pin rated for 2 A only. However, the standoffs with which the board is mounted to the side panel are grounded too. The coating/anodizing of the side panel should be stripped on the backside around the mounting holes, and along the bottom part where it meets other metal case parts (like the original side panel). This will provide a low-impedance ground connection through the side panel. Mounted this way, the resistance between the GND pad near the top edge of the backside of the KXUSBC2 PCB and the shaft of the battery DC plug was measured to be around 10 mΩ (4T/Kelvin measurement).
+
 
 ## RTC
 Some people like to use the clock provided by the KXIO2/KXIBC2 options for logging. The RTC chip that Elecraft uses (PCF2123) is obsolete, and the successors use a different register mapping that would require modifications to the KX2 firmware. As the MCU has spare capacity, I opted to use its internal RTC instead, emulating the few SPI commands that the KX2 uses to read/write the time in firmware. The RTC is clocked by a 32.768 kHz crystal, and the microcontroller consumes extremely little power for keeping the clock running.
