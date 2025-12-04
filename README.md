@@ -34,6 +34,7 @@ Here is how it looks installed in a KX2, with a custom CNC-machined aluminum sid
 * Battery temperature monitoring (with thermistor, optional)
 * Battery voltage monitor in KX2 menu (VBAT, like KXIBC2)
 
+
 ## Tech details
 
 * BQ25792 buck-boost battery charger IC
@@ -49,9 +50,9 @@ Here is how it looks installed in a KX2, with a custom CNC-machined aluminum sid
 * RTC emulated in MCU (SPI client), backed by crystal, with temperature compensation
 * ~100 µA standby current
 * 4-layer PCB
-  * Almost all components on top side (min. 0402)
-  * Some capacitors and LED on bottom side (can be hand soldered, min. 0603)
+  * Components on both sides (min. 0402)
 * Replacement aluminum side panel, CNC milled, anodized and silkscreen printed, with USB-C and button pin hole
+
 
 ## Installation
 
@@ -65,15 +66,18 @@ Installing the KXUSBC2 is quite simple, and similar to the procedure for the KXI
 
 Instead of using a replacement side panel, an oblong USB-C hole can also be drilled into the original side panel.
 
+
 ## Current state of the project
 
 A first batch of PCBs has been produced and successfully tested by HB9DQM (2025-11-30). Some minor issues and potential improvements to the hardware have been found; see the issues page.
 
 The firmware is working, with PD 3.0 compatibility tested with various sources (AC adapters, power banks) and sinks (mobile phones, tablets). Remaining open tasks mainly center around ensuring reliability in case of unexpected events (I²C timeouts/errors, watchdog etc.), implementing config button and LED handling, and further reducing standby power consumption. See the issues page for details.
 
+
 ### Disclaimer
 
 You are using the KXUSBC2 at your own risk; I won't take responsibility if your KX2, phone, charger, battery, etc. get fried due to this board, your house burns down, or if you unexpectedly end up with an empty battery. You might lose your warranty on the KX2 by using this board.
+
 
 ### License
 

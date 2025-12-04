@@ -38,6 +38,7 @@ config bodlevel=bod_2v6
 
 
 ## USB PD support
+
 USB Power Delivery (PD) is a pretty complex specification/protocol that involves sending messages between the source and the sink (over the CC lines of the USB-C connector) to exchange capabilities and negotiate a power profile. Implementing a PD protocol stack from scratch for a DRP (Dual Role Port) would be a major undertaking. With some optimizations, I have succeeded in squeezing the reference code supplied by onsemi (makers of the FUSB302B IC) into the 32 KB flash of the ATtiny3226, and making it work.
 
 The downside is that due to the license, while the reference code may be used freely in conjunction with onsemi chips, it cannot be redistributed. Therefore, this repository does not include the complete firmware source code, and requires downloading the reference code from onsemi and applying a patch with my optimizations before the firmware can be compiled (see instructions above).
@@ -56,12 +57,14 @@ The patch included in the repository, `fsc_pd.patch`, which is applied automatic
 
 
 ## Programming/Debugging
+
 The ATtiny3226 has a one-wire UPDI interface for programming and debugging. The KXUSBC2 board provides this on a 3-pin 2.54 mm header on the backside, along with Vcc (3.3 V) and GND. The header doesn't actually need to be soldered – the middle pad is slightly offset/staggered, so one can get a good-enough interference fit by simply sticking a pin header through the holes for a temporary connection to the debugger. Call it a poor man's (or hobbyist-friendly) Tag-Connect 😂 This can be used directly with a NanoUPDI or a UPDI Friend, thus providing a programming solution for less than $10.
 
 There is also a serial interface on a separate 3-pin header (also staggered), wired to the MCU's hardware USART, as UPDI does not support debug console output. Note that the levels there are 3.3 V, not RS-232.
 
 
 ## Configuration
+
 The following settings can be set in the EEPROM (see also the definitions in https://github.com/manuelkasper/kxusbc2/blob/main/firmware/src/sysconfig.h):
 
 | Byte offset | Description | Type | Default |
@@ -78,6 +81,7 @@ The following settings can be set in the EEPROM (see also the definitions in htt
 
 
 ## RTC emulation
+
 The firmware acts as an SPI slave/client, emulating PCF2123-style registers to the KX2 firmware. Only the set of registers actually used by the KX2 firmware is implemented. The RTC peripheral of the MCU is clocked by an external 32.768 kHz crystal.
 
 A fixed offset (in ppm) can be set in the sysconfig/EEPROM to calibrate each board.
@@ -88,6 +92,7 @@ The RTC emulation also features a temperature compensation. Once a minute, it me
 
 
 ## Input priority
+
 The charger uses either the external DC jack input (E pad), or USB, whichever is connected first. If both sources are connected when the charger starts up, it prefers the DC jack input. The charger keeps using the current source as long as it is available, even if another source becomes available. However, if the current source disconnects, the charger switches. For example, if you connect a DC supply while the charger is charging from USB, it will keep using USB. If you then disconnect USB, it will seamlessly switch over to the DC jack input.
 
 

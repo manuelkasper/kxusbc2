@@ -7,7 +7,7 @@
 * 4 layers
 * FR-4
 * 1 mm thickness
-* all layers (including internal) have 1 oz copper
+* 1 oz copper on all layers (including internal)
 
 The design around the BQ25792 with its inductor and capacitors follows the guidelines given in the datasheet, and takes the EVM design as a basis. However, due to space constraints and the oblong shape, some compromises in the PCB layout had to be made: the BQ25792 has been rotated 180° relative to the reference design, making the switching nodes slightly longer and closer to other traces. Care was taken to keep them isolated from other traces by intermediate ground plane layers.
 
@@ -22,7 +22,7 @@ The design around the BQ25792 with its inductor and capacitors follows the guide
 
 ## Cost
 
-Most of the parts are relatively low cost, and the board was designed so that it can be produced and assembled by low-cost services like JLCPCB (“Economic PCBA”), with almost all passive components from the “Basic” component selection, which doesn't incur component-loading fees. Only very few components are on the bottom side, and are big enough to be hand-soldered. Traces, via holes etc. are fairly large to avoid precision PCB costs.
+Most of the parts are relatively low cost, and the board was designed so that it can be produced and assembled by low-cost services like JLCPCB, with almost all passive components from the “Basic” component selection, which doesn't incur component-loading fees. Most components are on the top side, but due to space constraints, some had to be placed on the bottom side as well. Traces, via holes etc. are fairly large to avoid precision PCB costs.
 
 The total BOM at qty. 10 is around $30/pc. (including PCB production and assembly of both sides), plus $12/pc. for the CNC milled, anodized and silkscreen printed side panel.
 
@@ -48,6 +48,7 @@ The ground connection is via a single header pin rated for 2 A only. However, th
 
 
 ## RTC
+
 Some people like to use the clock provided by the KXIO2/KXIBC2 options for logging. The RTC chip that Elecraft uses (PCF2123) is obsolete, and the successors use a different register mapping that would require modifications to the KX2 firmware. As the MCU has spare capacity, I opted to use its internal RTC instead, emulating the few SPI commands that the KX2 uses to read/write the time in firmware. The RTC is clocked by a 32.768 kHz crystal, and the microcontroller consumes extremely little power for keeping the clock running.
 
 The firmware automatically applies a temperature compensation, and one can also calibrate the clock using the KX2's "RTC ADJ" menu as usual.
@@ -58,12 +59,14 @@ The KX2 uses an SPI frequency of 1 MHz (mode 0), and the delay between asserting
 
 
 ## Battery monitoring
+
 The KXUSBC2 includes a similar circuit to the one on the KXIBC2 that allows the KX2 to display the actual battery voltage in the menu. It works by dividing down the battery voltage and buffering it with an op-amp before passing it to the microcontroller in the KX2. The “KXIBC2” menu option must be set to “NOR” in the KX2's configuration menu for this to work.
 
 Of course, the KXUSBC2 itself knows all voltages and currents flowing through it precisely, but it has no way to display those values on the KX2's display, as we cannot modify the firmware.
 
 
 ## QRM
+
 A charger like this is somewhat akin to a 10 W PA amplifying a 1.5 MHz square wave into a low-pass filter. Having that right inside a sensitive HF rig, and even electrically connected to it, one might expect QRM mayhem. I thought so too, and thus the firmware can be set to automatically suspend charging while the KX2 is on, so one can still use an external power supply to power the KX2 while operating, without any QRM from the charger.
 
 I did some lab testing with a dummy load connected to the KX2. Result: while charging the KX2 at 28 W from a 15 V PD source, I noticed that the noise floor increased from S0 to around S1 on 80-10m. The only really strong signal that I could find in amateur bands was the 9th harmonic of the switching frequency, which varied around 1.55 MHz and 1.58 MHz in my test (the charger IC uses an RC oscillator), resulting in S7 QRM in a range of about 10 kHz somewhere in the lower half of the 20m band. Results in reverse mode (charging an iPad at 28 W) were similar.
