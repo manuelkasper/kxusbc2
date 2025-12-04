@@ -7794,7 +7794,7 @@
 		(descr "8-Lead Plastic Dual Flat, No Lead Package (MF) - 3.3x3.3x1 mm Body [VSON] http://www.ti.com/lit/ds/symlink/csd87334q3d.pdf")
 		(tags "VSON 0.65")
 		(property "Reference" "Q1"
-			(at 0 -2.8 90)
+			(at 0.885 -2.6 90)
 			(layer "F.SilkS")
 			(uuid "15be7740-ab84-4177-9f37-53063536fcc5")
 			(effects
@@ -10008,7 +10008,7 @@
 		(descr "8-Lead Plastic Dual Flat, No Lead Package (MF) - 3.3x3.3x1 mm Body [VSON] http://www.ti.com/lit/ds/symlink/csd87334q3d.pdf")
 		(tags "VSON 0.65")
 		(property "Reference" "Q3"
-			(at 0 -2.8 90)
+			(at 0.94 2.67 90)
 			(layer "F.SilkS")
 			(uuid "a0a7a9a0-ded0-49d0-a075-4fcf1044b362")
 			(effects
@@ -14014,7 +14014,7 @@
 		(descr "8-Lead Plastic Dual Flat, No Lead Package (MF) - 3.3x3.3x1 mm Body [VSON] http://www.ti.com/lit/ds/symlink/csd87334q3d.pdf")
 		(tags "VSON 0.65")
 		(property "Reference" "Q4"
-			(at 0 -2.8 270)
+			(at 1.14 -2.69 270)
 			(layer "F.SilkS")
 			(uuid "1b9cc26b-8d75-4b35-8321-2dd6a1c4b9f8")
 			(effects
@@ -17952,7 +17952,7 @@
 		(descr "SOT, 3 Pin (JEDEC MO-178 inferred 3-pin variant https://www.jedec.org/document_search?search_api_views_fulltext=MO-178), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "SOT TO_SOT_SMD")
 		(property "Reference" "U4"
-			(at 2.9625 0.4 180)
+			(at 3.0625 0.25 180)
 			(layer "F.SilkS")
 			(uuid "634d30e6-2d33-4e4f-ab9d-7a23a73cd124")
 			(effects
@@ -18591,7 +18591,7 @@
 		(descr "8-Lead Plastic Dual Flat, No Lead Package (MF) - 3.3x3.3x1 mm Body [VSON] http://www.ti.com/lit/ds/symlink/csd87334q3d.pdf")
 		(tags "VSON 0.65")
 		(property "Reference" "Q2"
-			(at 0 -2.8 270)
+			(at 0.035 2.6 270)
 			(layer "F.SilkS")
 			(uuid "8c5b8971-addd-4c2e-a539-b60476225c1a")
 			(effects
@@ -19369,7 +19369,7 @@
 		(descr "VQFN, 20 Pin (http://ww1.microchip.com/downloads/en/DeviceDoc/20%20Lead%20VQFN%203x3x0_9mm_1_7EP%20U2B%20C04-21496a.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py")
 		(tags "VQFN NoLead")
 		(property "Reference" "U2"
-			(at 0.1 2.88 270)
+			(at 0.25 2.68 270)
 			(layer "F.SilkS")
 			(uuid "224dc3de-8d82-4d02-87a4-243e2d7af415")
 			(effects
@@ -41978,7 +41978,7 @@
 		(descr "DRL0008A")
 		(tags "Integrated Circuit")
 		(property "Reference" "U5"
-			(at 1.9 0.05 0)
+			(at -0.038 2.25 0)
 			(layer "F.SilkS")
 			(uuid "9f9eba14-7de2-4183-9a8c-bc9e6892ff33")
 			(effects
@@ -43066,6 +43066,7 @@
 		(property "Reference" "C4"
 			(at 0 1.43 270)
 			(layer "B.SilkS")
+			(hide yes)
 			(uuid "3af39a45-3e7a-4e08-b999-fd99cbba9c9e")
 			(effects
 				(font
@@ -43539,6 +43540,7 @@
 		(property "Reference" "C3"
 			(at 0 1.43 90)
 			(layer "B.SilkS")
+			(hide yes)
 			(uuid "dfa47ee9-8d99-4483-b227-7ce4acd10918")
 			(effects
 				(font
@@ -47866,18 +47868,6 @@
 		)
 		(layer "Edge.Cuts")
 		(uuid "f692f94d-50cc-4f6f-8689-4c89360b92e1")
-	)
-	(gr_text "UPDI"
-		(at 117.55 122.2 90)
-		(layer "F.SilkS")
-		(uuid "3c88cdfb-fda2-4ab8-a7f9-511f0774e71b")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-			(justify left bottom)
-		)
 	)
 	(gr_text "T"
 		(at 145.35 118.9 0)
@@ -56170,7 +56160,7 @@
 				(xy 113.665588 113.3) (xy 113.324 113.3) (xy 113.256961 113.280315) (xy 113.211206 113.227511) (xy 113.2 113.176)
 				(xy 113.2 110.159613) (xy 113.219685 110.092574) (xy 113.220872 110.09076) (xy 113.253981 110.041211)
 				(xy 113.307246 109.912618) (xy 113.3344 109.776104) (xy 113.3344 109.636916) (xy 113.307246 109.500402)
-				(xy 113.307244 109.500397) (xy 113.253834 109.371452) (xy 113.246365 109.301983) (xy 113.27764 109.239504)
+				(xy 113.304801 109.4945) (xy 113.253834 109.371452) (xy 113.246365 109.301983) (xy 113.27764 109.239504)
 				(xy 113.337729 109.203852) (xy 113.368395 109.2) (xy 114.8 109.2) (xy 114.8 106.974) (xy 114.819685 106.906961)
 				(xy 114.872489 106.861206) (xy 114.924 106.85) (xy 122.826 106.85)
 			)
