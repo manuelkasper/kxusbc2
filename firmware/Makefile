@@ -1,5 +1,5 @@
 # Configuration
-DEBUG ?= 1
+DEBUG ?= 0
 MCU = attiny3226
 PROGRAMMER = serialupdi
 PORT = /dev/cu.usbserial-20120
