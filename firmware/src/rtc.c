@@ -10,6 +10,7 @@
 #include <avr/interrupt.h>
 #include <avr/cpufunc.h>
 #include <stdbool.h>
+#include <util/atomic.h>
 
 #include "rtc.h"
 #include "util.h"
@@ -72,11 +73,12 @@ void rtc_get_time(uint8_t *phours, uint8_t *pminutes, uint8_t *pseconds) {
 }
 
 uint16_t rtc_get_ticks(void) {
-    uint8_t sreg = SREG;
-    cli();  // Disable interrupts to read 16-bit register to prevent TEMP clobbering
-    while (RTC.STATUS & RTC_CNTBUSY_bm); // Wait for sync
-    uint16_t count = RTC.CNT;
-    SREG = sreg;
+    uint16_t count;
+    // Disable interrupts to read 16-bit register to prevent TEMP clobbering
+    ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+        while (RTC.STATUS & RTC_CNTBUSY_bm); // Wait for sync
+        count = RTC.CNT;
+    }
     return count;
 }
 

@@ -2,6 +2,7 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <util/atomic.h>
 
 uint8_t decimalToBcd(uint8_t val) {
     return ((val / 10) << 4) | (val % 10);
@@ -21,10 +22,11 @@ int16_t measure_chip_temperature(void) {
     ADC0.COMMAND = ADC_MODE_SINGLE_12BIT_gc | ADC_START_IMMEDIATE_gc; // Start conversion
     while (!(ADC0.INTFLAGS & ADC_RESRDY_bm)); // Wait for completion
     
-    uint8_t sreg = SREG;
-    cli();  // Disable interrupts to read 16-bit register to prevent TEMP clobbering
-    uint16_t adc_reading = ADC0.RESULT >> 2;
-    SREG = sreg;
+    // Disable interrupts to read 16-bit register to prevent TEMP clobbering
+    uint16_t adc_reading;
+    ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+        adc_reading = ADC0.RESULT >> 2;
+    }
     ADC0.CTRLA &= ~ADC_ENABLE_bm;
 
     int8_t sigrow_offset = SIGROW.TEMPSENSE1;
