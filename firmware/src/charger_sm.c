@@ -96,7 +96,7 @@ void charger_sm_on_pps_voltage_update(uint16_t mv) {
         // However, if OTG is already active and the DC jack is then plugged in,
         // OTG will continue to function normally.
         if (bq_get_ac2_present()) {
-            //debug_printf("SM: Cannot enter OTG mode while DC jack is connected\n");
+            debug_printf("SM: Cannot enter OTG mode while DC jack is connected\n");
             return;
         }
         bq_disable_charging();
@@ -498,8 +498,6 @@ static void update_charging_led(void) {
         // No change
         return;
     }
-
-    //debug_printf("SM: Updating charging LED: %u %u %u\n", current_state, temp_status, charge_status);
 
     if (temp_status & (TEMP_HOT | TEMP_COLD)) {
         // Hot or cold - (dis)charging is suspended

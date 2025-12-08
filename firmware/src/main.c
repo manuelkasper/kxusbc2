@@ -21,7 +21,9 @@
 #include "kx2.h"
 #include "watchdog.h"
 
-//#define DEBUG_STATUS
+#ifdef DEBUG
+#define DEBUG_STATUS
+#endif
 
 #ifdef DEBUG_STATUS
 static void bq_print_status(void);
@@ -29,7 +31,7 @@ static void bq_print_status(void);
 
 #ifdef DEBUG
 ISR(BADISR_vect) {
-    //debug_printf("Bad interrupt\n");
+    debug_printf("Bad interrupt\n");
 }
 #endif
 

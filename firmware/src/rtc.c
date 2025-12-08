@@ -124,8 +124,8 @@ static void rtc_update_calib(void) {
     if (total_offset < -127) total_offset = -127;
     if (total_offset > 127) total_offset = 127;
 
-    //debug_printf("RTC calibration update: user %d ppm, sysconfig %d ppm, temp %d ppm => total %d ppm\n",
-    //             user_offset_ppm, sysconfig.rtcOffset, temperature_offset_ppm, total_offset);
+    debug_printf("RTC calibration update: user %d ppm, sysconfig %d ppm, temp %d ppm => total %d ppm\n",
+                 user_offset_ppm, sysconfig.rtcOffset, temperature_offset_ppm, total_offset);
 
     // CALIB does not use two's complement, but a sign bit + magnitude
     if (total_offset < 0) {

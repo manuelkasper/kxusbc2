@@ -41,12 +41,12 @@ ifeq ($(DEBUG),1)
 CFLAGS += -DDEBUG
 endif
 CFLAGS += -Os -Wall -Wextra -std=gnu99
-CFLAGS += -flto -fwhole-program
+CFLAGS += -flto -fwhole-program -fshort-enums -fpack-struct
 CFLAGS += -MMD -MP -MF $(DEPDIR)/$(*F).d
 CFLAGS += -Wno-unused-parameter
 CFLAGS_FSC_PD = -Wno-implicit-fallthrough -Wno-parentheses
 
-LDFLAGS = -mmcu=$(MCU) -Wl,--gc-sections
+LDFLAGS = -mmcu=$(MCU) -Wl,--gc-sections -mrelax
 ifeq ($(DEBUG),1)
 # Include minimal printf; saves around 400 bytes. Only include when printf is actually
 # being used (i.e. debug), otherwise the printf will be linked even if it is never called.

@@ -48,7 +48,7 @@ Here is how it looks installed in a KX2, with a custom CNC-machined aluminum sid
   * UPDI debug/programming header
   * Serial debug console header
 * RTC emulated in MCU (SPI client), backed by crystal, with temperature compensation
-* ~100 µA standby current
+* ~60 µA standby current
 * 4-layer PCB
   * Components on both sides (min. 0402)
 * Replacement aluminum side panel, CNC milled, anodized and silkscreen printed, with USB-C and button pin hole
