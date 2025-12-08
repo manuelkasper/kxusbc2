@@ -98,25 +98,24 @@ int main(void) {
         }
 
         // Enter low-power mode until next RTC alarm or other interrupt
-        if (next_timeout > 0) {
-            if (next_timeout < 100) {
-                // Avoid too short sleep intervals
-                continue;
+        // Don't enter sleep if we need to wake up soon (otherwise we may miss the alarm)
+        if (next_timeout == 0 || next_timeout >= 100) {
+            if (next_timeout != 0) {
+                rtc_set_alarm(next_timeout);
             }
-            rtc_set_alarm(next_timeout);
-        }
 
-        // Only enter sleep mode if no insomnia mask bits are set;
-        // use recommended procedure from avr/sleep.h to avoid race conditions
-        set_sleep_mode(SLEEP_MODE_STANDBY);
-        cli();
-        if (insomnia_mask == 0) {
-            sleep_enable();
+            // Only enter sleep mode if no insomnia mask bits are set;
+            // use recommended procedure from avr/sleep.h to avoid race conditions
+            set_sleep_mode(SLEEP_MODE_STANDBY);
+            cli();
+            if (insomnia_mask == 0) {
+                sleep_enable();
+                sei();
+                sleep_cpu();
+                sleep_disable();
+            }
             sei();
-            sleep_cpu();
-            sleep_disable();
         }
-        sei();
 
 #ifdef DEBUG_STATUS
         uint16_t now = rtc_get_ticks();
