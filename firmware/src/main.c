@@ -71,6 +71,7 @@ int main(void) {
         led_off();
         _delay_ms(200);
     }
+    led_shutdown();
 
     bool last_kx2_on_state = kx2_is_on();
     while (1) {
