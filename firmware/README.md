@@ -99,6 +99,23 @@ The RTC emulation also features a temperature compensation. Once a minute, it me
 The charger uses either the external DC jack input (E pad), or USB, whichever is connected first. If both sources are connected when the charger starts up, it prefers the DC jack input. The charger keeps using the current source as long as it is available, even if another source becomes available. However, if the current source disconnects, the charger switches. For example, if you connect a DC supply while the charger is charging from USB, it will keep using USB. If you then disconnect USB, it will seamlessly switch over to the DC jack input.
 
 
+## LED indications
+
+| State | Color | Style |
+|:------|:------|:------|
+| Disconnected | off
+| Negotiating | green / yellow (*) | blinking 5 Hz
+| Charging (CC) | green / yellow (*) | blinking 2 Hz
+| Charging (precharge, trickle, CV) | green / yellow (*) | blinking 1 Hz
+| Charged | green | steady
+| Temperature too high/low | red | steady
+| Fault (over-voltage/current, short circuit etc.) | red | blinking 5 Hz
+| Rig on (charging inhibited) | magenta | steady
+| Discharging (OTG) | blue / cyan (*) | blinking 2 Hz
+
+If the thermistor is enabled and the temperature is in the “warm” or ”cool” region (where the current is reduced, but charging continues), the color is yellow (or cyan) instead of green (or blue).
+
+
 ## Connection states
 
 Enum values used by the FSC PD reference code, listed here for convenience to aid in debugging.

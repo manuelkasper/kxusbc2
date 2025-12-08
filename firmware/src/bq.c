@@ -352,12 +352,12 @@ int16_t bq_measure_ibat(void) {
 }
 
 uint16_t bq_get_fault_status(void) {
-    uint8_t fault_status_0 = bq_read_register(0x20);
+    uint8_t fault_status_0 = bq_read_register(0x20) & 0x7F;
     uint8_t fault_status_1 = bq_read_register(0x21);
     return (fault_status_0 << 8) | fault_status_1;
 }
 
-uint8_t bq_get_temperature_status(void) {
+TemperatureStatus bq_get_temperature_status(void) {
     return bq_read_register(0x1F) & 0x0F;
 }
 

@@ -28,6 +28,14 @@ typedef enum {
     VBUS_DIRECT = 0xB
 } VbusStatus;
 
+typedef enum {
+    TEMP_NORMAL = 0x0,
+    TEMP_HOT = 0x1,
+    TEMP_WARM = 0x2,
+    TEMP_COOL = 0x4,
+    TEMP_COLD = 0x8
+} TemperatureStatus;
+
 bool bq_init(void);
 void bq_notify_interrupt(void);
 bool bq_process_interrupts(void);
@@ -62,6 +70,6 @@ int16_t bq_measure_ibus(void);
 uint16_t bq_measure_vbat(void);
 int16_t bq_measure_ibat(void);
 uint16_t bq_get_fault_status(void);
-uint8_t bq_get_temperature_status(void);
+TemperatureStatus bq_get_temperature_status(void);
 int16_t bq_measure_temperature(void);
 uint16_t bq_measure_thermistor(void);

@@ -75,13 +75,13 @@ void platform_delay_10us(FSC_U8 delayCount) {
 void platform_set_pps_voltage(FSC_U8 port, FSC_U16 mv) {
     // mv is in 20 mV increments, convert to mV
     mv *= 20;
-    debug_printf("Set PPS voltage: %u mV\n", mv);
+    //debug_printf("Set PPS voltage: %u mV\n", mv);
     // Delegate all OTG voltage management to state machine
     charger_sm_on_pps_voltage_update(mv);
 }
 
 void platform_set_pps_current(FSC_U8 port, FSC_U16 ma) {
-    debug_printf("Set PPS current: %u mA\n", ma);
+    //debug_printf("Set PPS current: %u mA\n", ma);
     // Delegate all OTG current management to state machine
     charger_sm_on_pps_current_update(ma);
 }

@@ -60,7 +60,7 @@ int main(void) {
 
     // Power up blink
     for (uint8_t i = 0; i < 3; i++) {
-        led_set_color(128, 128, 128);
+        led_set_color(255, 255, 255);
         _delay_ms(200);
         led_set_color(0, 0, 0);
         _delay_ms(200);
@@ -71,10 +71,6 @@ int main(void) {
     uint16_t last_bq_status = 0;
 #endif
     while (1) {
-        if (debug_read_char() == 's') {
-            fsc_pd_swap_roles();
-        }
-
         // Run PD state machine - returns a timeout in ticks until next required wakeup,
         // or 0 if no wakeup is needed and we can sleep until the next interrupt
         uint16_t next_timeout = fsc_pd_run();

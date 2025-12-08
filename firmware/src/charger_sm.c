@@ -11,16 +11,19 @@
 #include <avr/io.h>
 
 static ChargerState current_state;
-static ChargerState last_state_led;
 static uint16_t otg_voltage;
 static uint16_t otg_current;
 static struct TimerObj state_timer;
+
+static ChargerState last_state_led;
+TemperatureStatus last_temp_status_led;
+ChargeStatus last_charge_status_led;
 
 static void update_led_for_state(void);
 static void check_fault_conditions(void);
 static void set_state(ChargerState new_state);
 static bool check_rig_inhibit(void);
-static void handle_charging_temperature_led(void);
+static void update_charging_led(void);
 
 /* State-specific functions (grouped by state) */
 static void enter_disconnected(void);
@@ -93,7 +96,7 @@ void charger_sm_on_pps_voltage_update(uint16_t mv) {
         // However, if OTG is already active and the DC jack is then plugged in,
         // OTG will continue to function normally.
         if (bq_get_ac2_present()) {
-            debug_printf("SM: Cannot enter OTG mode while DC jack is connected\n");
+            //debug_printf("SM: Cannot enter OTG mode while DC jack is connected\n");
             return;
         }
         bq_disable_charging();
@@ -430,27 +433,29 @@ static void set_state(ChargerState new_state) {
         default:
             break;
     }
+
+    update_led_for_state();
 }
 
 static void update_led_for_state(void) {
     switch (current_state) {
         case CHARGER_FAULT:
             if (current_state != last_state_led) {
-                led_set_blinking(255, 0, 0, 128, 2, 2, 15, 0);  // Red blinking at 5 Hz
+                led_set_blinking(true, false, false, 255, 2, 2, 15, 0);  // Red blinking at 5 Hz
             }
             break;
 
         case CHARGER_USB_NEGOTIATING:
             if (current_state != last_state_led) {
-                led_set_blinking(0, 255, 0, 128, 2, 2, 15, 0);  // Green blinking at 5 Hz
+                led_set_blinking(false, true, false, 255, 2, 2, 15, 0);  // Green blinking at 5 Hz
             }
             break;
 
         case CHARGER_USB_TYPE_C_CHARGING:
         case CHARGER_USB_PD_CHARGING:
         case CHARGER_DC_CHARGING:
-            // Always update, even if the state hasn't changed, as the temperature may have
-            handle_charging_temperature_led();
+            // Always update, even if the state hasn't changed, as the temperature or charger status may have
+            update_charging_led();
             break;
 
         case CHARGER_RIG_ON:
@@ -460,8 +465,8 @@ static void update_led_for_state(void) {
             break;
 
         case CHARGER_DISCHARGING:
-            // Always update, even if the state hasn't changed, as the temperature may have
-            handle_charging_temperature_led();
+            // Always update, even if the state hasn't changed, as the temperature or charger status may have
+            update_charging_led();
             break;
 
         default:
@@ -474,26 +479,48 @@ static void update_led_for_state(void) {
     last_state_led = current_state;
 }
 
-static void handle_charging_temperature_led(void) {
-    // Check temperature warnings for charging states
-    uint8_t temp_status = bq_get_temperature_status();
-    if (temp_status != 0) {
-        debug_printf("SM: Temperature warning: %x\n", temp_status);
-        if (temp_status & 0x09) {
-            // Hot or cold - charging is suspended
-            led_set_color(255, 0, 0); // Red
-        } else {
-            // Warm or cool - charging is reduced
-            led_set_color(255, 128, 0); // Orange
-        }
+static void update_charging_led(void) {
+    // Check temperature and charge status
+    TemperatureStatus temp_status = bq_get_temperature_status();
+    ChargeStatus charge_status = bq_get_charge_status();
+
+    if (current_state == last_state_led && charge_status == last_charge_status_led && temp_status == last_temp_status_led) {
+        // No change
+        return;
+    }
+
+    //debug_printf("SM: Updating charging LED: %u %u %u\n", current_state, temp_status, charge_status);
+
+    if (temp_status & (TEMP_HOT | TEMP_COLD)) {
+        // Hot or cold - (dis)charging is suspended
+        led_set_color(255, 0, 0); // Red
     } else {
-        // Normal temperature
+        // Color depends on temperature - green (or blue) for normal, yellow (or cyan) for warm/cool
+        bool warm_cool = (temp_status & (TEMP_WARM | TEMP_COOL)) ? true : false;
+
         if (current_state == CHARGER_DISCHARGING) {
-            led_set_color(0, 0, 255); // Blue - OTG
+            // OTG mode - blue/cyan blinking at 2 Hz
+            led_set_blinking(false, warm_cool, true, 255, 5, 5, 15, 0);
         } else {
-            led_set_color(0, 255, 0); // Green - Charging
+            switch (charge_status) {
+                case FAST_CHARGE_CC:
+                    led_set_blinking(warm_cool, true, false, 255, 5, 5, 15, 0); // Green or yellow blinking at 2 Hz
+                    break;
+                case TRICKLE_CHARGE:
+                case PRECHARGE:
+                case TAPER_CHARGE_CV:
+                case TOPOFF_TIMER_CHARGING:
+                    led_set_blinking(warm_cool, true, false, 255, 10, 10, 15, 0); // Green or yellow blinking at 1 Hz
+                    break;
+                default:
+                    led_set_color(0, 255, 0); // Green
+                    break;
+            }
         }
     }
+    
+    last_temp_status_led = temp_status;
+    last_charge_status_led = charge_status;
 }
 
 static void check_fault_conditions(void) {

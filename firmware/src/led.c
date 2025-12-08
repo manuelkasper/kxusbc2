@@ -17,14 +17,14 @@ void led_init(void) {
     // Set maximum current = 25.5 mA
     led_write_register(0x01, 0x00);
 
-    // Set maximum current 5 mA on green (OUT0)
-    led_write_register(0x14, 50);
+    // Set maximum current 2.5 mA on green (OUT0)
+    led_write_register(0x14, 25);
 
-    // Set maximum current 20 mA on blue (OUT1)
-    led_write_register(0x15, 200);
+    // Set maximum current 10 mA on blue (OUT1)
+    led_write_register(0x15, 100);
 
-    // Set maximum current 10 mA on red (OUT2)
-    led_write_register(0x16, 100);
+    // Set maximum current 5 mA on red (OUT2)
+    led_write_register(0x16, 50);
 
     // Enable all three outputs
     led_write_register(0x02, 0x07);
@@ -72,6 +72,9 @@ void led_set_blinking(bool red, bool green, bool blue, uint8_t pwm, uint8_t t_on
 
     // Ensure chip is enabled
     led_write_register(0x00, 0x03);
+    
+    // Stop animation
+    led_write_register(0x11, 0xAA);
 
     // Enable ENGINE0_ORDER0
     led_write_register(0x0A, 0x01);
