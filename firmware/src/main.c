@@ -66,17 +66,20 @@ int main(void) {
 
     // Power up blink
     for (uint8_t i = 0; i < 3; i++) {
-        led_set_color(255, 255, 255);
+        led_set_color(true, true, true, 255);
         _delay_ms(200);
-        led_set_color(0, 0, 0);
+        led_off();
         _delay_ms(200);
     }
 
     bool last_kx2_on_state = kx2_is_on();
-#ifdef DEBUG_STATUS
-    uint16_t last_bq_status = 0;
-#endif
     while (1) {
+#ifdef DEBUG_STATUS
+        static uint16_t last_bq_status = 0;
+        // Re-enable in case state machine disabled it
+        bq_enable_adc();
+#endif
+
         // Run PD state machine - returns a timeout in ticks until next required wakeup,
         // or 0 if no wakeup is needed and we can sleep until the next interrupt
         uint16_t next_timeout = fsc_pd_run();

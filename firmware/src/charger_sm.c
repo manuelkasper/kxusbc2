@@ -11,13 +11,10 @@
 #include <avr/io.h>
 
 static ChargerState current_state;
+static ChargerState pre_fault_state;
 static uint16_t otg_voltage;
 static uint16_t otg_current;
 static struct TimerObj state_timer;
-
-static ChargerState last_state_led = CHARGER_STATE_COUNT;
-static TemperatureStatus last_temp_status_led;
-static ChargeStatus last_charge_status_led;
 
 static void update_led_for_state(void);
 static void check_fault_conditions(void);
@@ -27,6 +24,7 @@ static void update_charging_led(void);
 
 /* State-specific functions (grouped by state) */
 static void enter_disconnected(void);
+static void exit_disconnected(void);
 static uint16_t handle_disconnected(void);
 
 static void enter_dc_charging(void);
@@ -42,6 +40,7 @@ static void enter_usb_pd_charging(void);
 static uint16_t handle_usb_pd_charging(void);
 
 static uint16_t handle_rig_on(void);
+static void enter_discharging(void);
 static uint16_t handle_discharging(void);
 static uint16_t handle_fault(void);
 
@@ -49,6 +48,7 @@ static uint16_t handle_fault(void);
 
 bool charger_sm_init(void) {
     current_state = CHARGER_DISCONNECTED;
+    pre_fault_state = CHARGER_DISCONNECTED;
     otg_voltage = 0;
     otg_current = 0;
     TimerDisable(&state_timer);
@@ -193,8 +193,14 @@ uint16_t charger_sm_run(void) {
 static void enter_disconnected(void) {
     bq_disable_charging();
     bq_disable_otg();
+    bq_disable_adc();
     otg_voltage = 0;
     otg_current = 0;
+    led_shutdown();
+}
+
+static void exit_disconnected(void) {
+    led_wakeup();
 }
 
 static uint16_t handle_disconnected(void) {
@@ -216,6 +222,7 @@ static uint16_t handle_disconnected(void) {
 static void enter_dc_charging(void) {
     bq_set_acdrv(false, true);
     bq_set_input_current_limit(sysconfig.dcInputCurrentLimit);
+    bq_enable_adc();
     
     if (!kx2_is_on() || sysconfig.chargeWhenRigIsOn) {
         bq_enable_charging();
@@ -295,6 +302,7 @@ static void enter_usb_type_c_charging(void) {
         bq_set_input_current_limit(adv_current);
     }
     
+    bq_enable_adc();
     bq_enable_charging();
 }
 
@@ -329,6 +337,7 @@ static void enter_usb_pd_charging(void) {
     
     bq_disable_bc12_detection();
     bq_set_input_current_limit(adv_current);
+    bq_enable_adc();
     bq_enable_charging();
 }
 
@@ -370,6 +379,10 @@ static uint16_t handle_rig_on(void) {
  * CHARGER_DISCHARGING - OTG mode (providing power)
  * ================================================================================ */
 
+static void enter_discharging(void) {
+    bq_enable_adc();
+}
+
 static uint16_t handle_discharging(void) {
     // OTG mode (providing power)
     ConnectionState conn = fsc_pd_get_connection_state();
@@ -408,6 +421,15 @@ static void set_state(ChargerState new_state) {
     // Disable any active timers when changing state
     TimerDisable(&state_timer);
 
+    // Call exit handler for previous state
+    switch (previous_state) {
+        case CHARGER_DISCONNECTED:
+            exit_disconnected();
+            break;
+        default:
+            break;
+    }
+
     // Call entry handler for new state
     switch (new_state) {
         case CHARGER_DISCONNECTED:
@@ -428,8 +450,10 @@ static void set_state(ChargerState new_state) {
         case CHARGER_RIG_ON:
             bq_disable_charging();
             break;
-        case CHARGER_FAULT:
         case CHARGER_DISCHARGING:
+            enter_discharging();
+            break;
+        case CHARGER_FAULT:
         default:
             break;
     }
@@ -438,55 +462,33 @@ static void set_state(ChargerState new_state) {
 }
 
 static void update_led_for_state(void) {
-    if (current_state != CHARGER_DISCONNECTED && last_state_led == CHARGER_DISCONNECTED) {
-        // Wake up LED controller when leaving disconnected state
-        led_wakeup();
-    }
-
     switch (current_state) {
         case CHARGER_FAULT:
-            if (current_state != last_state_led) {
-                led_set_blinking(true, false, false, 255, 2, 2, 15, 0);  // Red blinking at 5 Hz
-            }
+            led_set_blinking(true, false, false, 255, 2, 2, 15, 0);  // Red blinking at 5 Hz
             break;
 
         case CHARGER_USB_NEGOTIATING:
-            if (current_state != last_state_led) {
-                led_set_blinking(false, true, false, 255, 2, 2, 15, 0);  // Green blinking at 5 Hz
-            }
+            led_set_blinking(false, true, false, 255, 2, 2, 15, 0);  // Green blinking at 5 Hz
             break;
 
         case CHARGER_USB_TYPE_C_CHARGING:
         case CHARGER_USB_PD_CHARGING:
         case CHARGER_DC_CHARGING:
-            // Always update, even if the state hasn't changed, as the temperature or charger status may have
             update_charging_led();
             break;
 
         case CHARGER_RIG_ON:
-            if (current_state != last_state_led) {
-                led_set_color(255, 0, 255);  // Magenta - Rig powered
-            }
+            led_set_color(true, false, true, 255);  // Magenta - Rig powered
             break;
 
         case CHARGER_DISCHARGING:
-            // Always update, even if the state hasn't changed, as the temperature or charger status may have
             update_charging_led();
             break;
 
         default:
-            if (current_state != last_state_led) {
-                led_set_color(0, 0, 0);
-            }
+            led_off();
             break;
     }
-
-    if (current_state == CHARGER_DISCONNECTED && last_state_led != CHARGER_DISCONNECTED) {
-        // Shutdown LED controller when entering disconnected state
-        led_shutdown();
-    }
-
-    last_state_led = current_state;
 }
 
 static void update_charging_led(void) {
@@ -494,55 +496,62 @@ static void update_charging_led(void) {
     TemperatureStatus temp_status = bq_get_temperature_status();
     ChargeStatus charge_status = bq_get_charge_status();
 
-    if (current_state == last_state_led && charge_status == last_charge_status_led && temp_status == last_temp_status_led) {
-        // No change
-        return;
-    }
-
     if (temp_status & (TEMP_HOT | TEMP_COLD)) {
         // Hot or cold - (dis)charging is suspended
-        led_set_color(255, 0, 0); // Red
+        led_set_color(true, false, false, 255); // Red
     } else {
         // Color depends on temperature - green (or blue) for normal, yellow (or cyan) for warm/cool
         bool warm_cool = (temp_status & (TEMP_WARM | TEMP_COOL)) ? true : false;
+        int16_t battery_current = bq_measure_ibat();
 
         if (current_state == CHARGER_DISCHARGING) {
-            // OTG mode - blue/cyan blinking at 2 Hz
-            led_set_blinking(false, warm_cool, true, 255, 5, 5, 15, 0);
+            battery_current = -battery_current;
+        }
+
+        // LED "breathing" speed depends on (dis)charging current
+        uint8_t breathing_speed;
+        if (battery_current >= 2000) {
+            // Fast charging
+            breathing_speed = 1;
+        } else if (battery_current >= 1000) {
+            // Medium charging
+            breathing_speed = 3;
+        } else if (battery_current >= 500) {
+            // Slow charging
+            breathing_speed = 5;
         } else {
-            switch (charge_status) {
-                case FAST_CHARGE_CC:
-                    led_set_blinking(warm_cool, true, false, 255, 5, 5, 15, 0); // Green or yellow blinking at 2 Hz
-                    break;
-                case TRICKLE_CHARGE:
-                case PRECHARGE:
-                case TAPER_CHARGE_CV:
-                case TOPOFF_TIMER_CHARGING:
-                    led_set_blinking(warm_cool, true, false, 255, 10, 10, 15, 0); // Green or yellow blinking at 1 Hz
-                    break;
-                default:
-                    led_set_color(0, 255, 0); // Green
-                    break;
+            // Very slow charging
+            breathing_speed = 7;
+        }
+
+        if (current_state == CHARGER_DISCHARGING) {
+            // OTG mode - blue/cyan breathing
+            led_set_breathing(false, warm_cool, true, 255, breathing_speed);
+        } else {
+            // Have we finished charging?
+            if (charge_status == CHARGE_DONE) {
+                led_set_color(false, true, false, 255); // Green
+            } else {
+                // Charging - green/yellow breathing
+                led_set_breathing(warm_cool, true, false, 255, breathing_speed);
             }
         }
     }
-    
-    last_temp_status_led = temp_status;
-    last_charge_status_led = charge_status;
 }
 
 static void check_fault_conditions(void) {
     // Detect new faults
     if (bq_get_fault_status() != 0) {
         if (current_state != CHARGER_FAULT) {
+            pre_fault_state = current_state;
             debug_printf("SM: Fault detected: %x\n", bq_get_fault_status());
             set_state(CHARGER_FAULT);
         }
     } else {
         // No fault
         if (current_state == CHARGER_FAULT) {
-            debug_printf("SM: Fault cleared\n");
-            set_state(CHARGER_DISCONNECTED);
+            debug_printf("SM: Fault cleared, returning to state %d\n", pre_fault_state);
+            set_state(pre_fault_state);
         }
     }
 }

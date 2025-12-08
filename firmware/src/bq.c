@@ -144,12 +144,6 @@ bool bq_init(void) {
 
     // REG2D: Fault Mask 1: defaults (all interrupts on)
 
-#ifdef DEBUG
-    // Enable ADC, continuous mode, 15 bit resolution
-    // Disable for production (uses around 1 mA)
-    success &= bq_write_register(0x2E, 0x80);
-#endif
-
     // Enable BQ_INT interrupts
     PORTA.PIN6CTRL |= PORT_ISC_RISING_gc;
 
@@ -343,6 +337,16 @@ bool bq_get_acdrv2_status(void) {
     return bq_read_register(0x13) & 0x80;
 }
 
+bool bq_enable_adc(void) {
+    // Enable ADC, continuous mode, 15 bit resolution
+    // (uses around 1 mA)
+    return bq_set_register_bit(0x2E, 0x80, true);
+}
+
+bool bq_disable_adc(void) {
+    return bq_set_register_bit(0x2E, 0x80, false);
+}
+
 uint16_t bq_measure_vbus(void) {
     return bq_read_register16(0x35);
 }
@@ -360,8 +364,11 @@ int16_t bq_measure_ibat(void) {
 }
 
 uint16_t bq_get_fault_status(void) {
-    uint8_t fault_status_0 = bq_read_register(0x20) & 0x7F;
-    uint8_t fault_status_1 = bq_read_register(0x21);
+    // Ignore the following faults, as they can be transient and don't really affect the charger's operation:
+    // - IBAT_REG_STAT
+    // - OTG_OVP_STAT
+    uint8_t fault_status_0 = bq_read_register(0x20) & ~0x80;
+    uint8_t fault_status_1 = bq_read_register(0x21) & ~0x20;
     return (fault_status_0 << 8) | fault_status_1;
 }
 

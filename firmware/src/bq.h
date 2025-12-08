@@ -66,6 +66,9 @@ bool bq_get_ac1_present(void);
 bool bq_get_ac2_present(void);
 bool bq_get_acdrv1_status(void);
 bool bq_get_acdrv2_status(void);
+
+bool bq_enable_adc(void);
+bool bq_disable_adc(void);
 uint16_t bq_measure_vbus(void);
 int16_t bq_measure_ibus(void);
 uint16_t bq_measure_vbat(void);

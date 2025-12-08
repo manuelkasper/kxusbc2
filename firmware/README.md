@@ -105,15 +105,25 @@ The charger uses either the external DC jack input (E pad), or USB, whichever is
 |:------|:------|:------|
 | Disconnected | off
 | Negotiating | green / yellow (*) | blinking 5 Hz
-| Charging (CC) | green / yellow (*) | blinking 2 Hz
-| Charging (precharge, trickle, CV) | green / yellow (*) | blinking 1 Hz
+| Charging | green / yellow (*) | “breathing” speed depending on charge current
 | Charged | green | steady
 | Temperature too high/low | red | steady
 | Fault (over-voltage/current, short circuit etc.) | red | blinking 5 Hz
 | Rig on (charging inhibited) | magenta | steady
-| Discharging (OTG) | blue / cyan (*) | blinking 2 Hz
+| Discharging (OTG) | blue / cyan (*) | “breathing” speed depending on discharge current
 
 If the thermistor is enabled and the temperature is in the “warm” or ”cool” region (where the current is reduced, but charging continues), the color is yellow (or cyan) instead of green (or blue).
+
+### Charge/discharge speed indication
+
+The LED will “breathe” faster the higher the current into or from the battery is.
+
+| Battery current | LED “breathing” speed |
+|:--------|:------|
+| < 500 mA | 8.5 s
+| 500..999 mA | 2.5 s
+| 1000..1999 mA | 1.2 s
+| ≥ 2000 mA | 0.8 s
 
 
 ## Connection states
