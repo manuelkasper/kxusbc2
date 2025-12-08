@@ -148,3 +148,18 @@ diff -U 1 orig/timer.h patched/timer.h
 -FSC_U32 TimerRemaining(struct TimerObj *obj);
 +FSC_U16 TimerRemaining(struct TimerObj *obj);
  
+diff -U 1 orig/Port.c patched/Port.c
+--- orig/Port.c 2025-12-08 17:26:21
++++ patched/Port.c  2025-12-08 17:29:03
+@@ -232,2 +232,3 @@
+     port->Registers.Control.TOG_RD_ONLY = 0;
++    port->Registers.Control.TOG_SAVE_PWR = 3;
+     DeviceWrite(port->I2cAddr, regControl2, 1,&port->Registers.Control.byte[2]);
+diff -U 1 orig/fusb30X.h patched/fusb30X.h
+--- orig/fusb30X.h  2025-12-08 17:25:38
++++ patched/fusb30X.h   2025-12-08 17:29:03
+@@ -218,3 +218,3 @@
+         FSC_U8 TOG_RD_ONLY:1;
+-        FSC_U8 :2;
++        FSC_U8 TOG_SAVE_PWR:2;
+         /* Control3 */

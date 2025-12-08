@@ -42,6 +42,7 @@ int main(void) {
     rtc_init();
     button_init();
     twi_init();
+    led_wakeup();
     led_init();
 
     // Enable global interrupts (also used for serial debug output)

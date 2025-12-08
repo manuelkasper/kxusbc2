@@ -56,7 +56,7 @@ bool bq_init(void) {
     bool success = true;
 
     // Configure BQ_INT pin
-    PORTA.PIN6CTRL = PORT_INVEN_bm | PORT_PULLUPEN_bm | PORT_ISC_RISING_gc;
+    PORTA.PIN6CTRL = PORT_INVEN_bm | PORT_PULLUPEN_bm;
 
     // Configure BQ_CE pin
     PORTA.DIRSET = PIN7_bm;
@@ -146,7 +146,7 @@ bool bq_init(void) {
 
 #ifdef DEBUG
     // Enable ADC, continuous mode, 15 bit resolution
-    // Disable for production (uses around 500 uA)
+    // Disable for production (uses around 1 mA)
     success &= bq_write_register(0x2E, 0x80);
 #endif
 

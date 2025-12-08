@@ -1,7 +1,13 @@
+// LP5815 LED driver implementation
 #include "twi.h"
 #include "led.h"
+#include <avr/io.h>
+#include <util/delay.h>
 
 #define LP5815_ADDR 0x2D
+
+void led_shutdown(void);
+void led_wakeup(void);
 
 static bool led_write_register(uint8_t reg, uint8_t value) {
     return twi_send_bytes(LP5815_ADDR, (uint8_t[]){reg, value}, 2);
@@ -136,4 +142,22 @@ void led_stop_blinking(void) {
 
     // Put chip in standby to reduce power consumption
     led_write_register(0x00, 0x02);
+}
+
+// Shutdown LED driver to save power. Must use led_wakeup() to reinitialize.
+// Saves about 20 µA, takes about 250 µs to wake up.
+void led_shutdown(void) {
+    led_write_register(0x0D, 0x33);
+}
+
+void led_wakeup(void) {
+    // Special wakeup procedure: generate at least 8 falling edges on SDA while SCL is high
+    TWI0.MCTRLA &= ~TWI_ENABLE_bm;
+    PORTB.OUTSET = PIN0_bm;
+    for (uint8_t i = 0; i <= 20; i++) {
+        PORTB.OUTTGL = PIN1_bm;
+        _delay_us(10);
+    }
+    TWI0.MCTRLA |= TWI_ENABLE_bm;
+    led_init();
 }

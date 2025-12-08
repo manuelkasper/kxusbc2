@@ -15,9 +15,9 @@ static uint16_t otg_voltage;
 static uint16_t otg_current;
 static struct TimerObj state_timer;
 
-static ChargerState last_state_led;
-TemperatureStatus last_temp_status_led;
-ChargeStatus last_charge_status_led;
+static ChargerState last_state_led = CHARGER_STATE_COUNT;
+static TemperatureStatus last_temp_status_led;
+static ChargeStatus last_charge_status_led;
 
 static void update_led_for_state(void);
 static void check_fault_conditions(void);
@@ -438,6 +438,11 @@ static void set_state(ChargerState new_state) {
 }
 
 static void update_led_for_state(void) {
+    if (current_state != CHARGER_DISCONNECTED && last_state_led == CHARGER_DISCONNECTED) {
+        // Wake up LED controller when leaving disconnected state
+        led_wakeup();
+    }
+
     switch (current_state) {
         case CHARGER_FAULT:
             if (current_state != last_state_led) {
@@ -474,6 +479,11 @@ static void update_led_for_state(void) {
                 led_set_color(0, 0, 0);
             }
             break;
+    }
+
+    if (current_state == CHARGER_DISCONNECTED && last_state_led != CHARGER_DISCONNECTED) {
+        // Shutdown LED controller when entering disconnected state
+        led_shutdown();
     }
 
     last_state_led = current_state;

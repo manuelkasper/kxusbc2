@@ -10,14 +10,14 @@
  * @brief Charger state enumeration
  */
 typedef enum {
-    CHARGER_DISCONNECTED = 0,           ///< No power source available
-    CHARGER_USB_NEGOTIATING,            ///< USB attached, PD negotiation in progress
-    CHARGER_USB_TYPE_C_CHARGING,        ///< Charging from USB Type-C (500mA/1.5A)
-    CHARGER_USB_PD_CHARGING,            ///< Charging from USB with PD contract
-    CHARGER_DC_CHARGING,                ///< Charging from DC jack (VAC2)
-    CHARGER_RIG_ON,                     ///< Rig powered on, charging inhibited
-    CHARGER_DISCHARGING,                ///< OTG mode, providing power to sink
-    CHARGER_FAULT,                      ///< Fault detected
+    CHARGER_DISCONNECTED = 0,           // No power source available
+    CHARGER_USB_NEGOTIATING,            // USB attached, PD negotiation in progress
+    CHARGER_USB_TYPE_C_CHARGING,        // Charging from USB Type-C (500mA/1.5A)
+    CHARGER_USB_PD_CHARGING,            // Charging from USB with PD contract
+    CHARGER_DC_CHARGING,                // Charging from DC jack (VAC2)
+    CHARGER_RIG_ON,                     // Rig powered on, charging inhibited
+    CHARGER_DISCHARGING,                // OTG mode, providing power to sink
+    CHARGER_FAULT,                      // Fault detected
     CHARGER_STATE_COUNT
 } ChargerState;
 
