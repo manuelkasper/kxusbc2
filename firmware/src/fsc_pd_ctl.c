@@ -116,7 +116,6 @@ void fsc_pd_swap_roles(void) {
     } else if (port.PolicyState == peSourceReady) {
         port.PortConfig.reqPRSwapAsSrc = TRUE;
     }
-    //force_fsc_wakeup = true;  XXX
 }
 
 static void fsc_pd_event_handler(FSC_U32 event, FSC_U8 portId, void *usr_ctx, void *app_ctx) {
