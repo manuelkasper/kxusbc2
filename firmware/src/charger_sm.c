@@ -15,6 +15,7 @@ static ChargerState pre_fault_state;
 static uint16_t otg_voltage;
 static uint16_t otg_current;
 static struct TimerObj state_timer;
+static bool discharging_low_battery = false;
 
 static void update_led_for_state(void);
 static void check_fault_conditions(void);
@@ -39,9 +40,13 @@ static uint16_t handle_usb_type_c_charging(void);
 static void enter_usb_pd_charging(void);
 static uint16_t handle_usb_pd_charging(void);
 
+static void enter_rig_on(void);
 static uint16_t handle_rig_on(void);
+
 static void enter_discharging(void);
 static uint16_t handle_discharging(void);
+static uint16_t handle_discharging_blocked(void);
+
 static uint16_t handle_fault(void);
 
 /* ===== Initialization ===== */
@@ -51,6 +56,7 @@ bool charger_sm_init(void) {
     pre_fault_state = CHARGER_DISCONNECTED;
     otg_voltage = 0;
     otg_current = 0;
+    discharging_low_battery = false;
     TimerDisable(&state_timer);
     return true;
 }
@@ -86,7 +92,15 @@ void charger_sm_on_pps_voltage_update(uint16_t mv) {
 
     // When PPS voltage is set to non-zero, PD has negotiated OTG mode
     // Configure BQ and transition to DISCHARGING state
-    if (mv > 0) {
+    if (otg_voltage > 0) {
+        // Don't allow OTG if we've already hit the low battery limit
+        // Must enter a charging state first to clear the flag
+        if (discharging_low_battery) {
+            debug_printf("SM: OTG mode rejected - must recharge first\n");
+            set_state(CHARGER_DISCHARGING_BLOCKED);
+            return;
+        }
+
         // If there is an input voltage on VAC2 (DC jack), we cannot enter OTG mode.
         // The charger IC seems to have a restriction, and no matter what we do with
         // EN_ACDRV1/2 and DIS_ACDRV, OTG mode will not start as long as there is an
@@ -106,7 +120,7 @@ void charger_sm_on_pps_voltage_update(uint16_t mv) {
             otg_current = sysconfig.otgCurrentLimit;
             bq_set_otg_current_limit(otg_current);
         }
-        bq_enable_otg(mv);
+        bq_enable_otg(otg_voltage);
         set_state(CHARGER_DISCHARGING);
     } else {
         // OTG mode ended
@@ -177,6 +191,9 @@ uint16_t charger_sm_run(void) {
         case CHARGER_DISCHARGING:
             timeout = handle_discharging();
             break;
+        case CHARGER_DISCHARGING_BLOCKED:
+            timeout = handle_discharging_blocked();
+            break;
         case CHARGER_FAULT:
             timeout = handle_fault();
             break;
@@ -225,6 +242,7 @@ static uint16_t handle_disconnected(void) {
  * ================================================================================ */
 
 static void enter_dc_charging(void) {
+    discharging_low_battery = false;  // Clear low battery flag when entering charging
     bq_set_acdrv(false, true);
     bq_set_input_current_limit(sysconfig.dcInputCurrentLimit);
     bq_enable_adc();
@@ -294,6 +312,7 @@ static uint16_t handle_usb_negotiating(void) {
  * ================================================================================ */
 
 static void enter_usb_type_c_charging(void) {
+    discharging_low_battery = false;  // Clear low battery flag when entering charging
     // Type-C negotiated without PD (5 V / 0.5..3 A)
     uint16_t adv_current = fsc_pd_get_advertised_current();
 
@@ -337,6 +356,7 @@ static uint16_t handle_usb_type_c_charging(void) {
  * ================================================================================ */
 
 static void enter_usb_pd_charging(void) {
+    discharging_low_battery = false;  // Clear low battery flag when entering charging
     // PD contract established
     uint16_t adv_current = fsc_pd_get_advertised_current();
     
@@ -368,12 +388,13 @@ static uint16_t handle_usb_pd_charging(void) {
  * CHARGER_RIG_ON - Rig powered on, charging inhibited
  * ================================================================================ */
 
+static void enter_rig_on(void) {
+    bq_disable_charging();
+}
+
 static uint16_t handle_rig_on(void) {
     // Rig powered, charging inhibited
-    if (kx2_is_on()) {
-        // Stay in RIG_ON
-        return 0;
-    } else {
+    if (!kx2_is_on()) {
         // Rig powered down - return to disconnected for clean restart
         set_state(CHARGER_DISCONNECTED);
     }
@@ -395,7 +416,37 @@ static uint16_t handle_discharging(void) {
         // Role swap or disconnected
         bq_disable_otg();
         set_state(CHARGER_DISCONNECTED);
+        return 0;
     }
+
+    // Monitor battery voltage during discharging
+    uint16_t vbat = bq_measure_vbat();
+    if (vbat < sysconfig.dischargingVoltageLimit) {
+        if (!discharging_low_battery) {
+            discharging_low_battery = true;
+            debug_printf("SM: Battery voltage too low for discharging: %u mV < %u mV\n", 
+                        vbat, sysconfig.dischargingVoltageLimit);
+            bq_disable_otg();
+            set_state(CHARGER_DISCHARGING_BLOCKED);
+        }
+    }
+    
+    return 0;
+}
+
+/* ================================================================================
+ * CHARGER_DISCHARGING_BLOCKED - OTG mode blocked due to low battery
+ * ================================================================================ */
+
+static uint16_t handle_discharging_blocked(void) {
+    // OTG mode was requested but blocked due to low battery
+    
+    if (fsc_pd_get_connection_state() != AttachedSource) {
+        // Role swap or disconnected
+        set_state(CHARGER_DISCONNECTED);
+        return 0;
+    }
+    
     return 0;
 }
 
@@ -453,12 +504,11 @@ static void set_state(ChargerState new_state) {
             enter_usb_pd_charging();
             break;
         case CHARGER_RIG_ON:
-            bq_disable_charging();
+            enter_rig_on();
             break;
         case CHARGER_DISCHARGING:
             enter_discharging();
             break;
-        case CHARGER_FAULT:
         default:
             break;
     }
@@ -490,6 +540,11 @@ static void update_led_for_state(void) {
             update_charging_led();
             break;
 
+        case CHARGER_DISCHARGING_BLOCKED:
+            // Show red blinking to indicate battery too low for OTG
+            led_set_blinking(true, false, false, 255, 5, 5, 15, 0);  // Red blinking at 2 Hz
+            break;
+        
         default:
             led_off();
             break;

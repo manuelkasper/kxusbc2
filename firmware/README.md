@@ -81,6 +81,7 @@ The following settings can be set in the EEPROM (see also the definitions in htt
 | 10 | Allow charging while rig is on | `bool` | 0
 | 11 | Enable thermistor | `bool` | 0
 | 12 | RTC offset (ppm, -127..127) | `int8` | 0 | -127…127
+| 14 | Discharging voltage limit (mV, minimum battery voltage for OTG mode) | `uint16` | 9000 |
 
 
 ## RTC emulation
@@ -109,6 +110,7 @@ The charger uses either the external DC jack input (E pad), or USB, whichever is
 | Charged | green | steady
 | Temperature too high/low | red | steady
 | Fault (over-voltage/current, short circuit etc.) | red | blinking 5 Hz
+| Fault (battery voltage too low in OTG mode) | red | blinking 2 Hz
 | Fault (initialisation) | red | 3 x blinking at 2 Hz, followed by 1 s pause
 | Rig on (charging inhibited) | magenta | steady
 | Discharging (OTG) | blue / cyan (*) | “breathing” speed depending on discharge current
@@ -125,6 +127,10 @@ The LED will “breathe” faster the higher the current into or from the batter
 | 500..999 mA | 2.5 s
 | 1000..1999 mA | 1.2 s
 | ≥ 2000 mA | 0.8 s
+
+### Low battery during discharge
+
+If the battery voltage drops below the discharging voltage limit set in the EEPROM, discharging will stop, and the LED will blink red. Further attempts to discharge (by disconnecting and reconnecting a sink) will not initiate discharging again, even if the battery voltage has recovered a little in the meantime. The battery must first be recharged, at least for a short time, before discharging is allowed again.
 
 
 ## Connection states

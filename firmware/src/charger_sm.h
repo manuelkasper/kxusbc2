@@ -17,6 +17,7 @@ typedef enum {
     CHARGER_DC_CHARGING,                // Charging from DC jack (VAC2)
     CHARGER_RIG_ON,                     // Rig powered on, charging inhibited
     CHARGER_DISCHARGING,                // OTG mode, providing power to sink
+    CHARGER_DISCHARGING_BLOCKED,        // OTG mode blocked due to low battery
     CHARGER_FAULT,                      // Fault detected
     CHARGER_STATE_COUNT
 } ChargerState;
