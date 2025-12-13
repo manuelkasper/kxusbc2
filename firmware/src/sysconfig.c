@@ -4,7 +4,7 @@
 #include "debug.h"
 
 // Definition for default EEPROM config, goes in .eeprom section, resulting in .eep file when compiling
-static EEMEM struct SysConfig sysconfig_eeprom = {
+volatile EEMEM struct SysConfig sysconfig_eeprom = {
     .magic = SYSCONFIG_MAGIC,
     .role = DRP,
     .pdMode = PD_3_0,
