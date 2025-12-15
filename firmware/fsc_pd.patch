@@ -156,6 +156,11 @@ diff -U 1 orig/timer.h patched/timer.h
 diff -U 1 orig/Port.c patched/Port.c
 --- orig/Port.c 2025-12-08 17:26:21
 +++ patched/Port.c  2025-12-08 17:29:03
+@@ -22,3 +22,3 @@
+ #include "PDProtocol.h"
+-#include "fusb30x.h"
++#include "fusb30X.h"
+
 @@ -232,2 +232,3 @@
      port->Registers.Control.TOG_RD_ONLY = 0;
 +    port->Registers.Control.TOG_SAVE_PWR = 3;

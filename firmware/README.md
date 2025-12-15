@@ -57,6 +57,7 @@ The patch included in the repository, `fsc_pd.patch`, which is applied automatic
     - However, there is also a bug in the code enabled by `FSC_GSCE_FIX`. Specifically, it uses the `I_CRC_CHK` interrupt instead of the normal `I_GCRCSENT` to trigger receiving a packet in `PDProtocol.c:ProtocolIdle()`. The latter can also be called from `ProtocolSendingMessage()`, but before making that call, `ProtocolSendingMessage()` already checks if `I_TXSENT` or `I_CRC_CHK` are set, and if either of them is, then it also clears `I_CRC_CHK`. This causes `ProtocolIdle()` to miss the incoming packet, which will only be processed when the next packet comes in – usually too late, so timers expire and hard resets are made. The usual case where this is triggered is when the PD source rejects a request, and doesn't send any further packets. Then the tSenderResponse timeout kicks in, the code issues a hard reset, and this loops forever.
     - The patch comments out the clearing of the `I_CRC_CHK` bit, which does not appear to have negative consequences.
 - Increased tSenderResponse to 32 ms (USB PD ECN “Chunking Timing Issue”).
+- Fixed case-sensitivity issue in `Port.c`: the onsemi code includes `"fusb30x.h"` but the actual filename is `fusb30X.h`. This had caused compilation to fail on case-sensitive filesystems (Linux).
 
 
 ## Programming/Debugging
