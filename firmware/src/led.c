@@ -44,11 +44,11 @@ void led_init(void) {
     // Set maximum current = 25.5 mA
     led_write_register(0x01, 0x00);
 
-    // Set maximum current 2.5 mA on green (OUT0)
-    led_write_register(0x14, 25);
+    // Set maximum current 10 mA on blue (OUT0)
+    led_write_register(0x14, 100);
 
-    // Set maximum current 10 mA on blue (OUT1)
-    led_write_register(0x15, 100);
+    // Set maximum current 2.5 mA on green (OUT1)
+    led_write_register(0x15, 25);
 
     // Set maximum current 5 mA on red (OUT2)
     led_write_register(0x16, 50);
@@ -96,8 +96,8 @@ void led_set_color(bool red, bool green, bool blue, uint8_t brightness) {
     }
 
     led_stop_animation();
-    led_write_register(0x18, green ? brightness : 0);
-    led_write_register(0x19, blue ? brightness : 0);
+    led_write_register(0x18, blue ? brightness : 0);
+    led_write_register(0x19, green ? brightness : 0);
     led_write_register(0x1A, red ? brightness : 0);
 
     // Ensure chip is enabled
@@ -174,10 +174,10 @@ void led_set_blinking(bool red, bool green, bool blue, uint8_t brightness, uint8
     
     // Enable autonomous animation on selected outputs
     uint8_t output_enable = 0;
-    if (green) {
+    if (blue) {
         output_enable |= 0x01;
     }
-    if (blue) {
+    if (green) {
         output_enable |= 0x02;
     }
     if (red) {
@@ -251,10 +251,10 @@ void led_set_breathing(bool red, bool green, bool blue, uint8_t brightness, uint
     
     // Enable autonomous animation on selected outputs
     uint8_t output_enable = 0;
-    if (green) {
+    if (blue) {
         output_enable |= 0x01;
     }
-    if (blue) {
+    if (green) {
         output_enable |= 0x02;
     }
     if (red) {
