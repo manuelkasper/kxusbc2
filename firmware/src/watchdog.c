@@ -4,8 +4,13 @@
 #include "watchdog.h"
 
 void watchdog_init(void) {
+#ifndef RTC_CALIBRATION_MODE
     // Enable watchdog with 8s timeout
     wdt_enable(0xB);
+#else
+    // In calibration mode, disable watchdog as RTC is not running normally
+    wdt_disable();
+#endif
 }
 
 void watchdog_tickle(void) {

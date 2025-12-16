@@ -48,7 +48,7 @@ void rtc_init(void) {
 
     rtc_measure_temperature_offset();
 
-#ifdef RTC_MEASUREMENT_OUTPUT_PA2
+#ifdef RTC_CALIBRATION_MODE
     // Configure PIT and output 32.768 kHz /64 = 512 Hz clock on PA2 for measuring
     PORTA.DIRSET = PIN2_bm;
     EVSYS.CHANNEL1 = EVSYS_CHANNEL1_RTC_PIT_DIV64_gc;
@@ -110,9 +110,9 @@ static void rtc_measure_temperature_offset(void) {
     int16_t temp_diff = measure_chip_temperature() - 25;
     int16_t offset_x100 = -3 * temp_diff * temp_diff;
     temperature_offset_ppm = (offset_x100 + (offset_x100 >= 0 ? 50 : -50)) / 100;
+#endif
 
     rtc_update_calib();
-#endif
 }
 
 static void rtc_update_calib(void) {
@@ -120,7 +120,12 @@ static void rtc_update_calib(void) {
     if (userrow_valid()) {
         factory_offset = userrow->factoryRtcOffset;
     }
+#ifdef RTC_CALIBRATION_MODE
+    // Ignore temperature compensation and user offset in RTC calibration mode
+    int16_t total_offset = factory_offset;
+#else
     int16_t total_offset = sysconfig->userRtcOffset + factory_offset + temperature_offset_ppm;
+#endif
 
     // Clamp to RTC.CALIB range of -127 to 127
     if (total_offset < -127) {
