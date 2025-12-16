@@ -106,11 +106,13 @@ The User Row is currently used to store a factory-calibrated RTC offset, so that
 
 The firmware acts as an SPI slave/client, emulating PCF2123-style registers to the KX2 firmware. Only the set of registers actually used by the KX2 firmware is implemented. The RTC peripheral of the MCU is clocked by an external 32.768 kHz crystal.
 
-A fixed offset (in ppm) can be set in the sysconfig/EEPROM to calibrate each board.
+A fixed offset (in ppm) can be programmed in the User Row of the MCU to factory calibrate each board.
 
-The KX2 has an "RTC ADJ" menu that lets the user compensate for a clock being too slow or too fast, by setting the number of seconds per day to compensate. The KX2 firmware translates this into a correction value for the PCF2123. The RTC emulation in the KXUSBC2 firmware calculates the equivalent ppm correction (4.34 ppm per unit according to the PCF2123 datasheet, in the "course mode" that the KX2 uses), and applies it to the `RTC.CALIB` register of the ATtiny3226. The maximum correction that can be applied this way is ±127 ppm (about 11 seconds per day). Larger values set in the RTC ADJ menu will be clamped to this range.
+The KX2 has an "RTC ADJ" menu that lets the user compensate for a clock being too slow or too fast, by setting the number of seconds per day to compensate. The KX2 firmware translates this into a correction value for the PCF2123. The RTC emulation in the KXUSBC2 firmware calculates the equivalent ppm correction (4.34 ppm per unit according to the PCF2123 datasheet, in the "course mode" that the KX2 uses). The value set in the KX2 menu is stored in the EEPROM of the KXUSBC2 so that it is available after a restart, as the KX2 only sends the value when the user changes it.
 
 The RTC emulation also features a temperature compensation. Once a minute, it measures the temperature using the MCU's built-in sensor and calculates an offset according to the temperature coefficient and turnover temperature given in the crystal's datasheet.
+
+The offsets (factory, user and temperature) are added up before being applied to the `RTC.CALIB` register of the ATtiny3226. Positive offsets make the clock run slower, while negative offsets make it run faster. The maximum correction that can be applied in this way is ±127 ppm (about 11 seconds per day). Larger values will be clamped to this range.
 
 
 ## Input priority
