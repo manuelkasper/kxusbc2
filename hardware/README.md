@@ -27,6 +27,36 @@ The design around the BQ25792 with its inductor and capacitors follows the guide
 * Bead-blasted, hardcoat-anodized, and silkscreened
 
 
+## Kit components
+
+A full KXUSBC2 "kit" requires the following components:
+
+* KXUSBC2 PCB, assembled on both sides
+* Custom side panel
+* 3 x Receptacle (unless assembled by PCB factory)
+  * TE Connectivity 2307725-3
+  * DigiKey [17-2307725-3CT-ND](https://www.digikey.com/en/products/detail/te-connectivity-amp-connectors/2307725-3/11503286)
+* 2 x Standoff M2.5 3 mm height (unless assembled by PCB factory)
+  * Würth Electronics 9774030151R
+  * DigiKey [732-7083-1-ND](https://www.digikey.com/en/products/detail/würth-elektronik/9774030151R/5320626)
+* Light pipe
+  * TBD
+* Thermal pad 10x6 mm, 3-4 mm height
+* Screw M2.5x10, nylon washer and nut
+  * TBD: replace by soldering standoff to bottom layer
+* Stranded silicone insulated wires, AWG 22, red/white 60 mm ea.
+* 2 x Solder pin
+  * Mill-Max 3132-0-00-15-00-00-08-0
+  * DigiKey [ED90540-ND](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/3132-0-00-15-00-00-08-0/413214)
+* 2 x Solder receptacle
+  * Mill-Max 8827-0-15-15-16-27-04-0
+  * DigiKey [ED1304-ND](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/8827-0-15-15-16-27-04-0/4440738)
+* Heat shrink tube 2.5 x 15 mm
+* Thermistor (optional)
+  * NTC 10k
+  * DigiKey [2259-RH18-6Y103FB-075-S-ND](https://www.digikey.com/en/products/detail/mitsubishi-materials-u-s-a-corporation/RH18-6Y103FB-075-S/14308046)
+
+
 ## Cost
 
 Most of the parts are relatively low cost, and the board was designed so that it can be produced and assembled by low-cost services like JLCPCB, with almost all passive components from the “Basic” component selection, which doesn't incur component-loading fees. Most components are on the top side, but due to space constraints, some had to be placed on the bottom side as well. Traces, via holes etc. are fairly large to avoid precision PCB costs.
