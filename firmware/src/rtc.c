@@ -48,19 +48,16 @@ void rtc_init(void) {
 
     rtc_measure_temperature_offset();
 
-#ifdef RTC_CALIBRATION_MODE
-    // Configure PIT and output 32.768 kHz /64 = 512 Hz clock on PA2 for measuring
-    PORTA.DIRSET = PIN2_bm;
-    EVSYS.CHANNEL1 = EVSYS_CHANNEL1_RTC_PIT_DIV64_gc;
-    EVSYS.USEREVSYSEVOUTA = EVSYS_USER_CHANNEL1_gc;
-    while (RTC.PITSTATUS & RTC_CTRLBUSY_bm); // Wait for sync
-    RTC.PITCTRLA = RTC_PITEN_bm;
-    RTC.PITINTCTRL = 0;
-#else
     // Configure PIT for one second interrupts
     while (RTC.PITSTATUS & RTC_CTRLBUSY_bm); // Wait for sync
     RTC.PITCTRLA = RTC_PERIOD_CYC32768_gc | RTC_PITEN_bm;
     RTC.PITINTCTRL |= RTC_PI_bm;
+
+#ifdef RTC_CALIBRATION_MODE
+    // Output 32.768 kHz /64 = 512 Hz clock on PA2 for measuring
+    PORTA.DIRSET = PIN2_bm;
+    EVSYS.CHANNEL1 = EVSYS_CHANNEL1_RTC_PIT_DIV64_gc;
+    EVSYS.USEREVSYSEVOUTA = EVSYS_USER_CHANNEL1_gc;
 #endif
 }
 
