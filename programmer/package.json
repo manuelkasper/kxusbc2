@@ -1,0 +1,26 @@
+{
+  "type": "module",
+  "name": "kxusbc2-programmer",
+  "version": "1.0.0",
+  "description": "A web-based programmer for the KXUSBC2.",
+  "main": "kxusbc2-programmer.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "types": "./kxusbc2-programmer.d.ts",
+  "devDependencies": {
+    "@types/w3c-web-serial": "^1.0.8",
+    "terser": "^5.44.1",
+    "typescript": "^5.9.3",
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "intel-hex": "^0.2.0"
+  }
+}

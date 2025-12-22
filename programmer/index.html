@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KXUSBC2 Programmer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>KXUSBC2 Programmer</h1>
+        </div>
+
+        <div class="content">
+            <div class="content-wrapper">
+                <div class="controls-column">
+                    <!-- Connection Section -->
+                    <div class="section">
+                        <h2>Connection Settings</h2>
+                        
+                        <div id="status" class="status disconnected">
+                            Status: <strong>Disconnected</strong>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="baud-rate">Baud Rate:</label>
+                            <select id="baud-rate">
+                                <option value="115200">115200</option>
+                                <option value="230400" selected>230400</option>
+                                <option value="460800">460800</option>
+                                <option value="921600">921600</option>
+                            </select>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn-primary" id="btn-connect">Connect</button>
+                            <button class="btn-danger" id="btn-disconnect">Disconnect</button>
+                        </div>
+                    </div>
+
+                    <!-- Firmware Update Section -->
+                    <div class="section">
+                        <h2>Firmware Update</h2>
+
+                        <div class="advanced-section">
+                            <h3>Load Firmware File</h3>
+                            <div class="form-group">
+                                <label for="program-file">Select .hex or .bin file:</label>
+                                <input type="file" id="program-file" accept=".hex,.bin">
+                            </div>
+                            <div id="program-preview">
+                                <small id="program-info"></small>
+                            </div>
+                            <div id="program-progress">
+                                <div class="program-progress-bar-container">
+                                    <div class="program-progress-bar-background">
+                                        <div id="program-progress-bar"></div>
+                                    </div>
+                                    <small id="program-progress-text"></small>
+                                </div>
+                            </div>
+                            <button class="btn-primary" id="btn-program-file">Program Firmware</button>
+                        </div>
+                    </div>
+
+                    <!-- EEPROM Configuration Section -->
+                    <div class="section">
+                        <h2>EEPROM Configuration</h2>
+
+                        <div class="button-group">
+                            <button class="btn-primary" id="btn-save-eeprom" disabled>Save Configuration</button>
+                            <button class="btn-secondary" id="btn-reset-eeprom" disabled>Reset to Defaults</button>
+                        </div>
+
+                        <div id="config-container" style="display: none;">
+                            <div class="advanced-sections-container">
+                                <div class="advanced-section">
+                                    <h3>Power Delivery</h3>
+                                    <div class="form-group">
+                                        <label for="config-role">USB Role:</label>
+                                        <select id="config-role">
+                                            <option value="0">SRC (Source only)</option>
+                                            <option value="1">SNK (Sink only)</option>
+                                            <option value="2" selected>DRP (Dual Role Port)</option>
+                                            <option value="3">TRY_SRC (Prefer Source)</option>
+                                            <option value="4">TRY_SNK (Prefer Sink)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="config-pdmode">PD Mode:</label>
+                                        <select id="config-pdmode">
+                                            <option value="0">Off</option>
+                                            <option value="1">PD 2.0</option>
+                                            <option value="2" selected>PD 3.0</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="advanced-section">
+                                    <h3>Charging Limits</h3>
+                                    <div class="form-group">
+                                        <label for="config-charging-current">Charging Current Limit (mA):</label>
+                                        <input type="number" id="config-charging-current" value="3000" min="50" max="5000" step="50">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="config-charging-voltage">Charging Voltage Limit (mV):</label>
+                                        <input type="number" id="config-charging-voltage" value="12600" min="10000" max="18800" step="100">
+                                    </div>
+                                </div>
+
+                                <div class="advanced-section">
+                                    <h3>Input/Output Current Limits</h3>
+                                    <div class="form-group">
+                                        <label for="config-dc-current">DC Input Current Limit (mA):</label>
+                                        <input type="number" id="config-dc-current" value="3000" min="100" max="3300" step="50">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="config-otg-current">OTG Current Limit (mA):</label>
+                                        <input type="number" id="config-otg-current" value="3000" min="120" max="3320" step="50">
+                                    </div>
+                                </div>
+
+                                <div class="advanced-section">
+                                    <h3>OTG & Discharging</h3>
+                                    <div class="form-group">
+                                        <label for="config-discharge-voltage">Discharging Voltage Limit (mV):</label>
+                                        <input type="number" id="config-discharge-voltage" value="9000" min="0" max="18800" step="100">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="config-otg-headroom">OTG Voltage Headroom (mV):</label>
+                                        <input type="number" id="config-otg-headroom" value="100" min="0" max="500" step="10">
+                                    </div>
+                                </div>
+
+                                <div class="advanced-section">
+                                    <h3>Features</h3>
+                                    <div class="form-group checkbox">
+                                        <input type="checkbox" id="config-charge-when-on">
+                                        <label for="config-charge-when-on">Allow charging while rig is on</label>
+                                    </div>
+                                    <div class="form-group checkbox">
+                                        <input type="checkbox" id="config-enable-thermistor">
+                                        <label for="config-enable-thermistor">Enable thermistor (temperature monitoring)</label>
+                                    </div>
+                                </div>
+
+                                <div class="advanced-section">
+                                    <h3>RTC Calibration</h3>
+                                    <div class="form-group">
+                                        <label for="config-user-rtc-offset">User RTC Offset (ppm):</label>
+                                        <input type="number" id="config-user-rtc-offset" value="0" min="-278" max="273" step="1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Log Section -->
+                <div class="log-column">
+                    <div class="section">
+                        <h2>Operation Log</h2>
+                        <button class="btn-secondary" id="btn-clear-log">Clear Log</button>
+                        <div id="log" class="log"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeUI } from './kxusbc2-programmer.ts';
+        
+        // Initialize the UI when the page loads
+        window.addEventListener('load', () => {
+            initializeUI();
+        });
+    </script>
+</body>
+</html>

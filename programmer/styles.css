@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #f5f5f5;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #4a9eff 0%, #5b7fd1 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.header p {
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+.content {
+    padding: 20px;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.controls-column {
+    min-width: 0;
+}
+
+.log-column {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.log-column .section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.log-column .log {
+    flex: 1;
+}
+
+@media (max-width: 1200px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .log-column {
+        margin-top: 30px;
+    }
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #4a9eff;
+    padding-bottom: 10px;
+}
+
+.section h3 {
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 500;
+}
+
+select, input[type="text"], input[type="number"], input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+input[type="file"] {
+    padding: 8px;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: #4a9eff;
+    box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4a9eff 0%, #5b7fd1 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(74, 158, 255, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+}
+
+.btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f0f0f0;
+}
+
+.btn-danger {
+    background: #ff6b6b;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #ff5252;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-danger:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.status {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.status.disconnected {
+    background: #ffe0e0;
+    color: #d32f2f;
+    border-left: 4px solid #d32f2f;
+}
+
+.status.connecting {
+    background: #fff3cd;
+    color: #856404;
+    border-left: 4px solid #ffc107;
+}
+
+.status.connected {
+    background: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.log {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    line-height: 1.5;
+}
+
+.log-entry {
+    margin-bottom: 8px;
+    padding: 5px;
+    border-left: 3px solid #ddd;
+    padding-left: 10px;
+}
+
+.log-entry.info {
+    color: #0066cc;
+    border-left-color: #0066cc;
+}
+
+.log-entry.success {
+    color: #28a745;
+    border-left-color: #28a745;
+}
+
+.log-entry.error {
+    color: #d32f2f;
+    border-left-color: #d32f2f;
+}
+
+.log-entry.warn {
+    color: #ff9800;
+    border-left-color: #ff9800;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.advanced-section {
+    padding: 15px;
+}
+
+.advanced-section:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+.advanced-sections-container {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fafafa;
+    overflow: hidden;
+}
+
+#selected-device-info {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: none;
+}
+
+#program-preview {
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+}
+
+#btn-read-data,
+#btn-program-hex {
+    width: 100%;
+}
+
+#btn-program-hex {
+    margin-bottom: 10px;
+}
+
+#btn-clear-log {
+    margin-bottom: 10px;
+}
+
+/* Progress Bar Styles */
+#program-progress {
+    display: none;
+    margin-bottom: 15px;
+}
+
+#program-progress.active {
+    display: block;
+}
+
+.program-progress-bar-container {
+    margin-top: 10px;
+}
+
+.program-progress-bar-background {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    height: 20px;
+    overflow: hidden;
+}
+
+#program-progress-bar {
+    background-color: #4CAF50;
+    height: 100%;
+    width: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+}
+
+#program-progress-bar.program-progress-bar-verify {
+    background-color: #FF9800;
+}
+
+#program-progress-bar.program-progress-bar-complete {
+    background-color: #4CAF50;
+}
+
+#program-progress-text {
+    display: block;
+    margin-top: 4px;
+}
+
+.form-group.checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-group.checkbox input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.form-group.checkbox label {
+    margin: 0;
+    display: inline;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+
+    .button-group {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
