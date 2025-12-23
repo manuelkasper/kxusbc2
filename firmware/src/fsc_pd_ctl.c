@@ -110,7 +110,7 @@ bool fsc_pd_policy_has_contract(void) {
 }
 
 void fsc_pd_swap_roles(void) {
-    debug_printf("Swap roles\n");
+    // Note: this is called from an ISR context (button press handler)
     if (port.PolicyState == peSinkReady) {
         port.PortConfig.reqPRSwapAsSnk = TRUE;
     } else if (port.PolicyState == peSourceReady) {

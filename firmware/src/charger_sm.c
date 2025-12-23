@@ -616,3 +616,9 @@ static void check_fault_conditions(void) {
         }
     }
 }
+
+/* ===== Getters ===== */
+
+ChargerState charger_sm_get_state(void) {
+    return current_state;
+}

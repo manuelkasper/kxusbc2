@@ -169,7 +169,59 @@ At this time, the following functions are implemented:
 
 * Short press (< 1 second): attempt a PD role swap
   * Can be used, for example, to charge the KX2 from a smartphone that can act as a source (e.g. iPhone)
-* Long press (> 1 second): system reset
+* Medium press (1…3 seconds): enter config menu (see below)
+* Long press (> 3 seconds): system reset
+
+### Config menu
+
+Pressing the button for 1…3 seconds when nothing is connected to the KXUSBC2 (i.e. the LED is off) enters the config menu.
+
+* While in the menu, the LED blinks yellow at 1 second intervals. The number of blinks indicates the current menu item.
+* Short pressing advances to the next menu item.
+* Medium pressing enters the currently blinking menu item.
+  * The LED then blinks blue to show the current setting of the selected menu item.
+  * Short pressing changes the setting.
+  * Medium pressing leaves the menu item.
+* Long pressing leaves the menu and restarts the system with the new settings.
+
+| Menu item # | Description |
+|:------------|:------------|
+| 1 | Charging current limit
+| 2 | DC input current limit
+| 3 | Charge while rig is on
+| 4 | Thermistor
+
+#### Menu item 1: Charging current limit
+
+| Value # | Description |
+|:------------|:------------|
+| 1 | 500 mA
+| 2 | 1000 mA
+| 3 | 2000 mA
+| 4 | 3000 mA
+
+#### Menu item 2: DC input current limit
+
+| Value # | Description |
+|:------------|:------------|
+| 1 | 500 mA
+| 2 | 1000 mA
+| 3 | 2000 mA
+| 4 | 3000 mA
+
+#### Menu item 3: Charge while rig is on
+
+| Value # | Description |
+|:------------|:------------|
+| 1 | disable
+| 2 | enable
+
+#### Menu item 4: Thermistor
+
+| Value # | Description |
+|:------------|:------------|
+| 1 | disable
+| 2 | enable
 
 
 ## Connection states

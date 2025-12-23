@@ -84,6 +84,12 @@ int main(void) {
         bq_enable_adc();
 #endif
 
+        if (button_handle_config_menu()) {
+            // In config menu - skip normal processing
+            watchdog_tickle();
+            continue;
+        }
+
         // Run PD state machine - returns a timeout in ticks until next required wakeup,
         // or 0 if no wakeup is needed and we can sleep until the next interrupt
         uint16_t next_timeout = fsc_pd_run();

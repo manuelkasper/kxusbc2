@@ -83,3 +83,12 @@ void charger_sm_on_pps_voltage_update(uint16_t mv);
  * @param ma Current in mA
  */
 void charger_sm_on_pps_current_update(uint16_t ma);
+
+/* ===== Getters ===== */
+
+/**
+ * @brief Get the current charger state
+ *
+ * @return Current ChargerState
+ */
+ChargerState charger_sm_get_state(void);
