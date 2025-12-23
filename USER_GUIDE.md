@@ -123,7 +123,7 @@ The RGB LED provides visual feedback on the board's status:
 
 The KX2 can display the battery voltage in the menu (like with KXIBC2):
 - Set the "KXIBC2" menu option to "NOR" in the KX2 configuration
-- The battery voltage will appear as "VBAT" in the KX2 menu
+- The battery voltage will appear as "VBAT" in the KX2 menu (with KX2 Firmware 3.02 as "BT")
 
 ### Real-Time Clock (RTC)
 
