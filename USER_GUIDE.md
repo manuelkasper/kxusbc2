@@ -69,7 +69,9 @@ Make sure to also remove the coating around the screw holes near the bottom edge
 4. **Connect power wires**
    - Slip heat shrink tubing onto the white and red wires from the KXUSBC2.
    - Plug the wires into the receptacles on the KX2 RF PCB (E = white, B = red).
-   - Slide the heat shrink tubing over the pins to prevent short-circuits (no need to heat shrink the tubing and can in fact make it hard to remove if desired).
+   - Slide the heat shrink tubing over the pins to prevent short-circuits (no need to shrink the tubing, and can in fact make it hard to remove if desired).
+     
+     <img src="/hardware/photos/wires_connected.jpg" alt="Wires connected to KX2" width="500">
 
 5. **Place thermal pad**
    - Place the thermal pad over U1 as shown in the photo, such that it doesn't collide with the protrusion on the KX2's back cover.
