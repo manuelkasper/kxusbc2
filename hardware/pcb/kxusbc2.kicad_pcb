@@ -41221,7 +41221,7 @@
 		(path "/2d6fd443-5ec8-4070-973e-1b471bdec34f")
 		(sheetname "/")
 		(sheetfile "kxusbc2.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 -0.7)
@@ -42879,7 +42879,7 @@
 		(path "/360e3ae6-b8d6-426e-b1f5-fbf772afec00")
 		(sheetname "/")
 		(sheetfile "kxusbc2.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 -0.7)
@@ -45971,7 +45971,7 @@
 		(path "/148df4d2-a316-4685-87ca-0ec31f9de746")
 		(sheetname "/")
 		(sheetfile "kxusbc2.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 -0.7)
@@ -46504,7 +46504,7 @@
 		(path "/4c5bb5e4-6b66-40f6-8af7-940b53c94c94")
 		(sheetname "/")
 		(sheetfile "kxusbc2.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 -0.7)

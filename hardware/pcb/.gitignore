@@ -43,4 +43,5 @@ fp-info-cache
 fp-info-cache
 
 # Generated output from JLCPCB plugin
-jlcpcb
+jlcpcb/gerber
+jlcpcb/production_files
