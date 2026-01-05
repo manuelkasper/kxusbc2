@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 3.7,
-          "height": 5.0,
-          "width": 5.0
+          "drill": 0.0,
+          "height": 1.0,
+          "width": 1.6
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -60,6 +60,10 @@
       ],
       "drc_exclusions": [
         [
+          "lib_footprint_mismatch|103300000|120550000|91fad446-c191-4d04-9001-c4f856f4f621|00000000-0000-0000-0000-000000000000",
+          "Made bottom pads slightly smaller to avoid edge"
+        ],
+        [
           "lib_footprint_mismatch|108275000|110440000|6b2273c4-f55c-4eef-8199-77f19684bdd7|00000000-0000-0000-0000-000000000000",
           "Middle pin staggered on purpose to allow press-fit"
         ],
@@ -68,12 +72,20 @@
           "Middle pin staggered on purpose to allow press-fit"
         ],
         [
+          "lib_footprint_mismatch|128500000|120550000|8e2c2dc7-c5bb-4578-9f42-62d4979bdf1e|00000000-0000-0000-0000-000000000000",
+          "Made bottom pads slightly smaller to avoid edge"
+        ],
+        [
           "lib_footprint_mismatch|136400000|108000000|ed941ee7-61c6-4380-8d5b-c1dbabd16def|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
           "lib_footprint_mismatch|144900000|115950000|19cf0d10-81ef-4ac6-9a0d-672bf0d41577|00000000-0000-0000-0000-000000000000",
           ""
+        ],
+        [
+          "lib_footprint_mismatch|146300000|120550000|0b0f91d7-acc9-4a51-955d-6e59f3f428f1|00000000-0000-0000-0000-000000000000",
+          "Made bottom pads slightly smaller to avoid edge"
         ],
         [
           "lib_footprint_mismatch|148500000|115950000|0495382e-45f3-4283-98ee-336a9a75c34e|00000000-0000-0000-0000-000000000000",
