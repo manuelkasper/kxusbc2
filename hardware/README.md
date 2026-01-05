@@ -18,6 +18,28 @@ Designed with KiCad.
 
 The design around the BQ25792 with its inductor and capacitors follows the guidelines given in the datasheet, and takes the EVM design as a basis. However, due to space constraints and the oblong shape, some compromises in the PCB layout had to be made: the BQ25792 has been rotated 180° relative to the reference design, making the switching nodes slightly longer and closer to other traces. Care was taken to keep them isolated from other traces by intermediate ground plane layers.
 
+### JLCPCB order settings
+
+When ordering from JLCPCB, the following settings should be selected:
+
+#### PCB
+
+* Layers: 4
+* Dimensions: 69 x 19 mm (will be increased automatically for edge rails)
+* PCB Thickness: 1.0 mm
+* Material: FR4
+* Surface Finish: LeadFree HASL or ENIG
+* Outer Copper Weight: 1 oz
+* Inner Copper Weight: 1 oz (!)
+* Via Covering: Plugged
+
+#### PCB Assembly
+
+* PCBA Type: Standard
+* Assembly Side: Both Sides
+* Edge Rails/Fiducials: Added by JLCPCB
+* Depanel boards & edge rails before delivery: Yes
+
 
 ## Side panel
 
