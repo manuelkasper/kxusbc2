@@ -142,7 +142,7 @@ The RGB LED provides visual feedback on the board's status:
 |-------|-------|---------|
 | Disconnected | Off | - |
 | Negotiating PD | Green/Yellow (*) | Blinking 5 Hz |
-| Charging | Green/Yellow (*) | "Breathing" (speed indicates current) |
+| Charging | Green/Yellow (*) | Pulsing (frequency indicates current) |
 | Fully charged | Green | Steady |
 | Temperature warning | Red | Steady |
 | Fault (over-voltage/current) | Red | Blinking 5 Hz |
@@ -150,11 +150,11 @@ The RGB LED provides visual feedback on the board's status:
 | Fault (charger init) | Red | 3 blinks at 2 Hz, then pause |
 | Fault (EEPROM) | Red | 4 blinks at 2 Hz, then pause |
 | Rig on (charging inhibited) | Magenta | Steady |
-| Discharging (OTG) | Blue/Cyan (*) | "Breathing" (speed indicates current) |
+| Discharging (OTG) | Blue/Cyan (*) | Pulsing (frequency indicates current) |
 
 (*) Yellow/Cyan indicates temperature in "warm" or "cool" region (reduced current)
 
-**Breathing speed indicates charge/discharge current:**
+**Pulsing frequency indicates charge/discharge current:**
 - < 500 mA: 8.5 s cycle
 - 500-999 mA: 2.5 s cycle
 - 1000-1999 mA: 1.2 s cycle

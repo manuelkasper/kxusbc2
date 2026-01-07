@@ -135,7 +135,7 @@ The setting can be changed in the EEPROM such that charging is always allowed, r
 |:------|:------|:------|
 | Disconnected | off
 | Negotiating | green / yellow (*) | blinking 5 Hz
-| Charging | green / yellow (*) | “breathing” speed depending on charge current
+| Charging | green / yellow (*) | pulsing frequency depending on charge current
 | Charged | green | steady
 | Temperature too high/low | red | steady
 | Fault (over-voltage/current, short circuit etc.) | red | blinking 5 Hz
@@ -143,15 +143,15 @@ The setting can be changed in the EEPROM such that charging is always allowed, r
 | Fault (charger init) | red | 3 x blinking at 2 Hz, followed by 1 s pause
 | Fault (EEPROM) | red | 4 x blinking at 2 Hz, followed by 1 s pause
 | Rig on (charging inhibited) | magenta | steady
-| Discharging (OTG) | blue / cyan (*) | “breathing” speed depending on discharge current
+| Discharging (OTG) | blue / cyan (*) | pulsing frequency depending on discharge current
 
 If the thermistor is enabled and the temperature is in the “warm” or ”cool” region (where the current is reduced, but charging continues), the color is yellow (or cyan) instead of green (or blue).
 
 ### Charge/discharge speed indication
 
-The LED will “breathe” faster the higher the current into or from the battery is.
+The LED will pulse faster the higher the current into or from the battery is.
 
-| Battery current | LED “breathing” speed |
+| Battery current | LED pulsing frequency |
 |:--------|:------|
 | < 500 mA | 8.5 s
 | 500..999 mA | 2.5 s
