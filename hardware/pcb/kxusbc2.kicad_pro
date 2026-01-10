@@ -225,6 +225,7 @@
         0.3,
         0.4,
         0.6,
+        0.7,
         0.8,
         1.0
       ],
@@ -326,6 +327,40 @@
           31
         ],
         "name": "Seethrough",
+        "renderLayers": [
+          "vias",
+          "footprint_text",
+          "footprint_anchors",
+          "ratsnest",
+          "grid",
+          "footprints_front",
+          "footprints_back",
+          "footprint_values",
+          "footprint_references",
+          "tracks",
+          "drc_errors",
+          "drawing_sheet",
+          "bitmaps",
+          "pads",
+          "zones",
+          "drc_warnings",
+          "drc_exclusions",
+          "conflict_shadows",
+          "shapes"
+        ]
+      },
+      {
+        "activeLayer": -2,
+        "flipBoard": true,
+        "layers": [
+          0,
+          2,
+          6,
+          7,
+          25,
+          29
+        ],
+        "name": "Seethrough back",
         "renderLayers": [
           "vias",
           "footprint_text",

@@ -7,7 +7,7 @@
 	(title_block
 		(title "KXUSBC2 – Internal USB-C charger for the Elecraft KX2")
 		(comment 1 "Licensed under CERN-OHL-W v2")
-		(comment 2 "© 2025 HB9DQM")
+		(comment 2 "© 2025-2026 HB9DQM")
 	)
 	(lib_symbols
 		(symbol "Connector:TestPoint"
@@ -609,6 +609,16 @@
 			)
 			(embedded_fonts no)
 		)
+	)
+	(text "KX2 interface"
+		(exclude_from_sim no)
+		(at 224.028 71.882 90)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+		)
+		(uuid "c850d7dc-e78c-4f7b-b50a-3b97b68b7c33")
 	)
 	(junction
 		(at 135.89 91.44)

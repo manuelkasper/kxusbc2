@@ -7,7 +7,7 @@
 	(title_block
 		(title "Battery monitor")
 		(comment 1 "Licensed under CERN-OHL-W v2")
-		(comment 2 "© 2025 HB9DQM")
+		(comment 2 "© 2025-2026 HB9DQM")
 	)
 	(lib_symbols
 		(symbol "Amplifier_Operational:TLV9301xDCK"

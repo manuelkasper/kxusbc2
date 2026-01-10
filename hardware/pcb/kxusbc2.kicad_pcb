@@ -42019,7 +42019,7 @@
 		(path "/37db1d3d-769d-42a0-ade2-605c4cf8c994/924cab0a-7b32-4ba0-9474-117408166b1e")
 		(sheetname "/uC/")
 		(sheetfile "kxusbc2_uc.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
+		(attr through_hole exclude_from_pos_files exclude_from_bom)
 		(fp_line
 			(start 1.38 -1.27)
 			(end 1.38 -6.46)
@@ -43986,7 +43986,7 @@
 		(path "/37db1d3d-769d-42a0-ade2-605c4cf8c994/e806e688-b7f5-4f2a-a825-c5e84f0e3183")
 		(sheetname "/uC/")
 		(sheetfile "kxusbc2_uc.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
+		(attr through_hole exclude_from_pos_files exclude_from_bom)
 		(fp_line
 			(start -1.38 -6.46)
 			(end 1.38 -6.46)
