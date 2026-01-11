@@ -29,10 +29,6 @@ fp-info-cache
 *.dsn
 *.ses
 
-# Exported BOM files
-*.xml
-*.csv
-
 # Archived Backups (KiCad 6.0)
 **/*-backups/*.zip
 
@@ -44,4 +40,3 @@ fp-info-cache
 
 # Generated output from JLCPCB plugin
 jlcpcb/gerber
-jlcpcb/production_files
