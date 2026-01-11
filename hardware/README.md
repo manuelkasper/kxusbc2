@@ -61,11 +61,7 @@ A full KXUSBC2 "kit" requires the following components:
 * 2 x Standoff M2.5 3 mm height (unless assembled by PCB factory)
   * Würth Electronics 9774030151R
   * DigiKey [732-7083-1-ND](https://www.digikey.com/en/products/detail/würth-elektronik/9774030151R/5320626)
-* Light pipe
-  * TBD
-* Thermal pad 10x6 mm, 3-4 mm height
-* Screw M2.5x10, nylon washer and nut
-  * TBD: replace by soldering standoff to bottom layer
+* Thermal pad 10x6 mm, 4 mm height
 * Stranded silicone insulated wires, AWG 22, red/white 60 mm ea.
 * 2 x Solder pin
   * Mill-Max 3132-0-00-15-00-00-08-0
