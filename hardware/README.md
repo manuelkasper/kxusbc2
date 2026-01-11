@@ -20,7 +20,7 @@ The design around the BQ25792 with its inductor and capacitors follows the guide
 
 ### JLCPCB order settings
 
-When ordering from JLCPCB, the following settings should be selected:
+When ordering from JLCPCB, the files located in [hardware/pcb/jlcpcb/production_files](hardware/pcb/jlcpcb/production_files) can be uploaded directly. The following settings should be selected in the order process:
 
 #### PCB
 
