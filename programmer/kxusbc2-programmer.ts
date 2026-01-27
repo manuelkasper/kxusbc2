@@ -533,13 +533,10 @@ export async function programFile(): Promise<void> {
             throw new Error('No file loaded');
         }
         // Flash memory configuration for ATtiny3226
-        const pageSize = selectedDevice.flash_page_size;
-        const startAddress = selectedDevice.flash_address;
-        const flashSize = selectedDevice.flash_size;
-
-        if (!pageSize || !startAddress || !flashSize) {
-            throw new Error('Flash memory configuration not available');
-        }
+        const memorySize = selectedDevice.flash_size!;
+        const pageSize = selectedDevice.flash_page_size!;
+        const startAddress = selectedDevice.flash_address!;
+        const flashSize = selectedDevice.flash_size!;
 
         // Validate data fits in flash
         if (currentProgramData.length > flashSize) {
@@ -548,6 +545,11 @@ export async function programFile(): Promise<void> {
 
         log(`Programming firmware to flash...`, 'info');
         log(`Flash: ${formatHex(startAddress)}, page size=${pageSize} bytes`, 'info');
+
+        // Get progress elements
+        const progressDivEl = getElement<HTMLDivElement>('program-progress')!;
+        const progressBarEl = getElement<HTMLDivElement>('program-progress-bar')!;
+        const progressTextEl = getElement<HTMLElement>('program-progress-text')!;
         
         // Split data into pages
         const pages: { address: number; data: Uint8Array }[] = [];
@@ -567,11 +569,29 @@ export async function programFile(): Promise<void> {
             pages.push({ address: pageAddress, data: pageData });
         }
 
+        // Erase all pages in the entire flash memory first
+        // (UPDI parts don't have a single flash erase command, so each page must be erased individually)
+        const totalFlashPages = memorySize / pageSize;
+        log(`Erasing ${totalFlashPages} flash pages...`, 'info');
+        
+        progressDivEl.style.display = 'block';
+        progressBarEl.classList.add('program-progress-bar-erase');
+        
+        for (let i = 0; i < totalFlashPages; i++) {
+            const pageAddress = startAddress + (i * pageSize);
+            await app.eraseFlashPage(pageAddress);
+            
+            // Update progress bar for erasing
+            const eraseProgress = Math.round(((i + 1) / totalFlashPages) * 100);
+            progressBarEl.style.width = `${eraseProgress}%`;
+            progressTextEl.textContent = `Erasing: ${i + 1}/${totalFlashPages} pages (${eraseProgress}%)`;
+        }
+        
+        log(`Erased ${totalFlashPages} flash pages`, 'success');
+        progressBarEl.classList.remove('program-progress-bar-erase');
+
         // Write all pages to flash
         log(`Writing ${pages.length} pages...`, 'info');
-        const progressDivEl = getElement<HTMLDivElement>('program-progress')!;
-        const progressBarEl = getElement<HTMLDivElement>('program-progress-bar')!;
-        const progressTextEl = getElement<HTMLElement>('program-progress-text')!;
         progressDivEl.style.display = 'block';
         
         for (let i = 0; i < pages.length; i++) {

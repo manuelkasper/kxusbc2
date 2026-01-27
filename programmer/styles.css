@@ -349,6 +349,10 @@ button {
     background-color: #FF9800;
 }
 
+#program-progress-bar.program-progress-bar-erase {
+    background-color: #dc3545;
+}
+
 #program-progress-bar.program-progress-bar-complete {
     background-color: #4CAF50;
 }

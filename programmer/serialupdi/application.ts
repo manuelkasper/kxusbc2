@@ -446,4 +446,15 @@ export class UpdiApplication {
     }
     await this.nvm.writeUserRow(address, data);
   }
+
+  /**
+   * Erase a flash page
+   * @param address address of the page to erase
+   */
+  async eraseFlashPage(address: number): Promise<void> {
+    if (!this.nvm) {
+      throw new Error('NVM driver not initialized');
+    }
+    await this.nvm.eraseFlashPage(address);
+  }
 }
