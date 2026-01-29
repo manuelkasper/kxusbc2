@@ -11,16 +11,34 @@ Before installing the KXUSBC2, ensure you have:
 - Basic soldering skills and equipment
 - A replacement left side aluminum panel with USB-C opening
 - Thermal pad (10 x 6 mm, 4 mm height)
-- Heat shrink tube (2 pcs., 2.5 x 15 mm)
-- If your KX2 doesn't already have a factory-installed KXIBC2:
-  - Receptacle pins (Mill-Max 8827-0-15-15-16-27-04-0) <img src="/hardware/photos/8827-0-15-15-16-27-04-0.jpg" alt="Receptacle pin" width="60" style="vertical-align: middle">
+- Heat shrink tube (2.5 x 15 mm)
+- If your KX2 is older and doesn't have factory-installed receptacles on the B and E pads:
+  - 2 pcs. Receptacle pins ([Mill-Max 8827-0-15-15-16-27-04-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/8827-0-15-15-16-27-04-0/4440738)) <img src="/hardware/photos/8827-0-15-15-16-27-04-0.jpg" alt="Receptacle pin" width="60" style="vertical-align: middle">
 - If the wires are not already installed on your KXUSBC2:
   - White/red silicone wires (22 AWG)
-  - Mating pins (Mill-Max 3132-0-00-15-00-00-08-0) <img src="/hardware/photos/3132-0-00-15-00-00-08-0.jpg" alt="Mating pin" width="60" style="vertical-align: middle">
+  - 2 pcs. Mating pins ([Mill-Max 3132-0-00-15-00-00-08-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/3132-0-00-15-00-00-08-0/413214)) <img src="/hardware/photos/3132-0-00-15-00-00-08-0.jpg" alt="Mating pin" width="60" style="vertical-align: middle">
+- If the metal standoffs are not already installed on your KXUSBC2:
+  - 2 pcs. Standoff M2.5 3 mm height
+    Würth Electronics 9774030151R
+    DigiKey [732-7083-1-ND](https://www.digikey.com/en/products/detail/würth-elektronik/9774030151R/5320626)
 
 ### Preparing the KXUSBC2
 
-If the wires on your KXUSBC2 aren't already installed, then you need to do the following:
+#### Soldering the standoffs
+
+If the standoffs on your KXUSBC2 aren't already soldered, do the following:
+
+1. Place a standoff in one of the holes on the top (component) side.
+2. Heat the standoff, and the area around it, with hot air at 200 °C for 30 seconds.
+3. Quickly hold your soldering iron against the side of the standoff and the pad and apply solder around the standoff. Keep heating the standoff until the solder is evenly distributed and melted all around.
+4. Remove soldering iron and let the solder joint cool down. The standoff should drop into place and center itself on its own.
+5. Flip the board and inspect the bottom side. If not enough solder has migrated through the hole to solder the end of the standoff to the bottom pad, repeat steps 2-3 to solder the bottom as well. This serves to increase the mechanical strength. Be careful not to get solder inside the thread.
+
+[add photo of top and bottom standoff solder detail]
+
+#### Installing the wires
+
+If the wires on your KXUSBC2 aren't already installed, do the following:
 
 1. Cut ~50 mm pieces of white and red silicone wire.
 2. Strip 3 mm of the insulation on one end of each wire.
@@ -34,9 +52,16 @@ If the wires on your KXUSBC2 aren't already installed, then you need to do the f
 
 <img src="/hardware/photos/pcb_wires.jpg" alt="PCB with wires" width="500">
 
+#### Adding insulating tape
+
+As the clearance to the back cover is very small, insulating tape (Kapton preferred) should be applied to the top edge of the PCB as follows:
+
+[add photo of Kapton tape]
+
+
 ### Preparing the KX2
 
-If you already have a KXIBC2 that was installed using the method used at the Elecraft factory (with pins/sockets), then you can skip this section and simply remove the KXIBC2.
+If you have a newer KX2 that already has pin receptacles on the B and E pads or have installed a KXIBC2 before, then you can skip this section.
 
 Otherwise, perform the following step (see also the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downloads/E740370-B5,%20KXIBC2%20manual.pdf), as the procedure is the same):
 
@@ -48,9 +73,9 @@ Otherwise, perform the following step (see also the [KXIBC2 installation guide](
 
 Inspect your replacement side panel. The back side should have the black coating removed and bare metal exposed on those parts that make contact with metal parts of the KX2’s chassis – like on the original side panel. If not, then you will need to do that yourself to ensure proper grounding. A Dremel or similar power tool works best (use eye protection!). Hand sanding with sand paper can be tedious.
 
-Make sure to also remove the coating around the screw holes near the bottom edge, as the standoffs on the KXUSBC2 board make electrical contact there for grounding.
+Make sure to also remove the coating around the screw holes near the edge, as the standoffs on the KXUSBC2 board make electrical contact there for grounding.
 
-[add photo of side panel back with coating removed]
+<img src="/hardware/photos/side_panel_back_original.jpg" alt="Backside of original side panel" width="500">
 
 ### Hardware Installation
 
@@ -60,21 +85,19 @@ Make sure to also remove the coating around the screw holes near the bottom edge
 2. **Remove the left side panel**
    - Unscrew the 4 screws holding the original left side panel. Make note of which screw goes where: the screws that hold the KXUSBC2 in place are longer and use a finer thread.
 
-[TBD: add instructions on how to solder and place thermistor before installation, if desired]
-
 3. **Install the KXUSBC2 board**
    - Plug the KXUSBC2 into the slot reserved for KXIBC2/KXIO2 options.
    - Ensure the board is properly seated.
 
 4. **Connect power wires**
-   - Slip heat shrink tubing onto the white and red wires from the KXUSBC2.
+   - Slip heat shrink tubing onto the red and white (optional) wires from the KXUSBC2.
    - Plug the wires into the receptacles on the KX2 RF PCB (E = white, B = red).
    - Slide the heat shrink tubing over the pins to prevent short-circuits (no need to shrink the tubing, and can in fact make it hard to remove if desired).
      
      <img src="/hardware/photos/wires_connected.jpg" alt="Wires connected to KX2" width="500">
 
 5. **Place thermal pad**
-   - Place the thermal pad over U1 as shown in the photo, such that it doesn't collide with the protrusion on the KX2's back cover.
+   - Place the thermal pad over U1 as shown in the photo, such that it doesn't collide with the protrusion on the KX2's back cover. Remove the protective film on both sides before using.
      
      <img src="/hardware/photos/thermal_pad.jpg" alt="Thermal pad placement" width="500">
 

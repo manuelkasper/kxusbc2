@@ -71,7 +71,7 @@ The schematic/PCB was designed with KiCad, and the firmware was written to be co
 
 ## Current state of the project
 
-The second revision of the PCB (rev2) is currently being tested by several beta testers around the world. The hardware and firmware are almost complete, with only minor issues remaining (see the issues page).
+The PCB has gone through three revisions and is now at rev3, which is considered to be production-ready. rev2 boards have been tested by seven beta testers around the world, and all have worked on first try. The firmware is considered to be complete. See the issues page for any open issues or ideas for future revisions.
 
 
 ### Disclaimer
@@ -83,7 +83,7 @@ Elecraft ® is a registered trademark of Elecraft, Inc. This project is not affi
 
 ### License
 
-© 2025 Manuel Kasper HB9DQM.
+© 2025-2026 Manuel Kasper HB9DQM.
 
 This source describes Open Hardware and is licensed under the CERN-OHL-W v2.
 
