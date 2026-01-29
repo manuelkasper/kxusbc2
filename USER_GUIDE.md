@@ -4,111 +4,89 @@
 
 ### Prerequisites
 
-Before installing the KXUSBC2, ensure you have:
-
-- An Elecraft KX2 transceiver
-- A 3S (12.6 V) internal Li-Ion battery (or 4S LiFePO₄ with firmware configuration)
-- Basic soldering skills and equipment
-- A replacement left side aluminum panel with USB-C opening
+**Required:**
+- Elecraft KX2 transceiver
+- 3S (12.6 V) Li-Ion battery (or 4S LiFePO₄ with firmware configuration)
+- Replacement left side aluminum panel with USB-C opening
 - Thermal pad (10 x 6 mm, 4 mm height)
 - Heat shrink tube (2.5 x 15 mm)
-- If your KX2 is older and doesn't have factory-installed receptacles on the B and E pads:
-  - 2 pcs. Receptacle pins ([Mill-Max 8827-0-15-15-16-27-04-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/8827-0-15-15-16-27-04-0/4440738)) <img src="/hardware/photos/8827-0-15-15-16-27-04-0.jpg" alt="Receptacle pin" width="60" style="vertical-align: middle">
-- If the wires are not already installed on your KXUSBC2:
-  - White/red silicone wires (22 AWG)
-  - 2 pcs. Mating pins ([Mill-Max 3132-0-00-15-00-00-08-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/3132-0-00-15-00-00-08-0/413214)) <img src="/hardware/photos/3132-0-00-15-00-00-08-0.jpg" alt="Mating pin" width="60" style="vertical-align: middle">
-- If the metal standoffs are not already installed on your KXUSBC2:
-  - 2 pcs. Standoff M2.5 3 mm height
-    Würth Electronics 9774030151R
-    DigiKey [732-7083-1-ND](https://www.digikey.com/en/products/detail/würth-elektronik/9774030151R/5320626)
+
+**Optional (if not pre-installed):**
+- 2 pcs. Receptacle pins ([Mill-Max 8827-0-15-15-16-27-04-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/8827-0-15-15-16-27-04-0/4440738)) – for older KX2 models without factory installed pins <img src="/hardware/photos/8827-0-15-15-16-27-04-0.jpg" alt="Receptacle pin" width="60" style="vertical-align: middle">
+- White/red silicone wires (22 AWG) and 2 pcs. mating pins ([Mill-Max 3132-0-00-15-00-00-08-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/3132-0-00-15-00-00-08-0/413214)) <img src="/hardware/photos/3132-0-00-15-00-00-08-0.jpg" alt="Mating pin" width="60" style="vertical-align: middle">
+- 2 pcs. Standoff M2.5 3 mm height (Würth Electronics 9774030151R, [DigiKey 732-7083-1-ND](https://www.digikey.com/en/products/detail/würth-elektronik/9774030151R/5320626)) <img src="/hardware/photos/standoff.jpg" alt="Standoff" width="60" style="vertical-align: middle">
 
 ### Preparing the KXUSBC2
 
 #### Soldering the standoffs
 
-If the standoffs on your KXUSBC2 aren't already soldered, do the following:
-
-1. Place a standoff in one of the holes on the top (component) side.
-2. Heat the standoff, and the area around it, with hot air at 200 °C for 30 seconds.
-3. Quickly hold your soldering iron against the side of the standoff and the pad and apply solder around the standoff. Keep heating the standoff until the solder is evenly distributed and melted all around.
-4. Remove soldering iron and let the solder joint cool down. The standoff should drop into place and center itself on its own.
-5. Flip the board and inspect the bottom side. If not enough solder has migrated through the hole to solder the end of the standoff to the bottom pad, repeat steps 2-3 to solder the bottom as well. This serves to increase the mechanical strength. Be careful not to get solder inside the thread.
+1. Place a standoff in a hole on the component side
+2. Heat with hot air at 200 °C for 30 seconds
+3. Hold soldering iron to the side of standoff and pad, and apply solder evenly around the standoff
+4. Let cool and verify the standoff is centered
+5. Inspect the bottom side; if not enough solder has migrated through the hole, repeat steps 2-3 on the bottom side for increased mechanical strength (avoid getting solder in thread)
 
 [add photo of top and bottom standoff solder detail]
 
 #### Installing the wires
 
-If the wires on your KXUSBC2 aren't already installed, do the following:
-
-1. Cut ~50 mm pieces of white and red silicone wire.
-2. Strip 3 mm of the insulation on one end of each wire.
-3. Solder gold mating pins (those with the wider shoulder) to both wires.
-4. Trim the wires such that the total length from the tip of the gold pin is as follows:
-   * E (white): 31 mm
-   * B (red): 43 mm
-5. Strip 3 mm of the insulation from the open ends of the wires.
-6. Solder the wires to the KXUSBC2 PCB. The wires enter the PCB on the bottom side and are soldered on the top side.
-7. Trim the excess wires close to the board, to prevent shorts against the side panel.
+1. Cut ~50 mm pieces of white and red silicone wire
+2. Strip 3 mm insulation on one end of each wire
+3. Solder gold mating pins (those with the wide shoulder) to both wires
+4. Trim to total length from pin tip:
+   - E (white): 31 mm
+   - B (red): 43 mm
+5. Strip 3 mm from open ends and solder to KXUSBC2 PCB
+6. Trim excess wire close to board to prevent shorts to side panel
 
 <img src="/hardware/photos/pcb_wires.jpg" alt="PCB with wires" width="500">
 
 #### Adding insulating tape
 
-As the clearance to the back cover is very small, insulating tape (Kapton preferred) should be applied to the top edge of the PCB as follows:
+Apply insulating tape (Kapton preferred) to the top edge of the PCB to prevent shorts due to the small clearance to the back cover.
 
 [add photo of Kapton tape]
 
 
 ### Preparing the KX2
 
-If you have a newer KX2 that already has pin receptacles on the B and E pads or have installed a KXIBC2 before, then you can skip this section.
+**Skip this section** if your KX2 already has receptacles on the B and E pads or you've installed a KXIBC2 before.
 
-Otherwise, perform the following step (see also the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downloads/E740370-B5,%20KXIBC2%20manual.pdf), as the procedure is the same):
+**Solder receptacles to KX2 RF PCB:**
+1. Solder long, slim gold pin receptacles (Mill-Max 8827-0-15-15-16-27-04-0) to the E and B pads
+2. If pads are filled with solder, pre-heat with hot air and use solder wick
+3. RF PCB can be removed for easier soldering on the bottom, or soldered in place
 
-1. Solder the long, slim gold pin receptacles (Mill-Max 8827-0-15-15-16-27-04-0) to the E and B pads of the KX2 RF PCB. The E pad may be filled with solder, making this a bit difficult. Pre-heating with hot air and then using solder wick helps. One can remove the RF PCB in order to solder the pins properly on the bottom, but it can also be done in place on the top side.
+See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downloads/E740370-B5,%20KXIBC2%20manual.pdf) for reference.
 
 <img src="/hardware/photos/kx2_rf_pcb/rf_pcb_jacks.jpg" alt="Receptacles on KX2 RF PCB" width="500">
 
+
 ### Preparing the side panel
 
-Inspect your replacement side panel. The back side should have the black coating removed and bare metal exposed on those parts that make contact with metal parts of the KX2’s chassis – like on the original side panel. If not, then you will need to do that yourself to ensure proper grounding. A Dremel or similar power tool works best (use eye protection!). Hand sanding with sand paper can be tedious.
-
-Make sure to also remove the coating around the screw holes near the edge, as the standoffs on the KXUSBC2 board make electrical contact there for grounding.
+- Remove black coating from the back side to expose bare metal (where it contacts the KX2 chassis)
+- Remove coating around screw holes near the edge (for grounding via standoffs)
+- Use a Dremel or similar power tool (wear eye protection) for efficiency
 
 <img src="/hardware/photos/side_panel_back_original.jpg" alt="Backside of original side panel" width="500">
 
 ### Hardware Installation
 
-1. **Open the KX2**
-   - Remove the back cover to access the internal components.
-
-2. **Remove the left side panel**
-   - Unscrew the 4 screws holding the original left side panel. Make note of which screw goes where: the screws that hold the KXUSBC2 in place are longer and use a finer thread.
-
-3. **Install the KXUSBC2 board**
-   - Plug the KXUSBC2 into the slot reserved for KXIBC2/KXIO2 options.
-   - Ensure the board is properly seated.
-
-4. **Connect power wires**
-   - Slip heat shrink tubing onto the red and white (optional) wires from the KXUSBC2.
-   - Plug the wires into the receptacles on the KX2 RF PCB (E = white, B = red).
-   - Slide the heat shrink tubing over the pins to prevent short-circuits (no need to shrink the tubing, and can in fact make it hard to remove if desired).
-     
+1. Remove the KX2 back cover
+2. Unscrew the 4 screws from the left side panel (note: longer screws with finer thread hold the KXUSBC2)
+3. Plug KXUSBC2 board into the KXIBC2/KXIO2 slot and ensure it's properly seated
+4. Connect power wires:
+   - Slide heat shrink tubing onto red and white (optional) wires
+   - Plug into KX2 RF PCB receptacles (E = white, B = red)
+   - Slide tubing over pins (no need to heat shrink)
      <img src="/hardware/photos/wires_connected.jpg" alt="Wires connected to KX2" width="500">
-
-5. **Place thermal pad**
-   - Place the thermal pad over U1 as shown in the photo, such that it doesn't collide with the protrusion on the KX2's back cover. Remove the protective film on both sides before using.
-     
-     <img src="/hardware/photos/thermal_pad.jpg" alt="Thermal pad placement" width="500">
-
-6. **Install the replacement side panel**
-   - Make sure to use the right screws for the right holes, or you will damage the thread.
-
-7. **Enable KXIBC2 option in KX2 menu**
-   - Turn on the KX2 and go into the settings menu.
-   - Find the KXIBC2 option and set it to "NOR".
-   - This will enable the RTC and battery voltage display functions.
-   - If you can't find the KXIBC2 option in the menu, you need to update the KX2 firmware.
+5. Place thermal pad over U1 (remove protective film from both sides first; ensure pad doesn't collide with back cover)
+   <img src="/hardware/photos/thermal_pad.jpg" alt="Thermal pad placement" width="500">
+7. Install the replacement side panel using correct screws for each hole
+8. Enable KXIBC2 in KX2 menu:
+   - Turn on KX2 and go to settings
+   - Set KXIBC2 option to "NOR" (enables RTC and battery voltage display)
+   - Update KX2 firmware if option is not present
 
 ---
 
