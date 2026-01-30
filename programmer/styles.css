@@ -391,3 +391,43 @@ button {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
 }
+
+/* Fuses Display Styles */
+.fuses-display {
+    font-family: 'Courier New', monospace;
+    background-color: #f8f9fa;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+    margin-bottom: 1em;
+}
+
+.fuse-byte {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 3px;
+    background-color: #e9ecef;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.fuse-byte.mismatch {
+    background-color: #fff3cd;
+    border: 1px solid #ffc107;
+}
+
+.fuse-byte.mismatch::after {
+    content: ' ⚠️';
+}
+
+.fuses-status {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+.fuses-ok {
+    color: #28a745;
+    font-size: 24px;
+}

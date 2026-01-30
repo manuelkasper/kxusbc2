@@ -11,6 +11,11 @@ export interface DeviceInfo {
   flash_page_size?: number;
   flash_read_size?: number;
   flash_write_size?: number;
+  fuses_address?: number;
+  fuses_size?: number;
+  fuses_page_size_bytes?: number;
+  fuses_read_size_bytes?: number;
+  fuses_write_size_bytes?: number;
   user_row_address?: number;
   user_row_size?: number;
   user_row_page_size?: number;
@@ -34,6 +39,11 @@ export const ATTINY3226_DEVICE: DeviceInfo = {
   flash_page_size: 0x80,
   flash_read_size: 0x02,
   flash_write_size: 0x80,
+  fuses_address: 0x1280,
+  fuses_size: 0x09,
+  fuses_page_size_bytes: 0x01,
+  fuses_read_size_bytes: 0x01,
+  fuses_write_size_bytes: 0x01,
   user_row_address: 0x1300,
   user_row_size: 0x20,
   user_row_page_size: 0x01,

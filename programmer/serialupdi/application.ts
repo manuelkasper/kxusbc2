@@ -448,6 +448,18 @@ export class UpdiApplication {
   }
 
   /**
+   * Write a single fuse byte
+   * @param address fuse address to write to
+   * @param data data byte to write
+   */
+  async writeFuse(address: number, data: Uint8Array): Promise<void> {
+    if (!this.nvm) {
+      throw new Error('NVM driver not initialized');
+    }
+    await this.nvm.writeFuse(address, data);
+  }
+
+  /**
    * Erase a flash page
    * @param address address of the page to erase
    */

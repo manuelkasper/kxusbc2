@@ -16,6 +16,9 @@ const EEPROM_MAGIC = 0x4355;            // Magic value for configuration validat
 const MAX_FILE_SIZE = 1024 * 1024;      // 1MB file size limit
 const PROGRESS_COMPLETE_DELAY = 2000;   // milliseconds
 
+// Desired fuses configuration (9 bytes)
+const DESIRED_FUSES = new Uint8Array([0x00, 0x4A, 0x7E, 0xFF, 0xFF, 0xF6, 0xFF, 0x00, 0x00]);
+
 // EEPROM configuration field IDs for form elements
 const EEPROM_CONFIG_FIELD_IDS = [
     'config-role',
@@ -283,11 +286,12 @@ function handleError(error: unknown, defaultMessage: string): string {
  * - Connect button only enabled when disconnected
  * - Disconnect button only enabled when connected
  * - EEPROM buttons only enabled when connected
+ * - Fuses buttons only enabled when connected
  * - Program file button only enabled when connected AND file is loaded
  */
 function disableConnectionButtons(connected: boolean): void {
     // Buttons that should only be available when connected
-    const programmingButtons = ['btn-read-eeprom', 'btn-save-eeprom', 'btn-reset-eeprom'];
+    const programmingButtons = ['btn-read-eeprom', 'btn-save-eeprom', 'btn-reset-eeprom', 'btn-program-fuses'];
     
     for (const id of programmingButtons) {
         const btn = getElement<HTMLButtonElement>(id);
@@ -386,6 +390,16 @@ export async function connectSerial(): Promise<void> {
         } catch (error) {
             log(`Error reading EEPROM configuration: ${handleError(error, 'Unknown error')}`, 'error');
         }
+
+        // Automatically read fuses configuration after successful connection
+        try {
+            log('Reading fuses configuration...', 'info');
+            const fuses = await readFusesConfiguration();
+            renderFusesConfiguration(fuses);
+            showFusesConfiguration();
+        } catch (error) {
+            log(`Error reading fuses configuration: ${handleError(error, 'Unknown error')}`, 'error');
+        }
     } catch (error) {
         log(`Connection failed: ${handleError(error, 'Unknown error')}`, 'error');
         updateStatus('disconnected');
@@ -429,6 +443,7 @@ export async function disconnectSerial(): Promise<void> {
             updateStatus('disconnected');
             disableConnectionButtons(false);
             hideEepromConfiguration();
+            hideFusesConfiguration();
         }
     } catch (error) {
         log(`Disconnect failed: ${handleError(error, 'Unknown error')}`, 'error');
@@ -921,6 +936,178 @@ function handleResetEepromConfiguration(): void {
 }
 
 /**
+ * Read fuses configuration from device memory.
+ * Reads raw fuses bytes from the device.
+ * @returns Uint8Array containing the fuses data
+ * @throws Error if device read fails
+ */
+async function readFusesConfiguration(): Promise<Uint8Array> {
+    checkConnected();
+
+    try {
+        const fusesAddress = selectedDevice.fuses_address;
+        const fusesSize = selectedDevice.fuses_size;
+
+        if (fusesAddress === undefined || fusesSize === undefined) {
+            throw new Error('Fuses address or size not defined for device');
+        }
+
+        log(`Reading ${fusesSize} fuse bytes from ${formatHex(fusesAddress)}...`, 'info');
+        const fuses = await app!.readData(fusesAddress, fusesSize);
+        
+        log('Successfully read fuses from device', 'success');
+        return fuses;
+    } catch (error) {
+        throw new Error(`Failed to read fuses: ${handleError(error, 'Unknown error')}`);
+    }
+}
+
+/**
+ * Write fuses configuration to device.
+ * Writes fuses bytes one at a time using writeFuse.
+ * @param fuses - Fuses data to write
+ * @throws Error if write fails
+ */
+async function writeFusesConfiguration(fuses: Uint8Array): Promise<void> {
+    checkConnected();
+
+    try {
+        const fusesAddress = selectedDevice.fuses_address;
+        const fusesSize = selectedDevice.fuses_size;
+
+        if (fusesAddress === undefined || fusesSize === undefined) {
+            throw new Error('Fuses address or size not defined for device');
+        }
+
+        if (fuses.length !== fusesSize) {
+            throw new Error(`Fuses data size mismatch: expected ${fusesSize} bytes, got ${fuses.length}`);
+        }
+
+        log(`Writing ${fusesSize} fuse bytes to ${formatHex(fusesAddress)}...`, 'info');
+        
+        // Write each fuse byte individually
+        for (let i = 0; i < fuses.length; i++) {
+            const fuseAddress = fusesAddress + i;
+            const fuseByte = new Uint8Array([fuses[i]]);
+            await app!.writeFuse(fuseAddress, fuseByte);
+            log(`Wrote fuse ${i}: ${formatByte(fuses[i])} to ${formatHex(fuseAddress)}`, 'info');
+        }
+        
+        log('Successfully wrote fuses to device', 'success');
+    } catch (error) {
+        throw new Error(`Failed to write fuses: ${handleError(error, 'Unknown error')}`);
+    }
+}
+
+/**
+ * Render fuses configuration values to UI.
+ * Displays fuse bytes in hex with warning if they don't match desired values.
+ * @param fuses - Fuses data to display
+ */
+function renderFusesConfiguration(fuses: Uint8Array): void {
+    const fusesDisplay = getElement<HTMLDivElement>('fuses-display');
+    if (!fusesDisplay) return;
+
+    fusesDisplay.innerHTML = '';
+    let allMatch = true;
+
+    for (let i = 0; i < fuses.length; i++) {
+        const byteSpan = document.createElement('span');
+        byteSpan.className = 'fuse-byte';
+        
+        const byteValue = fuses[i];
+        const desiredValue = DESIRED_FUSES[i];
+        
+        byteSpan.textContent = formatByte(byteValue).substring(2); // Remove '0x' prefix
+        
+        if (byteValue !== desiredValue) {
+            byteSpan.classList.add('mismatch');
+            byteSpan.title = `Mismatch! Expected ${formatByte(desiredValue)}`;
+            allMatch = false;
+        }
+        
+        fusesDisplay.appendChild(byteSpan);
+    }
+
+    // Add status indicator
+    const statusSpan = document.createElement('span');
+    statusSpan.id = 'fuses-status';
+    statusSpan.className = 'fuses-status';
+    if (allMatch) {
+        statusSpan.innerHTML = '<span class="fuses-ok">✓</span>';
+    }
+    fusesDisplay.appendChild(statusSpan);
+}
+
+/**
+ * Show the fuses configuration container
+ */
+function showFusesConfiguration(): void {
+    const fusesContainer = getElement<HTMLDivElement>('fuses-container');
+    if (fusesContainer) {
+        fusesContainer.style.display = 'block';
+    }
+}
+
+/**
+ * Hide the fuses configuration container
+ */
+function hideFusesConfiguration(): void {
+    const fusesContainer = getElement<HTMLDivElement>('fuses-container');
+    if (fusesContainer) {
+        fusesContainer.style.display = 'none';
+    }
+}
+
+/**
+ * Handle read fuses button click.
+ * Reads fuses from device and displays them.
+ */
+async function handleReadFuses(): Promise<void> {
+    try {
+        const fuses = await readFusesConfiguration();
+        renderFusesConfiguration(fuses);
+        showFusesConfiguration();
+    } catch (error) {
+        log(`Error reading fuses: ${handleError(error, 'Unknown error')}`, 'error');
+    }
+}
+
+/**
+ * Handle program fuses button click.
+ * Programs the desired fuses to the device and reads them back to verify.
+ */
+async function handleProgramFuses(): Promise<void> {
+    try {
+        log('Programming fuses with desired values...', 'info');
+        await writeFusesConfiguration(DESIRED_FUSES);
+        
+        log('Verifying fuses...', 'info');
+        const readBackFuses = await readFusesConfiguration();
+        
+        // Verify that the fuses match desired values
+        let allMatch = true;
+        for (let i = 0; i < DESIRED_FUSES.length; i++) {
+            if (readBackFuses[i] !== DESIRED_FUSES[i]) {
+                allMatch = false;
+                log(`Fuse verification failed at byte ${i}: wrote ${formatByte(DESIRED_FUSES[i])} but read ${formatByte(readBackFuses[i])}`, 'error');
+            }
+        }
+        
+        if (allMatch) {
+            log('Fuses programmed and verified successfully', 'success');
+        } else {
+            log('Fuses programmed but verification failed', 'error');
+        }
+        
+        renderFusesConfiguration(readBackFuses);
+        showFusesConfiguration();
+    } catch (error) {
+        log(`Error programming fuses: ${handleError(error, 'Unknown error')}`, 'error');
+    }
+}
+
+/**
  * Check if the browser supports the Web Serial API
  */
 function checkWebSerialSupport(): void {
@@ -957,7 +1144,8 @@ export function initializeUI(): void {
         programFileInput: getElement<HTMLInputElement>('program-file'),
         programFileBtn: getElement<HTMLButtonElement>('btn-program-file'),
         saveEepromBtn: getElement<HTMLButtonElement>('btn-save-eeprom'),
-        resetEepromBtn: getElement<HTMLButtonElement>('btn-reset-eeprom')
+        resetEepromBtn: getElement<HTMLButtonElement>('btn-reset-eeprom'),
+        programFusesBtn: getElement<HTMLButtonElement>('btn-program-fuses')
     };
     
     if (elements.connectBtn) elements.connectBtn.addEventListener('click', connectSerial);
@@ -968,6 +1156,7 @@ export function initializeUI(): void {
     if (elements.programFileBtn) elements.programFileBtn.addEventListener('click', programFile);
     if (elements.saveEepromBtn) elements.saveEepromBtn.addEventListener('click', handleSaveEepromConfiguration);
     if (elements.resetEepromBtn) elements.resetEepromBtn.addEventListener('click', handleResetEepromConfiguration);
+    if (elements.programFusesBtn) elements.programFusesBtn.addEventListener('click', handleProgramFuses);
         
     // Log initialization message
     log('KXUSBC2 Programmer initialized and ready', 'info');
