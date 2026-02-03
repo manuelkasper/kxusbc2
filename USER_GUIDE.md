@@ -12,9 +12,10 @@
 - Heat shrink tube (2.5 x 15 mm)
 
 **Optional (if not pre-installed):**
-- 2 pcs. Receptacle pins ([Mill-Max 8827-0-15-15-16-27-04-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/8827-0-15-15-16-27-04-0/4440738)) – for older KX2 models without factory installed pins <img src="/hardware/photos/8827-0-15-15-16-27-04-0.jpg" alt="Receptacle pin" width="60" style="vertical-align: middle">
-- White/red silicone wires (22 AWG) and 2 pcs. mating pins ([Mill-Max 3132-0-00-15-00-00-08-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/3132-0-00-15-00-00-08-0/413214)) <img src="/hardware/photos/3132-0-00-15-00-00-08-0.jpg" alt="Mating pin" width="60" style="vertical-align: middle">
+- 2 pcs. receptacle pins ([Mill-Max 8827-0-15-15-16-27-04-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/8827-0-15-15-16-27-04-0/4440738)) – for older KX2 models without factory installed pins <img src="/hardware/photos/8827-0-15-15-16-27-04-0.jpg" alt="Receptacle pin" width="60" style="vertical-align: middle">
+- 2 pcs. mating pins ([Mill-Max 3132-0-00-15-00-00-08-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/3132-0-00-15-00-00-08-0/413214)) <img src="/hardware/photos/3132-0-00-15-00-00-08-0.jpg" alt="Mating pin" width="60" style="vertical-align: middle">
 - 2 pcs. Standoff M2.5 3 mm height (Würth Electronics 9774030151R, [DigiKey 732-7083-1-ND](https://www.digikey.com/en/products/detail/würth-elektronik/9774030151R/5320626)) <img src="/hardware/photos/standoff.jpg" alt="Standoff" width="60" style="vertical-align: middle">
+- White/red silicone wires (22 AWG), ~50 mm ea.
 
 ### Preparing the KXUSBC2
 
@@ -53,9 +54,9 @@ Apply insulating tape (Kapton preferred) to the top edge of the PCB to prevent s
 **Skip this section** if your KX2 already has receptacles on the B and E pads or you've installed a KXIBC2 before.
 
 **Solder receptacles to KX2 RF PCB:**
-1. Solder long, slim gold pin receptacles (Mill-Max 8827-0-15-15-16-27-04-0) to the E and B pads
-2. If pads are filled with solder, pre-heat with hot air and use solder wick
-3. RF PCB can be removed for easier soldering on the bottom, or soldered in place
+- Solder long, slim gold pin receptacles (Mill-Max 8827-0-15-15-16-27-04-0) to the E and B pads
+- If pads are filled with solder, pre-heat with hot air and use solder wick
+- RF PCB can be removed for easier soldering on the bottom, or soldered in place
 
 See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downloads/E740370-B5,%20KXIBC2%20manual.pdf) for reference.
 
@@ -79,8 +80,10 @@ See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downl
    - Slide heat shrink tubing onto red and white (optional) wires
    - Plug into KX2 RF PCB receptacles (E = white, B = red)
    - Slide tubing over pins (no need to heat shrink)
+
      <img src="/hardware/photos/wires_connected.jpg" alt="Wires connected to KX2" width="500">
 5. Place thermal pad over U1 (remove protective film from both sides first; ensure pad doesn't collide with back cover)
+   
    <img src="/hardware/photos/thermal_pad.jpg" alt="Thermal pad placement" width="500">
 7. Install the replacement side panel using correct screws for each hole
 8. Enable KXIBC2 in KX2 menu:
