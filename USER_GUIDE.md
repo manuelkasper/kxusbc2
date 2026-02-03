@@ -25,9 +25,10 @@
 2. Heat with hot air at 200 °C for 30 seconds
 3. Hold soldering iron to the side of standoff and pad, and apply solder evenly around the standoff
 4. Let cool and verify the standoff is centered
-5. Inspect the bottom side; if not enough solder has migrated through the hole, repeat steps 2-3 on the bottom side for increased mechanical strength (avoid getting solder in thread)
+5. Inspect the bottom side; ideally some solder has migrated through the hole for mechanical strength
 
-[add photo of top and bottom standoff solder detail]
+<img src="/hardware/photos/standoff_detail_top.jpg" alt="Standoff detail top" height="250">  
+<img src="/hardware/photos/standoff_detail_bottom.jpg" alt="Standoff detail bottom" height="250">
 
 #### Installing the wires
 
