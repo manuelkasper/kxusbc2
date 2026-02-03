@@ -82,7 +82,7 @@ See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downl
    - Slide tubing over pins (no need to heat shrink)
 
      <img src="/hardware/photos/wires_connected.jpg" alt="Wires connected to KX2" width="500">
-5. Place thermal pad over U1 (remove protective film from both sides first; ensure pad doesn't collide with back cover)
+5. Place thermal pad over U1, shifted slightly to the right so as not to collide with the back cover (remove protective film from both sides first)
    
    <img src="/hardware/photos/thermal_pad.jpg" alt="Thermal pad placement" width="500">
 7. Install the replacement side panel using correct screws for each hole
@@ -90,6 +90,10 @@ See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downl
    - Turn on KX2 and go to settings
    - Set KXIBC2 option to "NOR" (enables RTC and battery voltage display)
    - Update KX2 firmware if option is not present
+
+#### Thermistor (optional)
+
+A 10k NTC thermistor can optionally be connected between the marked pads (T and GND) on the backside of the board and attached to the battery pack with tape etc. The thermistor handling then needs to be enabled via the config button menu or the web based programmer (see below). It will reduce or inhibit charging/discharging if the battery temperature is too high or too low.
 
 ---
 
