@@ -47,7 +47,7 @@
 
 Apply insulating tape (Kapton preferred) to the top edge of the PCB to prevent shorts due to the small clearance to the back cover.
 
-[add photo of Kapton tape]
+<img src="/hardware/photos/kapton_tape.jpg" alt="Kapton tape applied to PCB" width="500">
 
 
 ### Preparing the KX2
