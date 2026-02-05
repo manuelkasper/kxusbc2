@@ -59,7 +59,9 @@ Apply insulating tape (Kapton preferred) to the top edge of the PCB to prevent s
 - If pads are filled with solder, pre-heat with hot air and use solder wick
 - RF PCB can be removed for easier soldering on the bottom, or soldered in place
 
-See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downloads/E740370-B5,%20KXIBC2%20manual.pdf) for reference.
+A simpler method (which makes removal more difficult, however) is not to install receptacles, but solder the pins from the KXUSBC2 directly to the B pad and the DC jack's center pin.
+
+See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downloads/E740370-B5,%20KXIBC2%20manual.pdf) for a detailed explanation of both methods.
 
 <img src="/hardware/photos/kx2_rf_pcb/rf_pcb_jacks.jpg" alt="Receptacles on KX2 RF PCB" width="500">
 
