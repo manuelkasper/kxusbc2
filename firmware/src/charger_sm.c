@@ -422,7 +422,7 @@ static uint16_t handle_discharging(void) {
 
     // Monitor battery voltage during discharging
     uint16_t vbat = bq_measure_vbat();
-    if (vbat < sysconfig->dischargingVoltageLimit) {
+    if (vbat > 0 && vbat < sysconfig->dischargingVoltageLimit) {
         if (!discharging_low_battery) {
             discharging_low_battery = true;
             debug_printf("SM: Battery voltage too low for discharging: %u mV < %u mV\n", 
