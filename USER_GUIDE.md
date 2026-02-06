@@ -41,7 +41,7 @@
 5. Strip 3 mm from open ends and solder to KXUSBC2 PCB
 6. Trim excess wire close to board to prevent shorts to side panel
 
-<img src="/hardware/photos/pcb_wires.jpg" alt="PCB with wires" width="500">
+<img src="/hardware/photos/pcb_bottom.jpg" alt="PCB with wires" width="500">
 
 #### Adding insulating tape
 
