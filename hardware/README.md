@@ -91,7 +91,7 @@ The graph above is taken from the BQ25792's datasheet. I've done some casual mea
 
 ## Power connection to the KX2
 
-Like the KXIBC2, the KXUSBC2 is intended to be wired to the “E” and “B” pads on the KX2 RFC PCB (under the battery) for connection to the external DC jack and the internal battery jack, respectively. Refer to the [KXIBC2 manual](https://ftp.elecraft.com/KX2/Manuals%20Downloads/E740370-B5,%20KXIBC2%20manual.pdf) for details.
+Like the KXIBC2, the KXUSBC2 is intended to be wired to the “E” and “B” pads on the KX2 RF PCB (under the battery) for connection to the external DC jack and the internal battery jack, respectively. Refer to the [KXIBC2 manual](https://ftp.elecraft.com/KX2/Manuals%20Downloads/E740370-B5,%20KXIBC2%20manual.pdf) for details.
 
 Wire lengths, measured from the pad on the KXUSBC2 to the tip of the connector pin attached to the wire: E 28 mm, B 40 mm.
 
