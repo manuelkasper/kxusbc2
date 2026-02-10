@@ -59,6 +59,21 @@ For more information and a PDF schematic, see the [hardware notes](hardware/READ
 Installing the KXUSBC2 is quite simple, and similar to the procedure for the KXIBC2. See the [User Guide](USER_GUIDE.md) for details.
 
 
+## Where to buy
+
+While it is possible to have the board and side panel manufactured by a PCB/CNC service like JLC based solely on the design files in this repository, this is not economically viable at very small quantities due to the setup and overhead costs.
+
+Online shops that sell the KXUSBC2 kit:
+
+* [g7ufo.radio Shop](https://shop.g7ufo.radio/products/kxusbc2)
+
+If you are interested in selling the KXUSBC2 in your shop and having it listed here, please contact me.
+
+Another option (for people who have some experience ordering and working with PCBs) would be to do group buys, e.g. within a club/association. All information required to do this can be found in the [hardware documentation](hardware/README.md).
+
+I am not selling the KXUSBC2 myself, so please do not send me emails with purchase enquiries.
+
+
 ## Firmware updates and configuration
 
 There is a web-based programmer at https://manuelkasper.github.io/kxusbc2/programmer/ that can flash firmware updates and allows easy UI-based configuration of the various settings (current limits etc.). All that is required is a simple UPDI adapter (essentially a USB-to-Serial TTL level adapter) and a browser that supports the Web Serial API.
@@ -83,7 +98,7 @@ Elecraft ® is a registered trademark of Elecraft, Inc. This project is not affi
 
 ### License
 
-© 2025-2026 Manuel Kasper HB9DQM.
+© 2025-2026 Manuel Kasper HB9DQM (mk@neon1.net).
 
 This source describes Open Hardware and is licensed under the CERN-OHL-W v2.
 
