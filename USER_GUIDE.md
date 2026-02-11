@@ -69,10 +69,10 @@ See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downl
 ### Preparing the side panel
 
 - Remove black coating from the back side to expose bare metal (where it contacts the KX2 chassis)
-- Remove coating around screw holes near the edge (for grounding via standoffs)
+- Remove coating around screw holes near USB-C and DC jack (for grounding via standoffs)
 - Use a Dremel or similar power tool (wear eye protection) for efficiency
 
-<img src="/hardware/photos/side_panel_back_original.jpg" alt="Backside of original side panel" width="500">
+<img src="/hardware/photos/side_panel_back_stripped.jpg" alt="Backside of side panel with coating stripped" width="500">
 
 ### Hardware Installation
 
