@@ -57,7 +57,7 @@ const DEFAULT_EEPROM_CONFIG: EepromConfig = {
     magic: EEPROM_MAGIC,
     role: 2,           // DRP
     pdMode: 2,         // PD 3.0
-    chargingCurrentLimit: 3000,
+    chargingCurrentLimit: 2000,
     chargingVoltageLimit: 12600,
     dcInputCurrentLimit: 3000,
     otgCurrentLimit: 3000,

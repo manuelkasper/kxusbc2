@@ -121,7 +121,7 @@ You can also charge from a 9-15 V supply connected to the KX2's external DC jack
 #### Charging behavior
 - The board automatically negotiates the best available voltage/current profile
 - Delay of 3 seconds for non-PD capable sources before charging begins
-- Default charging current: 3 A (configurable)
+- Default charging current: 2 A (configurable, max. 3 A)
 - Charging voltage: 12.6 V for 3S Li-Ion (configurable for other battery types)
 - The charger uses either USB-C or the DC jack input, whichever is connected first
 
@@ -234,7 +234,7 @@ Advanced settings can be configured via EEPROM. The web-based programmer at http
 
 - **Role**: SRC, SNK, DRP (default), TRY_SRC, TRY_SNK
 - **PD mode**: Off, PD 2.0, PD 3.0 (default)
-- **Charging current limit**: 50-5000 mA (default: 3000 mA)
+- **Charging current limit**: 50-5000 mA (default: 2000 mA)
 - **Charging voltage limit**: 10000-18800 mV (default: 12600 mV for 3S Li-Ion)
 - **DC input current limit**: 100-3300 mA (default: 3000 mA)
 - **OTG current limit**: 120-3320 mA (default: 3000 mA)

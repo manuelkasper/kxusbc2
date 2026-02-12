@@ -78,7 +78,7 @@ The following settings can be set in the EEPROM (see also the definitions in htt
 | 0 | Magic value (to detect erased EEPROM) | `uint16` | 0x4355
 | 2 | Role | Enum<ul><li>0: SRC</li><li>1: SNK</li><li>2: DRP</li><li>3: TRY_SRC</li><li>4: TRY_SNK</li></ul> | 2: DRP
 | 3 | PD mode | Enum<ul><li>0: Off</li><li>1: PD 2.0</li><li>2: PD 3.0</li></ul> | 2: PD 3.0
-| 4 | Charging current limit (mA, max. current into battery) | `uint16` | 3000 | 50…5000
+| 4 | Charging current limit (mA, max. current into battery) | `uint16` | 2000 | 50…5000
 | 6 | Charging voltage limit (mV, termination voltage for CV phase) | `uint16` | 12600 | 10000…18800
 | 8 | DC input current limit (mA, from DC jack) | `uint16` | 3000 | 100…3300
 | 10 | OTG current limit (mA, output to USB) | `uint16` | 3000 | 120…3320
@@ -187,7 +187,7 @@ Pressing the button for 1…3 seconds when nothing is connected to the KXUSBC2 (
 | Menu item # | Description |
 |:------------|:------------|
 | 1 | Charging current limit
-| 2 | DC input current limit
+| 2 | DC input current limit
 | 3 | Charge while rig is on
 | 4 | Thermistor
 
@@ -198,7 +198,7 @@ Pressing the button for 1…3 seconds when nothing is connected to the KXUSBC2 (
 | 1 | 500 mA
 | 2 | 1000 mA
 | 3 | 2000 mA
-| 4 | 3000 mA
+| 4 | 3000 mA
 
 #### Menu item 2: DC input current limit
 
@@ -207,7 +207,7 @@ Pressing the button for 1…3 seconds when nothing is connected to the KXUSBC2 (
 | 1 | 500 mA
 | 2 | 1000 mA
 | 3 | 2000 mA
-| 4 | 3000 mA
+| 4 | 3000 mA
 
 #### Menu item 3: Charge while rig is on
 
@@ -232,11 +232,11 @@ Enum values used by the FSC PD reference code, listed here for convenience to ai
 |:----------------------|--------|
 | Disabled              | 0      |
 | ErrorRecovery         | 1      |
-| **Unattached**            | 2      |
+| **Unattached**        | 2      |
 | AttachWaitSink        | 3      |
-| **AttachedSink**          | 4      |
+| **AttachedSink**      | 4      |
 | AttachWaitSource      | 5      |
-| **AttachedSource**        | 6      |
+| **AttachedSource**    | 6      |
 | TrySource             | 7      |
 | TryWaitSink           | 8      |
 | TrySink               | 9      |
@@ -281,7 +281,7 @@ Enum values used by the FSC PD reference code, listed for convenience here to ai
 | peSourceCapabilityResponse      | 12     |
 | peSourceWaitNewCapabilities     | 13     |
 | peSourceTransitionSupply        | 14     |
-| **peSourceReady**                   | 15     |
+| **peSourceReady**               | 15     |
 | peSourceGiveSourceCaps          | 16     |
 | peSourceGetSinkCaps             | 17     |
 | peSourceSendPing                | 18     |
@@ -302,7 +302,7 @@ Enum values used by the FSC PD reference code, listed for convenience here to ai
 | peSinkEvaluateCaps              | 33     |
 | peSinkSelectCapability          | 34     |
 | peSinkTransitionSink            | 35     |
-| **peSinkReady**                     | 36     |
+| **peSinkReady**                 | 36     |
 | peSinkGiveSinkCap               | 37     |
 | peSinkGetSourceCap              | 38     |
 | peSinkGetSinkCap                | 39     |
