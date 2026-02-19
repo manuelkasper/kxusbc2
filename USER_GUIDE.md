@@ -52,7 +52,7 @@ Apply insulating tape (Kapton preferred) to the top edge of the PCB to prevent s
 
 ### Preparing the KX2
 
-**Skip this section** if your KX2 already has receptacles on the B and E pads or you've installed a KXIBC2 before.
+**Skip this section** if your KX2 already has receptacles on the B and E pads (newer KX2, or if you've installed a KXIBC2 before).
 
 **Solder receptacles to KX2 RF PCB:**
 - Solder long, slim gold pin receptacles (Mill-Max 8827-0-15-15-16-27-04-0) to the E and B pads
