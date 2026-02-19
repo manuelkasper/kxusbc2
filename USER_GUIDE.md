@@ -77,19 +77,21 @@ See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downl
 ### Hardware Installation
 
 1. Remove the KX2 back cover
-2. Unscrew the 4 screws from the left side panel (note: longer screws with finer thread hold the KXUSBC2)
-3. Plug KXUSBC2 board into the KXIBC2/KXIO2 slot and ensure it's properly seated
-4. Connect power wires:
+2. Unplug and remove the battery
+3. Unscrew the 4 screws from the left side panel (note: longer screws with finer thread hold the KXUSBC2)
+4. Plug KXUSBC2 board into the KXIBC2/KXIO2 slot and ensure it's properly seated
+5. Connect power wires:
    - Slide heat shrink tubing onto red and white wires (optional on white)
    - Plug into KX2 RF PCB receptacles (E = white, B = red)
    - Slide tubing over pins (no need to heat shrink)
 
      <img src="/hardware/photos/wires_connected.jpg" alt="Wires connected to KX2" width="500">
-5. Place thermal pad over U1, shifted slightly to the right so as not to collide with the back cover (remove protective film from both sides first)
+6. Place thermal pad over U1, shifted slightly to the right so as not to collide with the back cover (remove protective film from both sides first)
    
    <img src="/hardware/photos/thermal_pad.jpg" alt="Thermal pad placement" width="500">
 7. Install the replacement side panel using correct screws for each hole
-8. Enable KXIBC2 in KX2 menu:
+8. Reinstall the battery
+9. Enable KXIBC2 in KX2 menu:
    - Turn on KX2 and go to settings
    - Set KXIBC2 option to "NOR" (enables RTC and battery voltage display)
    - Update KX2 firmware if option is not present
