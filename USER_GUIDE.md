@@ -80,7 +80,7 @@ See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downl
 2. Unscrew the 4 screws from the left side panel (note: longer screws with finer thread hold the KXUSBC2)
 3. Plug KXUSBC2 board into the KXIBC2/KXIO2 slot and ensure it's properly seated
 4. Connect power wires:
-   - Slide heat shrink tubing onto red and white (optional) wires
+   - Slide heat shrink tubing onto red and white wires (optional on white)
    - Plug into KX2 RF PCB receptacles (E = white, B = red)
    - Slide tubing over pins (no need to heat shrink)
 
