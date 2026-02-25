@@ -27,6 +27,7 @@ Here is how it looks installed in a KX2, with a custom CNC-machined aluminum sid
 * Dual-Role Port (DRP/OTG): Can also charge an external device (phone, GPS, HT etc.) through the same USB-C port at up to 30 W (5…15 V)
 * Dual input: can charge from USB-C or DC jack
 * Supports PD 3.0, QC, BC1.2
+* Automatically suspends charging while KX2 is on
 * Real-Time Clock (RTC)
 * RGB status LED and config button
 * Battery temperature monitoring (with thermistor, optional)
