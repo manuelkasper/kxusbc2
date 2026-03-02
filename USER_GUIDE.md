@@ -11,6 +11,9 @@
 - Thermal pad (10 x 6 mm, 4 mm height)
 - Heat shrink tube (2.5 x 15 mm)
 
+**Optional:**
+- [3D printed LED diffuser](./hardware/led_diffuser/README.md)
+
 **Optional (if not pre-installed):**
 - 2 pcs. receptacle pins ([Mill-Max 8827-0-15-15-16-27-04-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/8827-0-15-15-16-27-04-0/4440738)) – for older KX2 models without factory installed pins <img src="/hardware/photos/8827-0-15-15-16-27-04-0.jpg" alt="Receptacle pin" width="60" style="vertical-align: middle">
 - 2 pcs. mating pins ([Mill-Max 3132-0-00-15-00-00-08-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/3132-0-00-15-00-00-08-0/413214)) <img src="/hardware/photos/3132-0-00-15-00-00-08-0.jpg" alt="Mating pin" width="60" style="vertical-align: middle">
@@ -42,6 +45,16 @@
 6. Trim excess wire close to board to prevent shorts to side panel
 
 <img src="/hardware/photos/pcb_bottom.jpg" alt="PCB with wires" width="500">
+
+#### Optional: Adding the 3D printed LED diffuser
+
+<img src="/hardware/photos/led_diffuser.jpg" alt="The LED Diffuser printed and fitted to the KXUSBC2 board" width="500">
+
+This helps to diffuse the light from the LED, making it more even and reducing glare. It also helps to protect the LED from damage and the cables from strain.
+
+**Please be very careful when fitting the part to avoid damaging the LED.**
+
+It is recommended to place a small dab of superglue on the PCB to secure the LED diffuser in place.
 
 #### Adding insulating tape
 
@@ -304,4 +317,3 @@ For 4S LiFePO₄ batteries, adjust the charging voltage limit to approximately 1
 ---
 
 **Disclaimer**: This is an unofficial modification. Elecraft ® is a registered trademark of Elecraft, Inc. This project is not affiliated with or endorsed by Elecraft.
-
