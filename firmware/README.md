@@ -58,6 +58,7 @@ The patch included in the repository, `fsc_pd.patch`, which is applied automatic
     - The patch comments out the clearing of the `I_CRC_CHK` bit, which does not appear to have negative consequences.
 - Increased tSenderResponse to 32 ms (USB PD ECN “Chunking Timing Issue”).
 - Fixed case-sensitivity issue in `Port.c`: the onsemi code includes `"fusb30x.h"` but the actual filename is `fusb30X.h`. This had caused compilation to fail on case-sensitive filesystems (Linux).
+- Set `TOG_SAVE_PWR` to 3 to reduce standby power consumption.
 
 
 ## Programming/Debugging
