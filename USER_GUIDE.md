@@ -46,6 +46,12 @@
 
 <img src="/hardware/photos/pcb_bottom.jpg" alt="PCB with wires" width="500">
 
+#### Adding insulating tape
+
+Apply insulating tape (Kapton preferred) to the top edge of the PCB to prevent shorts due to the small clearance to the back cover.
+
+<img src="/hardware/photos/kapton_tape.jpg" alt="Kapton tape applied to PCB" width="500">
+
 #### Optional: Adding the 3D printed LED diffuser
 
 <img src="/hardware/photos/led_diffuser.jpg" alt="The LED Diffuser printed and fitted to the KXUSBC2 board" width="500">
@@ -55,12 +61,6 @@ This helps to diffuse the light from the LED, making it more even and reducing g
 **Please be very careful when fitting the part to avoid damaging the LED.**
 
 It is recommended to place a small dab of superglue on the PCB to secure the LED diffuser in place.
-
-#### Adding insulating tape
-
-Apply insulating tape (Kapton preferred) to the top edge of the PCB to prevent shorts due to the small clearance to the back cover.
-
-<img src="/hardware/photos/kapton_tape.jpg" alt="Kapton tape applied to PCB" width="500">
 
 
 ### Preparing the KX2
@@ -91,23 +91,25 @@ See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downl
 
 1. Remove the KX2 back cover
 2. Unplug and remove the battery
-3. Unscrew the 4 screws from the left side panel (note: longer screws with finer thread hold the KXUSBC2)
+3. Unscrew the 4 screws from the left side panel (note: longer screws with finer thread will hold the KXUSBC2)
 4. Plug KXUSBC2 board into the KXIBC2/KXIO2 slot and ensure it's properly seated
-5. Connect power wires:
+   - One of the four connectors at the bottom edge is not used 
+   - Bend the rear panel of the case slightly outwards to let the lens of the LED diffuser slide in, if necessary
+6. Connect power wires:
    - Slide heat shrink tubing onto red and white wires (optional on white)
    - Plug into KX2 RF PCB receptacles (E = white, B = red)
    - Slide tubing over pins (no need to heat shrink)
 
      <img src="/hardware/photos/wires_connected.jpg" alt="Wires connected to KX2" width="500">
-6. Place thermal pad over U1, shifted slightly to the right so as not to collide with the back cover (remove protective film from both sides first)
+7. Remove protective film from both sides of the thermal pad, then place it over U1, shifted slightly to the right so as not to collide with the back cover
    
    <img src="/hardware/photos/thermal_pad.jpg" alt="Thermal pad placement" width="500">
-7. Install the replacement side panel using correct screws for each hole
-8. Reinstall the battery
-9. Enable KXIBC2 in KX2 menu:
-   - Turn on KX2 and go to settings
-   - Set KXIBC2 option to "NOR" (enables RTC and battery voltage display)
-   - Update KX2 firmware if option is not present
+8. Install the replacement side panel using correct screws for each hole
+9. Reinstall the battery
+10. Enable KXIBC2 in KX2 menu:
+    - Turn on KX2 and go to settings
+    - Set KXIBC2 option to "NOR" (enables RTC and battery voltage display)
+    - Update KX2 firmware if option is not present
 
 #### Thermistor (optional)
 
