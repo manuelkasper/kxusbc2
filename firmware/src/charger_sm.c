@@ -569,15 +569,21 @@ static void update_charging_led(void) {
             battery_current = -battery_current;
         }
 
-        // LED "breathing" speed depends on (dis)charging current
-        uint8_t breathing_speed;
-        if (battery_current >= 2000) {
+        // LED "breathing" speed depends on (dis)charging current.
+        // Hysteresis: downward transitions (slower speed) require 50 mA below the threshold
+        // to avoid rapid toggling when current fluctuates near a boundary.
+        static uint8_t breathing_speed = 7;
+        uint16_t thresh_fast   = (breathing_speed > 1) ? 2000 : 1950;
+        uint16_t thresh_medium = (breathing_speed > 3) ? 1000 : 950;
+        uint16_t thresh_slow   = (breathing_speed > 5) ? 500  : 450;
+
+        if (battery_current >= thresh_fast) {
             // Fast charging
             breathing_speed = 1;
-        } else if (battery_current >= 1000) {
+        } else if (battery_current >= thresh_medium) {
             // Medium charging
             breathing_speed = 3;
-        } else if (battery_current >= 500) {
+        } else if (battery_current >= thresh_slow) {
             // Slow charging
             breathing_speed = 5;
         } else {
