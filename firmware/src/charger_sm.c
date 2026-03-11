@@ -573,9 +573,9 @@ static void update_charging_led(void) {
         // Hysteresis: downward transitions (slower speed) require 50 mA below the threshold
         // to avoid rapid toggling when current fluctuates near a boundary.
         static uint8_t breathing_speed = 7;
-        uint16_t thresh_fast   = (breathing_speed > 1) ? 2000 : 1950;
-        uint16_t thresh_medium = (breathing_speed > 3) ? 1000 : 950;
-        uint16_t thresh_slow   = (breathing_speed > 5) ? 500  : 450;
+        int16_t thresh_fast   = (breathing_speed > 1) ? 2000 : 1950;
+        int16_t thresh_medium = (breathing_speed > 3) ? 1000 : 950;
+        int16_t thresh_slow   = (breathing_speed > 5) ? 500  : 450;
 
         if (battery_current >= thresh_fast) {
             // Fast charging
