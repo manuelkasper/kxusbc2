@@ -105,7 +105,7 @@ See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downl
    
    <img src="/hardware/photos/thermal_pad.jpg" alt="Thermal pad placement" width="500">
 8. Install the replacement side panel using correct screws for each hole
-9. Reinstall the battery
+9. Reinstall the battery (**important – the KXUSBC2 will not work without a battery connected**)
 10. Enable KXIBC2 in KX2 menu:
     - Turn on KX2 and go to settings
     - Set KXIBC2 option to "NOR" (enables RTC and battery voltage display)
