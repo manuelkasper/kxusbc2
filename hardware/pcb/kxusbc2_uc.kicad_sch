@@ -4727,7 +4727,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "18p"
+		(property "Value" "22p"
 			(at 126.619 114.2421 0)
 			(effects
 				(font
@@ -4763,7 +4763,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C1549"
+		(property "LCSC" "C1555"
 			(at 129.54 113.03 0)
 			(effects
 				(font
@@ -5978,7 +5978,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "18p"
+		(property "Value" "22p"
 			(at 152.781 114.2421 0)
 			(effects
 				(font
@@ -6014,7 +6014,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C1549"
+		(property "LCSC" "C1555"
 			(at 149.86 113.03 0)
 			(effects
 				(font

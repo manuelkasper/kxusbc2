@@ -8584,7 +8584,7 @@
 				)
 			)
 		)
-		(property "Value" "18p"
+		(property "Value" "22p"
 			(at 0 1.16 0)
 			(layer "F.Fab")
 			(uuid "f6dd90a3-7651-448e-9c1e-d4a29b4aee6e")
@@ -8619,7 +8619,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1549"
+		(property "LCSC" "C1555"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -40594,7 +40594,7 @@
 				)
 			)
 		)
-		(property "Value" "18p"
+		(property "Value" "22p"
 			(at 0 1.16 0)
 			(layer "F.Fab")
 			(uuid "39eddb7b-9136-40b2-84b7-9ab7fdc0c97a")
@@ -40629,7 +40629,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1549"
+		(property "LCSC" "C1555"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -48847,7 +48847,7 @@
 			(justify left bottom mirror)
 		)
 	)
-	(gr_text "rev3"
+	(gr_text "rev3a"
 		(at 125.4 110.3 0)
 		(layer "B.SilkS")
 		(uuid "b3b936c0-e388-4444-93d8-577d2109b310")
