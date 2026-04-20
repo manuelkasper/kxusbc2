@@ -135,11 +135,60 @@ A charger like this is somewhat akin to a 10 W PA amplifying a 1.5 MHz square wa
 
 I did some lab testing with a dummy load connected to the KX2. Result: while charging the KX2 at 28 W from a 15 V PD source, I noticed that the noise floor increased from S0 to around S1 on 80-10m (preamp on). The only really strong signal that I could find in amateur bands was the 9th harmonic of the switching frequency, which varied around 9 * 1.55 = 13.95 MHz and 9 * 1.58 = 14.22 MHz in my test (the charger IC uses an RC oscillator), resulting in S7 QRM in a range of about 10 kHz somewhere in the lower half of the 20m band. Results in reverse mode (charging an iPad at 28 W) were similar.
 
-Not wanting my concoction to cause excessive spurious emissions through the KX2's antenna port even when not transmitting, I had a look with a spectrum analyzer, which only covered 10 MHz and up, though. The strongest signal I could find there was around -70 dBm (for comparison, the KX2's oscillator frequency leaked at -46 dBm when the preamp was off).
+Not wanting my concoction to cause excessive spurious emissions through the KX2's antenna port, I had a look with a spectrum analyzer. I am by no means an expert in this domain, but according to ETSI EN 301 783 clause 5.2.3, the limit for spurious emissions at the antenna port of an amateur radio device in standby mode is -57 dBm in the frequency range of 0.15 to 1000 MHz.
 
-I also had a look at the lower frequencies with an SDR. Unsurprisingly, various harmonics of the switching frequency could be seen. After referencing the dBFS to dBm by comparing with a reference signal from an Elecraft XG3, it appears that the strongest harmonics are around -60 dBm.
+#### Test conditions
+KX2 in off mode (ATU set to bypass before turning off), internal 3S battery charged to around 80%. KX2 antenna port connected directly to spectrum analyzer with 0.5 m LMR 240 cable. Spectrum analyzer set to peak detector mode to capture the worst-case scenario (the standards document is not entirely clear about which detector to use).
 
-<img src="illustrations/sdr_spectrum.png" alt="SDR spectrum" width="600">
+### Charging at 5 V @ 2.2 A
+
+<img src="illustrations/spectrum/chg_5v_2200ma_full.png" alt="Full spectrum when charging at 5 V @ 2.2 A" width="600">
+
+<img src="illustrations/spectrum/chg_5v_2200ma_hf.png" alt="HF spectrum when charging at 5 V @ 2.2 A" width="600">
+
+### Charging at 15 V @ 1.6 A
+
+<img src="illustrations/spectrum/chg_15v_1600ma_full.png" alt="Full spectrum when charging at 15 V @ 1.6 A" width="600">
+
+<img src="illustrations/spectrum/chg_15v_1600ma_hf.png" alt="HF spectrum when charging at 15 V @ 1.6 A" width="600">
+
+### Discharging at 5 V @ 3 A
+
+<img src="illustrations/spectrum/dischg_5v_3000ma_full.png" alt="Full spectrum when discharging at 5 V @ 3 A" width="600">
+
+<img src="illustrations/spectrum/dischg_5v_3000ma_hf.png" alt="HF spectrum when discharging at 5 V @ 3 A" width="600">
+
+### Discharging at 9 V @ 3 A
+
+<img src="illustrations/spectrum/dischg_9v_3000ma_full.png" alt="Full spectrum when discharging at 9 V @ 3 A" width="600">
+
+<img src="illustrations/spectrum/dischg_9v_3000ma_hf.png" alt="HF spectrum when discharging at 9 V @ 3 A" width="600">
+
+### Discharging at 12 V @ 2.5 A
+
+<img src="illustrations/spectrum/dischg_12v_2500ma_full.png" alt="Full spectrum when discharging at 12 V @ 2.5 A" width="600">
+
+<img src="illustrations/spectrum/dischg_12v_2500ma_hf.png" alt="HF spectrum when discharging at 12 V @ 2.5 A" width="600">
+
+### Discharging at 15 V @ 2 A
+
+<img src="illustrations/spectrum/dischg_15v_2000ma_full.png" alt="Full spectrum when discharging at 15 V @ 2 A" width="600">
+
+<img src="illustrations/spectrum/dischg_15v_2000ma_hf.png" alt="HF spectrum when discharging at 15 V @ 2 A" width="600">
+
+### Summary
+
+When charging at typical power levels (15 V @ 1.6 A was the highest input current encountered during my tests with the maximum battery current set to the default of 2 A), the -57 dBm limit is respected, and also when discharging at typical voltages/currents for an attached smartphone. Only when discharging at both high voltages and high current (12 or 15 V at 2 A) are there spurs around 100 MHz that exceed the limit. It is thus recommended to disconnect the antenna from the KX2 when fast charging external devices. Alternatively, reducing the current to 1.5 A @ 12 V or 1 A @ 15 V also reduces those spurs to below the limit.
+
+For comparison, here is the spectrum at the antenna port of a KX2 in RX mode (no KXUSBC2 installed) with the pre-amp on and the frequency set to 14.333 MHz:
+
+### KX2 spectrum in RX mode (no KXUSBC2 installed)
+
+<img src="illustrations/spectrum/kx2_rx_full.png" alt="Full spectrum with KX2 in RX mode, without KXUSBC2 installed" width="600">
+
+<img src="illustrations/spectrum/kx2_rx_hf.png" alt="HF spectrum with KX2 in RX mode, without KXUSBC2 installed" width="600">
+
+### Empirical test on summit with EFHW
 
 Finally, to check the situation that interests the SOTA activator the most, I did a quick empirical test on a summit in a typical setup, with a 40/30/20m EFHW connected to the KX2 in SSB mode. Then I tried charging my iPhone at 10 W (9 V) from the KXUSBC2, and in a separate test, charging the KX2's battery from an external power bank at 18 W (12 V) while operating (auto-suspend feature disabled). In both cases, I could not discern a difference in noise floor on 80-20m, despite disconnecting/reconnecting the USB source/sink many times to find out. There were some spurious wandering signals around 14.310 MHz that I could trace to the charger, probably the 9th harmonic mentioned above, which was even higher now because it was cold on the summit.
 
