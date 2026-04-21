@@ -125,8 +125,8 @@ bool bq_init(uint16_t charging_voltage_limit, uint16_t charging_current_limit) {
     // Also disable PFM
     success &= bq_write_register(0x12, 0x34);
 
-    // REG13: 1.5 MHz switching frequency, disable STAT pin (not used)
-    success &= bq_write_register(0x13, 0x11);
+    // REG13: 1.5 MHz switching frequency, disable STAT pin (not used), disable VOTG UVP hiccup mode
+    success &= bq_write_register(0x13, 0x15);
 
     // REG14: Disable external ILIM_HIZ setting
     success &= bq_write_register(0x14, 0x14);
@@ -262,8 +262,10 @@ bool bq_set_acdrv(bool enable_acdrv1, bool enable_acdrv2) {
 }
 
 bool bq_set_otg_current_limit(uint16_t ma) {
-    if (ma < 120 || ma > 3320) {
+    if (ma < 120) {
         return false;
+    } else if (ma > 3320) {
+        ma = 3320;
     }
     return bq_write_register(0x0D, ma / 40);
 }

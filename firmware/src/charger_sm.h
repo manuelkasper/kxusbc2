@@ -6,6 +6,9 @@
 
 #define PD_NEGOTIATION_TIMEOUT 3000 * TICK_SCALE_TO_MS
 
+#define OTG_VOLTAGE_HEADROOM_LIMIT 500  // mV - if headroom exceeds this, cap it to avoid overvoltage
+#define OTG_CURRENT_HEADROOM 250        // mA - add this much headroom to OTG current limit to avoid regulation and potential PD resets
+
 /**
  * @brief Charger state enumeration
  */

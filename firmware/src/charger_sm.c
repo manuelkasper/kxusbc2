@@ -111,10 +111,10 @@ void charger_sm_on_pps_voltage_update(uint16_t mv) {
         if (otg_current == 0) {
             // No current limit set yet - use configured default
             otg_current = sysconfig->otgCurrentLimit;
-            bq_set_otg_current_limit(otg_current);
+            bq_set_otg_current_limit(otg_current + OTG_CURRENT_HEADROOM);
         }
         uint16_t otg_voltage_eff = otg_voltage;
-        if (sysconfig->otgVoltageHeadroom <= 500) {
+        if (sysconfig->otgVoltageHeadroom <= OTG_VOLTAGE_HEADROOM_LIMIT) {
             // Limit headroom for safety
             otg_voltage_eff += sysconfig->otgVoltageHeadroom;
         }
@@ -140,9 +140,14 @@ void charger_sm_on_pps_current_update(uint16_t ma) {
     }
 
     otg_current = ma;
-    
-    // Configure BQ with the new current limit
-    bq_set_otg_current_limit(ma);
+
+    // Configure BQ with the new current limit. Add a generous headroom to ensure we don't run into
+    // IOTG regulation if the current drawn by the load slightly exceeds the advertised current
+    // (e.g. due to measurement inaccuracies or load transients).
+    // Otherwise, the IOTG limit will cause VOTG to drop (CC mode), which could lead to a PD reset.
+    // Despite the name of this function and the related code in fsc_pd, we don't advertise PPS mode,
+    // and thus don't need to guarantee accurate current limits.
+    bq_set_otg_current_limit(otg_current + OTG_CURRENT_HEADROOM);
 }
 
 /* ===== State Machine Core ===== */
@@ -282,7 +287,7 @@ static void enter_usb_negotiating(void) {
     bq_set_input_current_limit(fsc_pd_get_advertised_current());
 
     // Don't enable charging yet - wait for negotiation or timeout
-    TimerStart(&state_timer, 3000); // 3s negotiation timeout
+    TimerStart(&state_timer, PD_NEGOTIATION_TIMEOUT); // 3s negotiation timeout
 }
 
 static uint16_t handle_usb_negotiating(void) {
