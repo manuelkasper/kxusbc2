@@ -94,7 +94,10 @@ See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downl
 3. Unscrew the 4 screws from the left side panel (note: longer screws with finer thread will hold the KXUSBC2)
 4. Plug KXUSBC2 board into the KXIBC2/KXIO2 slot and ensure it's properly seated
    - One of the four connectors at the bottom edge is not used 
-   - Bend the rear panel of the case slightly outwards to let the lens of the LED diffuser slide in, if necessary
+   - Bend the rear panel of the case slightly outwards to let the lens of the LED diffuser slide in
+   - Do not force the board in, or you will break off the diffuser/LED
+
+     <img src="/hardware/photos/installation_diffuser.jpg" alt="Installing the board by pushing the back of the case outwards" width="500">
 6. Connect power wires:
    - Slide heat shrink tubing onto red and white wires (optional on white)
    - Plug into KX2 RF PCB receptacles (E = white, B = red)
