@@ -1231,7 +1231,7 @@
 			(uuid "3fdc0bb8-311a-4421-9f65-659492ef0941")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/7c1acb59-0886-4fc3-b60c-8fe1068068b6"
 					(reference "#PWR018")
 					(unit 1)
@@ -1389,7 +1389,7 @@
 			(uuid "c7f53e93-8103-4d55-be5c-b6ee1b889375")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/7c1acb59-0886-4fc3-b60c-8fe1068068b6"
 					(reference "C15")
 					(unit 1)
@@ -1450,7 +1450,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C11490"
+		(property "LCSC" "C138015"
 			(at 83.82 97.79 0)
 			(effects
 				(font
@@ -1466,7 +1466,7 @@
 			(uuid "1cfd2dd9-ada5-4fc2-8c51-592132874665")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/7c1acb59-0886-4fc3-b60c-8fe1068068b6"
 					(reference "R5")
 					(unit 1)
@@ -1551,7 +1551,7 @@
 			(uuid "47bc3766-9386-486f-984f-75610e6e037b")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/7c1acb59-0886-4fc3-b60c-8fe1068068b6"
 					(reference "U3")
 					(unit 1)

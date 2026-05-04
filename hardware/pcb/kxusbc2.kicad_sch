@@ -1525,7 +1525,7 @@
 			(uuid "0f88e8a2-9c15-434b-ae6e-5b48d83036bc")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde"
 					(reference "J7")
 					(unit 1)
@@ -1737,7 +1737,7 @@
 			(uuid "cfc2a22d-cc16-4d08-875f-9f7b11e2534e")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde"
 					(reference "TP4")
 					(unit 1)

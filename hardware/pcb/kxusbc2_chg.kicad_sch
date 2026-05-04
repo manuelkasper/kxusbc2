@@ -4820,7 +4820,7 @@
 			(uuid "5fb19224-532f-40ea-a2b3-cc2c778e2fae")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/2c07c0e1-6f5d-474c-8fb6-49a845a766d7"
 					(reference "Q5")
 					(unit 1)
@@ -5880,7 +5880,7 @@
 			(uuid "fda728a7-cfc1-4bd8-9070-d8efb764db1c")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/2c07c0e1-6f5d-474c-8fb6-49a845a766d7"
 					(reference "R2")
 					(unit 1)
@@ -7349,7 +7349,7 @@
 			(uuid "a438e6e9-6f56-4fea-8bf7-a6a8fbd95316")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/2c07c0e1-6f5d-474c-8fb6-49a845a766d7"
 					(reference "D10")
 					(unit 1)
@@ -7414,7 +7414,7 @@
 			(uuid "5ba3184a-f584-4b00-b8e0-20bcbece6992")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/2c07c0e1-6f5d-474c-8fb6-49a845a766d7"
 					(reference "TP2")
 					(unit 1)
@@ -8073,7 +8073,7 @@
 			(uuid "152e1118-b498-4199-a24f-841dad900582")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/2c07c0e1-6f5d-474c-8fb6-49a845a766d7"
 					(reference "R3")
 					(unit 1)
@@ -8604,7 +8604,7 @@
 			(uuid "1be76b64-c028-4228-8676-22150ee64953")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/2c07c0e1-6f5d-474c-8fb6-49a845a766d7"
 					(reference "TH1")
 					(unit 1)
@@ -8674,7 +8674,7 @@
 			(uuid "cdee8396-9a84-4890-96f9-d069df4f4ca8")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/2c07c0e1-6f5d-474c-8fb6-49a845a766d7"
 					(reference "R12")
 					(unit 1)
@@ -9475,7 +9475,7 @@
 			(uuid "b8c20afe-f8a1-4fa7-a100-3a7b70ac74a0")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/2c07c0e1-6f5d-474c-8fb6-49a845a766d7"
 					(reference "#PWR026")
 					(unit 1)
@@ -9542,7 +9542,7 @@
 			(uuid "ca1ec9fc-5569-48d2-8e5b-eb95ca3bd814")
 		)
 		(instances
-			(project ""
+			(project "kxusbc2"
 				(path "/e3f9e6db-4c7d-434c-85a0-9bad2f7edcde/2c07c0e1-6f5d-474c-8fb6-49a845a766d7"
 					(reference "TP1")
 					(unit 1)
