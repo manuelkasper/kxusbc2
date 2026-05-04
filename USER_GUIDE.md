@@ -1,32 +1,28 @@
 # KXUSBC2 User Guide
 
-## Part 1: Installation Guide
+## Part 1: Hardware Assembly
+
+### ➡️ If you have purchased a ready-made KXUSBC2 kit, this part will already have been completed for you, and you can skip to [Part 2](#part-2-installation-guide).
 
 ### Prerequisites
 
-**Required:**
-- Elecraft KX2 transceiver
-- 3S (12.6 V) Li-Ion battery (or 4S LiFePO₄ with firmware configuration)
+- KXUSBC2 PCB, assembled on both sides
 - Replacement left side aluminum panel with USB-C opening
-- Thermal pad (10 x 6 mm, 4 mm height)
-- Heat shrink tube (2.5 x 15 mm)
+- 2 pcs. mating pins ([Mill-Max 3132-0-00-15-00-00-08-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/3132-0-00-15-00-00-08-0/413214)) <img src="/hardware/photos/3132-0-00-15-00-00-08-0.jpg" alt="Mating pin" width="60" style="vertical-align: middle">
+- 2 pcs. standoff M2.5 3 mm height (Würth Electronics 9774030151R, [DigiKey 732-7083-1-ND](https://www.digikey.com/en/products/detail/würth-elektronik/9774030151R/5320626)) <img src="/hardware/photos/standoff.jpg" alt="Standoff" width="60" style="vertical-align: middle">
+- White/red silicone wires (22 AWG), ~50 mm ea.
+- Kapton tape
 
 **Optional:**
 - [3D printed LED diffuser](./hardware/led_diffuser/README.md)
 
-**Optional (if not pre-installed):**
-- 2 pcs. receptacle pins ([Mill-Max 8827-0-15-15-16-27-04-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/8827-0-15-15-16-27-04-0/4440738)) – for older KX2 models without factory installed pins <img src="/hardware/photos/8827-0-15-15-16-27-04-0.jpg" alt="Receptacle pin" width="60" style="vertical-align: middle">
-- 2 pcs. mating pins ([Mill-Max 3132-0-00-15-00-00-08-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/3132-0-00-15-00-00-08-0/413214)) <img src="/hardware/photos/3132-0-00-15-00-00-08-0.jpg" alt="Mating pin" width="60" style="vertical-align: middle">
-- 2 pcs. Standoff M2.5 3 mm height (Würth Electronics 9774030151R, [DigiKey 732-7083-1-ND](https://www.digikey.com/en/products/detail/würth-elektronik/9774030151R/5320626)) <img src="/hardware/photos/standoff.jpg" alt="Standoff" width="60" style="vertical-align: middle">
-- White/red silicone wires (22 AWG), ~50 mm ea.
-
-### Preparing the KXUSBC2
+### Preparing the board
 
 #### Soldering the standoffs
 
 1. Place a standoff in a hole on the component side
 2. Heat with hot air at 200 °C for 30 seconds
-3. Hold soldering iron to the side of standoff and pad, and apply solder evenly around the standoff
+3. Hold soldering iron to the side of the standoff and pad, and apply solder evenly around the standoff
 4. Let cool and verify the standoff is centered
 5. Inspect the bottom side; ideally some solder has migrated through the hole for mechanical strength
 
@@ -37,12 +33,12 @@
 
 1. Cut ~50 mm pieces of white and red silicone wire
 2. Strip 3 mm insulation on one end of each wire
-3. Solder gold mating pins (those with the wide shoulder) to both wires
+3. Solder gold mating pins to both wires
 4. Trim to total length from pin tip:
    - E (white): 31 mm
    - B (red): 43 mm
 5. Strip 3 mm from open ends and solder to KXUSBC2 PCB
-6. Trim excess wire close to board to prevent shorts to side panel
+6. Trim excess wire close to board to prevent shorting with the side panel
 
 <img src="/hardware/photos/pcb_bottom.jpg" alt="PCB with wires" width="500">
 
@@ -62,15 +58,37 @@ This helps to diffuse the light from the LED, making it more even and reducing g
 
 It is recommended to place a small dab of superglue on the PCB to secure the LED diffuser in place.
 
+### Preparing the side panel
+
+- Remove black coating from the back side to expose bare metal (where it contacts the KX2 chassis)
+- Remove coating around screw holes near USB-C and DC jack for grounding via standoffs (**important!**)
+- Use a Dremel or similar power tool for efficiency (the panel in the photo below was stripped using a laser)
+
+<img src="/hardware/photos/side_panel_back_stripped.jpg" alt="Backside of side panel with coating stripped" width="500">
+
+
+## Part 2: Installation Guide
+
+### Prerequisites
+
+- Elecraft KX2 transceiver
+- 3S (12.6 V) Li-Ion battery (or 4S LiFePO₄ with firmware configuration)
+- KXUSBC2 board
+- Replacement left side aluminum panel with USB-C opening
+- Thermal pad (10 x 6 mm, 4 mm height)
+- Heat shrink tube (2.5 x 15 mm)
+
+**Optional (if not pre-installed in KX2):**
+- 2 pcs. receptacle pins ([Mill-Max 8827-0-15-15-16-27-04-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/8827-0-15-15-16-27-04-0/4440738)) <img src="/hardware/photos/8827-0-15-15-16-27-04-0.jpg" alt="Receptacle pin" width="60" style="vertical-align: middle">
 
 ### Preparing the KX2
 
-**Skip this section** if your KX2 already has receptacles on the B and E pads (newer KX2, or if you've installed a KXIBC2 before).
+➡️ **Skip this section** if your KX2 already has receptacles on the B and E pads (newer KX2, or if you've installed a KXIBC2 before).
 
 **Solder receptacles to KX2 RF PCB:**
 - Solder long, slim gold pin receptacles (Mill-Max 8827-0-15-15-16-27-04-0) to the E and B pads
 - If pads are filled with solder, pre-heat with hot air and use solder wick
-- RF PCB can be removed for easier soldering on the bottom, or soldered in place
+- The RF PCB can be removed for easier soldering on the bottom, or soldered in place
 
 A simpler method (which makes removal more difficult, however) is not to install receptacles, but solder the pins from the KXUSBC2 directly to the B pad and the DC jack's center pin.
 
@@ -79,48 +97,40 @@ See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downl
 <img src="/hardware/photos/kx2_rf_pcb/rf_pcb_jacks.jpg" alt="Receptacles on KX2 RF PCB" width="500">
 
 
-### Preparing the side panel
-
-- Remove black coating from the back side to expose bare metal (where it contacts the KX2 chassis)
-- Remove coating around screw holes near USB-C and DC jack for grounding via standoffs (**important!**)
-- Use a Dremel or similar power tool for efficiency (the one in the photo below has been done with a laser)
-
-<img src="/hardware/photos/side_panel_back_stripped.jpg" alt="Backside of side panel with coating stripped" width="500">
-
 ### Hardware Installation
 
 1. Remove the KX2 back cover
 2. Unplug and remove the battery
 3. Unscrew the 4 screws from the left side panel (note: longer screws with finer thread will hold the KXUSBC2)
-4. Plug KXUSBC2 board into the KXIBC2/KXIO2 slot and ensure it's properly seated
-   - One of the four connectors at the bottom edge is not used 
-   - Bend the rear panel of the case slightly outwards to let the lens of the LED diffuser slide in
-   - Do not force the board in, or you will break off the diffuser/LED
-
-     <img src="/hardware/photos/installation_diffuser.jpg" alt="Installing the board by pushing the back of the case outwards" width="500">
-6. Connect power wires:
+4. Connect power wires:
    - Slide heat shrink tubing onto red and white wires (optional on white)
    - Plug into KX2 RF PCB receptacles (E = white, B = red)
    - Slide tubing over pins (no need to heat shrink)
 
      <img src="/hardware/photos/wires_connected.jpg" alt="Wires connected to KX2" width="500">
-7. Remove protective film from both sides of the thermal pad, then place it over U1, shifted slightly to the right so as not to collide with the back cover
+5. Plug the KXUSBC2 board into the KXIBC2/KXIO2 slot and ensure it's properly seated
+   - **Bend the rear panel of the case slightly outwards to let the lens of the LED diffuser slide in**
+   - Do not force the board in, or you will break off the diffuser/LED
+   - One of the four connectors at the bottom edge is not used 
+
+     <img src="/hardware/photos/installation_diffuser.jpg" alt="Installing the board by pushing the back of the case outwards" width="500">
+6. Remove protective film (if present) from both sides of the thermal pad, then place it over U1, shifted slightly to the right so as not to collide with the back cover
    
    <img src="/hardware/photos/thermal_pad.jpg" alt="Thermal pad placement" width="500">
-8. Install the replacement side panel using correct screws for each hole
-9. Reinstall the battery (**important – the KXUSBC2 will not work without a battery connected**)
-10. Enable KXIBC2 in KX2 menu:
+7. Install the replacement side panel using correct screws for each hole
+8. Reinstall the battery (**important – the KXUSBC2 will not work without a battery connected**)
+9. Enable KXIBC2 in KX2 menu:
     - Turn on KX2 and go to settings
     - Set KXIBC2 option to "NOR" (enables RTC and battery voltage display)
     - Update KX2 firmware if option is not present
 
 #### Thermistor (optional)
 
-A 10k NTC thermistor can optionally be connected between the marked pads (T and GND) on the backside of the board and attached to the battery pack with tape etc. The thermistor handling then needs to be enabled via the config button menu or the web based programmer (see below). It will reduce or inhibit charging/discharging if the battery temperature is too high or too low.
+A 10k NTC thermistor can optionally be connected between the marked pads (T and GND) on the backside of the board and attached to the battery pack with tape etc. The thermistor handling then needs to be enabled via the config button menu or the web-based programmer (see below). It will reduce or inhibit charging/discharging if the battery temperature is too high or too low.
 
 ---
 
-## Part 2: User Guide
+## Part 3: User Guide
 
 ### Basic Operation
 
@@ -140,7 +150,7 @@ You can also charge from a 9-15 V supply connected to the KX2's external DC jack
 
 #### Charging behavior
 - The board automatically negotiates the best available voltage/current profile
-- Delay of 3 seconds for non-PD capable sources before charging begins
+- Delay of 3 seconds for non-PD-capable sources before charging begins
 - Default charging current: 2 A (configurable, max. 3 A)
 - Charging voltage: 12.6 V for 3S Li-Ion (configurable for other battery types)
 - The charger uses either USB-C or the DC jack input, whichever is connected first
