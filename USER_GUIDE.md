@@ -66,6 +66,7 @@ It is recommended to place a small dab of superglue on the PCB to secure the LED
 
 <img src="/hardware/photos/side_panel_back_stripped.jpg" alt="Backside of side panel with coating stripped" width="500">
 
+---
 
 ## Part 2: Installation Guide
 
