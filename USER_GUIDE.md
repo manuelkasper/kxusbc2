@@ -246,10 +246,12 @@ When you enter the config menu, the LED blinks yellow at 1-second intervals. The
 
 | Menu Item | Description | Available Values (blink counts) |
 |:----------|:------------|:-----------------|
-| 1 | Charging current limit | 500 mA (1), 1000 mA (2), 2000 mA (3), 3000 mA (4) |
-| 2 | DC input current limit | 500 mA (1), 1000 mA (2), 2000 mA (3), 3000 mA (4) |
-| 3 | Charge while rig is on | Disable (1), Enable (2) |
-| 4 | Thermistor | Disable (1), Enable (2) |
+| 1 | Charging current limit | 500 mA (1), 1000 mA (2), 2000 mA (3 *), 3000 mA (4) |
+| 2 | DC input current limit | 500 mA (1), 1000 mA (2), 2000 mA (3), 3000 mA (4 *) |
+| 3 | Charge while rig is on | Disable (1 *), Enable (2) |
+| 4 | Thermistor | Disable (1 *), Enable (2) |
+
+\* = default setting
 
 **Example**: To enable charging while the rig is on:
 1. Press the button for 1–3 seconds (LED blinks yellow, indicating menu item 1)
