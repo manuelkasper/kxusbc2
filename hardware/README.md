@@ -4,7 +4,7 @@
 
 Designed with KiCad.
 
-**[PDF version of the schematic](pcb/kxusbc2.pdf)** for quick viewing (may not be the most recent version).
+You can view the schematic and PCB layout in your browser: [view KiCad files in kicanvas.org](https://kicanvas.org/?repo=https%3A%2F%2Fgithub.com%2Fmanuelkasper%2Fkxusbc2%2Ftree%2Fmain%2Fhardware%2Fpcb).
 
 
 ## PCB
