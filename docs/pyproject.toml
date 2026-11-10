@@ -1,7 +1,7 @@
 [project]
 name = "kxusbc2-docs"
 version = "0.1.0"
-description = "Add your description here"
+description = "KXUSBC2 documentation"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = []
