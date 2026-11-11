@@ -27,7 +27,7 @@ Here is how it looks installed in a KX2, with a custom CNC-machined aluminum sid
 * Dual-Role Port (DRP/OTG): Can also charge an external device (phone, GPS, HT etc.) through the same USB-C port at up to 30 W (5…15 V)
 * Dual input: can charge from USB-C or DC jack
 * Supports PD 3.0, QC, BC1.2
-* Automatically suspends charging while KX2 is on
+* Automatically suspends charging while KX2 is on (so no QRM)
 * Real-Time Clock (RTC)
 * RGB status LED and config button
 * Battery temperature monitoring (with thermistor, optional)
@@ -87,7 +87,7 @@ The schematic/PCB was designed with KiCad, and the firmware was written to be co
 
 ## Current state of the project
 
-The PCB has gone through three revisions and is now at rev3, which is considered to be production-ready. rev2 boards have been tested by seven beta testers around the world, and all have worked on first try. The firmware is considered to be complete. See the issues page for any open issues or ideas for future revisions.
+The PCB has gone through four revisions and is now at rev4, which is considered to be production-ready. rev3 and rev4 boards are in use by hundreds of users around the world. The firmware is considered to be complete. See the issues page for any open issues or ideas for future revisions.
 
 
 ### Disclaimer
