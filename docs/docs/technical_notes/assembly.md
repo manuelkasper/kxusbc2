@@ -7,8 +7,8 @@
 
 - KXUSBC2 PCB, assembled on both sides
 - Replacement left side aluminum panel with USB-C opening
-- 2 pcs. mating pins ([Mill-Max 3132-0-00-15-00-00-08-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/3132-0-00-15-00-00-08-0/413214)) <img src="/images/3132-0-00-15-00-00-08-0.jpg" alt="Mating pin" width="60" style="vertical-align: middle">
-- 2 pcs. standoff M2.5 3 mm height (Würth Electronics 9774030151R, [DigiKey 732-7083-1-ND](https://www.digikey.com/en/products/detail/würth-elektronik/9774030151R/5320626)) <img src="/images/standoff.jpg" alt="Standoff" width="60" style="vertical-align: middle">
+- 2 pcs. mating pins ([Mill-Max 3132-0-00-15-00-00-08-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/3132-0-00-15-00-00-08-0/413214)) <img src="../images/3132-0-00-15-00-00-08-0.jpg" alt="Mating pin" width="60" style="vertical-align: middle">
+- 2 pcs. standoff M2.5 3 mm height (Würth Electronics 9774030151R, [DigiKey 732-7083-1-ND](https://www.digikey.com/en/products/detail/würth-elektronik/9774030151R/5320626)) <img src="../images/standoff.jpg" alt="Standoff" width="60" style="vertical-align: middle">
 - White/red silicone wires (22 AWG), ~50 mm ea.
 - Kapton tape
 
@@ -26,8 +26,8 @@
 5. Inspect the bottom side; ideally some solder has migrated through the hole for mechanical strength
 
 <div class="grid" markdown>
-<img src="/images/standoff_detail_top.jpg" alt="Standoff detail top" height="250">
-<img src="/images/standoff_detail_bottom.jpg" alt="Standoff detail bottom" height="250">
+<img src="../images/standoff_detail_top.jpg" alt="Standoff detail top" height="250">
+<img src="../images/standoff_detail_bottom.jpg" alt="Standoff detail bottom" height="250">
 </div>
 
 ### Installing the wires
@@ -41,19 +41,19 @@
 5. Strip 3 mm from open ends and solder to KXUSBC2 PCB
 6. Trim excess wire close to board to prevent shorting with the side panel
 
-<img src="/images/pcb_bottom.jpg" alt="PCB with wires" width="500">
+<img src="../images/pcb_bottom.jpg" alt="PCB with wires" width="500">
 
 ### Adding insulating tape
 
 Apply insulating tape (Kapton preferred) to the top edge of the PCB to prevent shorts due to the small clearance to the back cover.
 
-<img src="/images/kapton_tape.jpg" alt="Kapton tape applied to PCB" width="500">
+<img src="../images/kapton_tape.jpg" alt="Kapton tape applied to PCB" width="500">
 
 ### Optional: adding the 3D printed LED diffuser
 
 <div class="grid" markdown>
-<img src="/images/led_diffuser.jpg" alt="The LED Diffuser printed and fitted to the KXUSBC2 board" width="500">
-<img src="/images/led_diffuser_fitted.gif" alt="The LED Diffuser fitted to the KX2" width="500">
+<img src="../images/led_diffuser.jpg" alt="The LED Diffuser printed and fitted to the KXUSBC2 board" width="500">
+<img src="../images/led_diffuser_fitted.gif" alt="The LED Diffuser fitted to the KX2" width="500">
 </div>
 
 This helps to diffuse the light from the LED, making it more even and reducing glare. It also helps to protect the LED from damage and the cables from strain.
@@ -86,8 +86,8 @@ This is a simple part and can be printed with the default settings for your fila
 
 === "Before"
 
-    <img src="/images/side_panel_back_original.jpg" alt="Backside of side panel before stripping" width="500">
+    <img src="../images/side_panel_back_original.jpg" alt="Backside of side panel before stripping" width="500">
 
 === "After"
 
-    <img src="/images/side_panel_back_stripped.jpg" alt="Backside of side panel with coating stripped" width="500">
+    <img src="../images/side_panel_back_stripped.jpg" alt="Backside of side panel with coating stripped" width="500">

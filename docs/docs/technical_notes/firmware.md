@@ -11,8 +11,8 @@ Prerequisites:
 ## Build instructions
 
 1. Download release v4.1.2 of the FUSB302 reference code from onsemi (login required): https://www.onsemi.com/design/evaluation-board/FUSB302BGEVB
-2. Place the downloaded file `FUSB302 REFERENCE CODE.ZIP` in the root directory of the repository.
-3. `sh merge_fsc_pd.sh`
+2. Place the downloaded file `FUSB302 REFERENCE CODE.ZIP` in the repository's `firmware` directory.
+3. From the `firmware` directory, run `sh merge_fsc_pd.sh`.
 4. Edit `Makefile` and set `PROGRAMMER` and `PORT` as needed.
 5. `make` to compile the code.
 6. `make flash` to flash the AVR.

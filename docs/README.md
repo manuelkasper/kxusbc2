@@ -6,6 +6,8 @@ Requirements:
 
 * [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
+From the `docs` directory:
+
 ```
 uv venv
 source .venv/bin/activate
@@ -18,4 +20,6 @@ Site will be served at <http://localhost:8000>.
 
 ## Deployment
 
-Served on <https://kxusbc2.github.io> via a GitHub Action.
+The [Pages workflow](../.github/workflows/deploy.yml) builds the documentation
+alongside the programmer and deploys both together. The site is served at
+<https://manuelkasper.github.io/kxusbc2/docs/>.

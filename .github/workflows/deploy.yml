@@ -9,6 +9,7 @@ on:
     branches:
       - main
       - master
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -41,13 +42,26 @@ jobs:
         working-directory: ./programmer
         run: npm run build
 
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          python-version: '3.13'
+
+      - name: Build documentation
+        working-directory: ./docs
+        run: uv run --frozen zensical build --clean
+
+      - name: Add documentation to Pages artifact
+        run: cp -R docs/site programmer/dist/docs
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'programmer/dist'
 
   deploy:
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     needs: build
     environment:
       name: github-pages

@@ -13,7 +13,7 @@
 - Heat shrink tube (2.5 x 15 mm)
 
 ??? note "Optional (if not pre-installed in KX2)"
-    - 2 pcs. receptacle pins ([Mill-Max 8827-0-15-15-16-27-04-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/8827-0-15-15-16-27-04-0/4440738)) <img src="/images/8827-0-15-15-16-27-04-0.jpg" alt="Receptacle pin" width="60" style="vertical-align: middle">
+    - 2 pcs. receptacle pins ([Mill-Max 8827-0-15-15-16-27-04-0](https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/8827-0-15-15-16-27-04-0/4440738)) <img src="images/8827-0-15-15-16-27-04-0.jpg" alt="Receptacle pin" width="60" style="vertical-align: middle">
 
 ## Preparing the KX2
 
@@ -29,7 +29,7 @@ A simpler method (which makes removal more difficult, however) is to skip the re
 
 See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downloads/E740370-B5,%20KXIBC2%20manual.pdf) for a detailed explanation of both methods.
 
-<img src="/images/kx2_rf_pcb/rf_pcb_jacks.jpg" alt="Receptacles on KX2 RF PCB" width="500">
+<img src="images/kx2_rf_pcb/rf_pcb_jacks.jpg" alt="Receptacles on KX2 RF PCB" width="500">
 
 ## Hardware installation
 
@@ -41,18 +41,18 @@ See the [KXIBC2 installation guide](https://ftp.elecraft.com/KX2/Manuals%20Downl
       - Plug into the KX2 RF PCB receptacles (E = white, B = red)
       - Slide tubing over the pins (no need to heat shrink)
 
-        <img src="/images/wires_connected.jpg" alt="Wires connected to KX2" width="500">
+        <img src="images/wires_connected.jpg" alt="Wires connected to KX2" width="500">
 
 5. Plug the KXUSBC2 board into the KXIBC2/KXIO2 slot and ensure it's properly seated
 
     !!! warning "Don't force it"
         Bend the rear panel of the case slightly outwards to let the lens of the LED diffuser slide in. Do not force the board in, or you will break off the diffuser/LED. One of the four connectors at the bottom edge is not used.
 
-    <img src="/images/installation_diffuser.jpg" alt="Installing the board by pushing the back of the case outwards" width="500">
+    <img src="images/installation_diffuser.jpg" alt="Installing the board by pushing the back of the case outwards" width="500">
 
 6. Remove the protective film (if present) from both sides of the thermal pad, then place it over U1, shifted slightly to the right so as not to collide with the back cover
 
-    <img src="/images/thermal_pad.jpg" alt="Thermal pad placement" width="500">
+    <img src="images/thermal_pad.jpg" alt="Thermal pad placement" width="500">
 
 7. Install the replacement side panel using the correct screws for each hole
 8. Reinstall the battery

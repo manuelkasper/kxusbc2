@@ -7,7 +7,7 @@ This is a browser-based programming tool for the ATtiny3226 microcontroller on t
 
     This programmer is based on the more generic [WebUPDI](https://github.com/manuelkasper/webupdi).
 
-![Screenshot](/images/programmer-ui.png)
+![Screenshot](../images/programmer-ui.png)
 
 ## Prerequisites
 

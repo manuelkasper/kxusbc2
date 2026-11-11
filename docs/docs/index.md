@@ -7,16 +7,16 @@ External power banks are awkward when operating handheld with the AX1 and may ca
 I prefer fully integrated things that are simple and foolproof to use. So I set out to design an option PCB that installs in place of a KXIBC2 or KXIO2 and adds a bidirectional (dual-role) USB-C port for charging and discharging the internal battery. In homage to Elecraft's naming convention for KX2 options, I call it the **KXUSBC2** — an unofficial option.
 
 <div class="grid" markdown>
-<img src="/images/pcb_top.jpg" alt="PCB top" width="500">
-<img src="/images/pcb_bottom.jpg" alt="PCB bottom" width="500">
+<img src="images/pcb_top.jpg" alt="PCB top" width="500">
+<img src="images/pcb_bottom.jpg" alt="PCB bottom" width="500">
 </div>
 
 Here is how it looks installed in a KX2, with a custom CNC-machined aluminum side plate for the USB-C port opening:
 
 <div class="grid" markdown>
-<img src="/images/side_panel.jpg" alt="KX2 replacement side panel with USB-C port" width="500">
-<img src="/images/installed_side.jpg" alt="KXUSBC2 installed, side view" width="500">
-<img src="/images/installed_top.jpg" alt="KXUSBC2 installed, top view" width="500">
+<img src="images/side_panel.jpg" alt="KX2 replacement side panel with USB-C port" width="500">
+<img src="images/installed_side.jpg" alt="KXUSBC2 installed, side view" width="500">
+<img src="images/installed_top.jpg" alt="KXUSBC2 installed, top view" width="500">
 </div>
 
 ## Features
@@ -57,7 +57,7 @@ Here is how it looks installed in a KX2, with a custom CNC-machined aluminum sid
 
     ---
 
-    Automatically suspends charging while the KX2 is powered on.
+    Automatically suspends charging while the KX2 is powered on (so no QRM).
 
 -   :material-clock-outline:{ .lg .middle } **Real-time clock**
 
@@ -113,7 +113,7 @@ Here is how it looks installed in a KX2, with a custom CNC-machined aluminum sid
     - 4-layer PCB, components on both sides (min. 0402)
     - Replacement aluminum side panel, CNC milled, anodized and silkscreen printed, with USB-C and button pin hole
 
-For more information and a PDF schematic, see the [hardware notes](technical_notes/hardware.md).
+For more information and the schematic, see the [hardware notes](technical_notes/hardware.md).
 
 ## Installation
 
@@ -145,4 +145,4 @@ The schematic/PCB was designed with KiCad, and the firmware was written to be co
 
 ## Current state of the project
 
-The PCB has gone through three revisions and is now at rev3, which is considered to be production-ready. rev2 boards have been tested by seven beta testers around the world, and all have worked on first try. The firmware is considered to be complete. See the issues page for any open issues or ideas for future revisions.
+The PCB has gone through four revisions and is now at rev4, which is considered to be production-ready. rev3 and rev4 boards are in use by hundreds of users around the world. The firmware is considered to be complete. See the issues page for any open issues or ideas for future revisions.

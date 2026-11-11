@@ -4,7 +4,7 @@
 
 Designed with KiCad.
 
-**[PDF version of the schematic](https://github.com/manuelkasper/kxusbc2/blob/main/hardware/pcb/kxusbc2.pdf)** for quick viewing (may not be the most recent version).
+You can view the schematic and PCB layout in your browser: [view KiCad files in kicanvas.org](https://kicanvas.org/?repo=https%3A%2F%2Fgithub.com%2Fmanuelkasper%2Fkxusbc2%2Ftree%2Fmain%2Fhardware%2Fpcb).
 
 ## PCB
 
@@ -19,7 +19,7 @@ The design around the BQ25792 with its inductor and capacitors follows the guide
 
 ### JLCPCB order settings
 
-When ordering from JLCPCB, the files located in [pcb/jlcpcb/production_files](pcb/jlcpcb/production_files) can be uploaded directly.
+When ordering from JLCPCB, the files located in [pcb/jlcpcb/production_files](https://github.com/manuelkasper/kxusbc2/tree/main/hardware/pcb/jlcpcb/production_files) can be uploaded directly.
 
 === "PCB"
 
@@ -78,7 +78,7 @@ Most of the parts are relatively low cost, and the board was designed so that it
 
 ## Efficiency
 
-<img src="/images/illustrations/bq25792_efficiency.png" alt="Conversion efficiency" width="400">
+<img src="../images/illustrations/bq25792_efficiency.png" alt="Conversion efficiency" width="400">
 
 The graph above is taken from the BQ25792's datasheet. I've done some casual measurements, both using the BQ25792's internal ADC and shunts, and with external power meters, and they agree with the data in the graph: around 95% when charging from 15 V input, and between 85% and 90% from 5 V (depending on the current). There seems to be no problem dissipating the maximum possible loss of around 3 W through the side panel (thermal pad placed between the IC and the panel), and in any case, the charger IC has thermal regulation and shutdown.
 
@@ -132,40 +132,40 @@ Not wanting my concoction to cause excessive spurious emissions through the KX2'
 
 === "Charging 5V@2.2A"
 
-    <img src="/images/illustrations/spectrum/chg_5v_2200ma_full.png" alt="Full spectrum when charging at 5 V @ 2.2 A" width="600">
-    <img src="/images/illustrations/spectrum/chg_5v_2200ma_hf.png" alt="HF spectrum when charging at 5 V @ 2.2 A" width="600">
+    <img src="../images/illustrations/spectrum/chg_5v_2200ma_full.png" alt="Full spectrum when charging at 5 V @ 2.2 A" width="600">
+    <img src="../images/illustrations/spectrum/chg_5v_2200ma_hf.png" alt="HF spectrum when charging at 5 V @ 2.2 A" width="600">
 
 === "Charging 15V@1.6A"
 
-    <img src="/images/illustrations/spectrum/chg_15v_1600ma_full.png" alt="Full spectrum when charging at 15 V @ 1.6 A" width="600">
-    <img src="/images/illustrations/spectrum/chg_15v_1600ma_hf.png" alt="HF spectrum when charging at 15 V @ 1.6 A" width="600">
+    <img src="../images/illustrations/spectrum/chg_15v_1600ma_full.png" alt="Full spectrum when charging at 15 V @ 1.6 A" width="600">
+    <img src="../images/illustrations/spectrum/chg_15v_1600ma_hf.png" alt="HF spectrum when charging at 15 V @ 1.6 A" width="600">
 
 === "Discharging 5V@3A"
 
-    <img src="/images/illustrations/spectrum/dischg_5v_3000ma_full.png" alt="Full spectrum when discharging at 5 V @ 3 A" width="600">
-    <img src="/images/illustrations/spectrum/dischg_5v_3000ma_hf.png" alt="HF spectrum when discharging at 5 V @ 3 A" width="600">
+    <img src="../images/illustrations/spectrum/dischg_5v_3000ma_full.png" alt="Full spectrum when discharging at 5 V @ 3 A" width="600">
+    <img src="../images/illustrations/spectrum/dischg_5v_3000ma_hf.png" alt="HF spectrum when discharging at 5 V @ 3 A" width="600">
 
 === "Discharging 9V@3A"
 
-    <img src="/images/illustrations/spectrum/dischg_9v_3000ma_full.png" alt="Full spectrum when discharging at 9 V @ 3 A" width="600">
-    <img src="/images/illustrations/spectrum/dischg_9v_3000ma_hf.png" alt="HF spectrum when discharging at 9 V @ 3 A" width="600">
+    <img src="../images/illustrations/spectrum/dischg_9v_3000ma_full.png" alt="Full spectrum when discharging at 9 V @ 3 A" width="600">
+    <img src="../images/illustrations/spectrum/dischg_9v_3000ma_hf.png" alt="HF spectrum when discharging at 9 V @ 3 A" width="600">
 
 === "Discharging 12V@2.5A"
 
-    <img src="/images/illustrations/spectrum/dischg_12v_2500ma_full.png" alt="Full spectrum when discharging at 12 V @ 2.5 A" width="600">
-    <img src="/images/illustrations/spectrum/dischg_12v_2500ma_hf.png" alt="HF spectrum when discharging at 12 V @ 2.5 A" width="600">
+    <img src="../images/illustrations/spectrum/dischg_12v_2500ma_full.png" alt="Full spectrum when discharging at 12 V @ 2.5 A" width="600">
+    <img src="../images/illustrations/spectrum/dischg_12v_2500ma_hf.png" alt="HF spectrum when discharging at 12 V @ 2.5 A" width="600">
 
 === "Discharging 15V@2A"
 
-    <img src="/images/illustrations/spectrum/dischg_15v_2000ma_full.png" alt="Full spectrum when discharging at 15 V @ 2 A" width="600">
-    <img src="/images/illustrations/spectrum/dischg_15v_2000ma_hf.png" alt="HF spectrum when discharging at 15 V @ 2 A" width="600">
+    <img src="../images/illustrations/spectrum/dischg_15v_2000ma_full.png" alt="Full spectrum when discharging at 15 V @ 2 A" width="600">
+    <img src="../images/illustrations/spectrum/dischg_15v_2000ma_hf.png" alt="HF spectrum when discharging at 15 V @ 2 A" width="600">
 
 === "KX2 in RX mode (no KXUSBC2)"
 
     For comparison, here is the spectrum at the antenna port of a KX2 in RX mode (no KXUSBC2 installed) with the pre-amp on and the frequency set to 14.333 MHz:
 
-    <img src="/images/illustrations/spectrum/kx2_rx_full.png" alt="Full spectrum with KX2 in RX mode, without KXUSBC2 installed" width="600">
-    <img src="/images/illustrations/spectrum/kx2_rx_hf.png" alt="HF spectrum with KX2 in RX mode, without KXUSBC2 installed" width="600">
+    <img src="../images/illustrations/spectrum/kx2_rx_full.png" alt="Full spectrum with KX2 in RX mode, without KXUSBC2 installed" width="600">
+    <img src="../images/illustrations/spectrum/kx2_rx_hf.png" alt="HF spectrum with KX2 in RX mode, without KXUSBC2 installed" width="600">
 
 !!! success "Summary"
     When charging at typical power levels (15 V @ 1.6 A was the highest input current encountered during my tests with the maximum battery current set to the default of 2 A), the -57 dBm limit is respected, and also when discharging at typical voltages/currents for an attached smartphone. Only when discharging at both high voltages and high current (12 or 15 V at 2 A) are there spurs around 100 MHz that exceed the limit. It is thus recommended to disconnect the antenna from the KX2 when fast charging external devices. Alternatively, reducing the current to 1.5 A @ 12 V or 1 A @ 15 V also reduces those spurs to below the limit.
