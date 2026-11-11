@@ -52,7 +52,7 @@ Here is how it looks installed in a KX2, with a custom CNC-machined aluminum sid
   * Components on both sides (min. 0402)
 * Replacement aluminum side panel, CNC milled, anodized and silkscreen printed, with USB-C and button pin hole
 
-For more information and a PDF schematic, see the [hardware notes](hardware/README.md).
+For more information and the schematic, see the [hardware notes](hardware/README.md).
 
 
 ## Installation
